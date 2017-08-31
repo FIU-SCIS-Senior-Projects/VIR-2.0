@@ -13,7 +13,7 @@ import com.vir.model.Text;
 import com.vir.service.TextProcessorService;
 
 @RestController
-@RequestMapping("/analize")
+@RequestMapping("/api/analize")
 public class AnalizerController {
 
 	@Autowired
