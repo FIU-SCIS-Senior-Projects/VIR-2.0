@@ -28,7 +28,7 @@ public class AnalizerControler {
 
 	@Test
 	public void analizeText_Endpoint_Returns200Ok() throws Exception {
-		final String url = "/api/analize?type=text";
+		final String url = "/api/analize/text";
 		final String word = "test";
 		final String expected = "{\"words\":[{\"id\":1308,\"value\":\"test\",\"category\":\"hi\",\"initialValue\":null}]}";
 		mockMvc.perform(post(url).content(word))
@@ -40,12 +40,11 @@ public class AnalizerControler {
 
 	@Test
 	public void analizePdf_Endpoint_Returns200Ok() throws Exception {
-		final String url = "/api/analize?type=pdf";
+		final String url = "/api/analize/pdf";
 		final MockMultipartFile file = new MockMultipartFile("file", "myFile.txt", "text/plain", "hello".getBytes());
 		mockMvc.perform(
 				fileUpload(url)
-				.file(file)
-				.param("type", "pdf"))
+				.file(file))
 			.andDo(print())
 			.andExpect(status().isOk());
 	}

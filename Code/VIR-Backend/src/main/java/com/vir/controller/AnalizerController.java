@@ -19,16 +19,16 @@ public class AnalizerController {
 	@Autowired
 	private TextProcessorService textProcessorService;
 
-	@PostMapping(params = "type=text", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/text", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Text analizeText(@RequestBody(required = true) String text) {
 		return textProcessorService.process(text);
 	}
 
-	@PostMapping(params = "type=pdf", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/pdf", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Text analizePdf(
 			@RequestParam(name = "file", required = true) MultipartFile file,
 			@RequestParam(name = "type", required = true) String type) {
-		
-		return null ;
+
+		return null;
 	}
 }
