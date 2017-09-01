@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: @activatedProperties@
+    active: "@activatedProperties@"
 
 ---
 spring:
@@ -31,7 +31,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/vir?useSSL=false
     username: root
-    password: root
+    password: ENC(/98CfxmsjKBW5oZsLkLlmw==)
     driver-class-name: com.mysql.jdbc.Driver 
   jpa:
     show-sql: true
@@ -40,5 +40,9 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+jasypt:
+  encryptor:
+    algorithm: "@encryptorAlgorithm@"
+    password: "@encryptorPassword@"
 server:
   port: 5000

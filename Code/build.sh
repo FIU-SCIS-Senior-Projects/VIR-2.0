@@ -11,10 +11,14 @@ then
 	echo Building prod
 	ENV_FLAG_MAVEN='-Pprod'
 	ENV_FLAG_NG='--env=prod'
+	ENCRYPT_ALGORITHM='-DencryptorAlgorithm=PBEWithMD5AndDES'
+	ENCRYPT_PASSWORD='-DencryptorPassword=secretkey'
 else
 	echo 'Building dev (default)'
 	ENV_FLAG_MAVEN=
 	ENV_FLAG_NG=
+	ENCRYPT_ALGORITHM=
+	ENCRYPT_PASSWORD=
 fi
 
 # Install the angular dependencies and the project
@@ -30,6 +34,6 @@ cd $BACK_END
 echo Cleaning the backend...
 ./mvnw clean
 echo Installing the backend...
-./mvnw install $ENV_FLAG_MAVEN
+./mvnw install $ENV_FLAG_MAVEN $ENCRYPT_ALGORITHM $ENCRYPT_PASSWORD
 cd $DIR
 	
