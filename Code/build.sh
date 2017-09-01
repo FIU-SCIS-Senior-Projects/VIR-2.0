@@ -28,8 +28,8 @@ cd $DIR
 # Clean the maven backend and rebuild
 cd $BACK_END
 echo Cleaning the backend...
-mvn clean
+mvnw clean
 echo Installing the backend...
-mvn install $ENV_FLAG_MAVEN
+mvnw install $ENV_FLAG_MAVEN
 cd $DIR
 	
