@@ -17,7 +17,7 @@ import com.vir.model.Word;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@TestPropertySource(locations="classpath:config/application-dev.properties")
+@TestPropertySource(locations="classpath:application.yml")
 public class WordRepositoryTest {
 	
 	@Autowired
