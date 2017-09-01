@@ -40,6 +40,8 @@
 			<id>prod</id>
 			<properties>
 				<activatedProperties>prod</activatedProperties>
+				<encryptorAlgorithm></encryptorAlgorithm>
+				<encryptorPassword></encryptorPassword>
 			</properties>
 		</profile>
 	</profiles>
@@ -56,6 +58,11 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ulisesbocchio</groupId>
+			<artifactId>jasypt-spring-boot-starter</artifactId>
+			<version>1.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

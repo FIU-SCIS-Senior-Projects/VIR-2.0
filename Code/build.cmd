@@ -8,7 +8,7 @@ set DIR=%~dp0
 :: Set environment properties
 if "%1"=="prod" (
 	echo Building prod
-	call :buildFunction "--env=prod", "-Pprod"
+	call :buildFunction "--env=prod", "-Pprod", "-DencryptorAlgorithm=PBEWithMD5AndDES", "-DencryptorPassword=secretkey"
 ) else (
 	echo Building dev default
 	call :buildFunction
