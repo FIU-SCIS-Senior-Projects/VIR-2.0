@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FRONT_END=./VIR-Frondend
+FRONT_END=./VIR-Frontend
 BACK_END=./VIR-Backend
 OUT_PUT_PATH=../VIR-Backend/src/main/resources/static
 DIR=$(pwd)
