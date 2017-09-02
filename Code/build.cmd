@@ -1,6 +1,6 @@
 @echo off
 
-set FRONT_END=./VIR-Frondend
+set FRONT_END=./VIR-Frontend
 set BACK_END=./VIR-Backend
 set OUT_PUT_PATH=../VIR-Backend/src/main/resources/static
 set DIR=%~dp0
