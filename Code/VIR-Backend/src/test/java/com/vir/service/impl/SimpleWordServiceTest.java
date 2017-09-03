@@ -21,7 +21,7 @@ public class SimpleWordServiceTest {
 	private WordService wordService;
 
 	@Test
-	public void test() throws Exception {
+	public void removePunctuation_WithADot_ReturnsWordWithoutDot() throws Exception {
 		final String word = "word.";
 		final String expected = "word";
 		assertEquals(expected, wordService.removePunctuation(word));
