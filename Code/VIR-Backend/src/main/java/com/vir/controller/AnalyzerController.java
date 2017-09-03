@@ -13,19 +13,25 @@ import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.TextProcessorService;
 
+/**
+ * Main controller for the Analyzer.
+ * 
+ * @author Alfredo Lopez
+ *
+ */
 @RestController
 @RequestMapping("/api")
-public class AnalizerController {
+public class AnalyzerController {
 
 	@Autowired
 	private TextProcessorService textProcessorService;
 
-	@PostMapping(value = "/analizeText", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/analyzeText", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Text analizeText(@RequestBody(required = true) String text) {
 		return textProcessorService.process(text);
 	}
 
-	@PostMapping(value = "/analizeFile", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(value = "/analyzeFile", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Text analizePdf(
 			@RequestParam(name = "file", required = true) MultipartFile file,
 			@RequestParam(name = "type", required = true) FileType type) {

@@ -18,6 +18,12 @@ import com.vir.repository.WordRepository;
 import com.vir.service.TextProcessorService;
 import com.vir.service.WordService;
 
+/**
+ * A simple text processor to match a word to the category.
+ * 
+ * @author Alfredo Lopez
+ *
+ */
 @Service("simpleTextProcessor")
 public class SimpleTextProcessorService implements TextProcessorService {
 
@@ -29,9 +35,9 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	private WordService wordService;
 
 	@Override
-	public Text process(String text) {
+	public Text process(String textString) {
 
-		List<String> orgiginalStrings = Arrays.asList(text.split(StringUtils.SPACE));
+		List<String> orgiginalStrings = Arrays.asList(textString.split(StringUtils.SPACE));
 		Map<String, String> map = new HashMap<>();
 		List<WordDto> finalList = new ArrayList<>();
 
@@ -48,9 +54,9 @@ public class SimpleTextProcessorService implements TextProcessorService {
 			}
 		}
 
-		Text t = new Text();
-		t.setWords(finalList);
+		Text text = new Text();
+		text.setWords(finalList);
 
-		return t;
+		return text;
 	}
 }
