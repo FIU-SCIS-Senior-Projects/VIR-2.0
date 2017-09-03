@@ -1,7 +1,9 @@
 spring:
   profiles:
     active: "@activatedProperties@"
-
+  output:
+    ansi:
+      enabled: always
 ---
 spring:
   profiles: dev
