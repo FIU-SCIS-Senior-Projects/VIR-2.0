@@ -6,18 +6,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication(scanBasePackages="com.vir")
+@SpringBootApplication(scanBasePackages = "com.vir")
 @RestController
 public class VirBackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VirBackendApplication.class, args);
 	}
-	
+
 	@Value("${spring.application.name}")
 	private String name;
+
 	@RequestMapping("/test")
-	public String nameTest(){
+	public String nameTest() {
 		return name;
 	}
 }

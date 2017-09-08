@@ -43,7 +43,8 @@ public class SimpleTextProcessorService implements TextProcessorService {
 
 		for (String s : orgiginalStrings) {
 			String cleanValue = wordService.removePunctuation(s).toLowerCase();
-			Word result = wordRepository.findMax1ByValue(cleanValue);
+			Word result = wordRepository.findFirstByValue(cleanValue);
+			
 			map.putIfAbsent(s, result == null ? null : result.getValue());
 
 			// Collect the values

@@ -41,8 +41,6 @@
 			<id>prod</id>
 			<properties>
 				<activatedProperties>prod</activatedProperties>
-				<encryptorAlgorithm></encryptorAlgorithm>
-				<encryptorPassword></encryptorPassword>
 			</properties>
 		</profile>
 	</profiles>
