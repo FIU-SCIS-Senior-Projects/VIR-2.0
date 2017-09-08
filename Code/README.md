@@ -15,5 +15,4 @@ password: root
 
 _Note:_
 If you are using a Unix like system make sure you give execution permitions to the files  
-```chmod +x build.sh```  
-```chmod +x VIR-Backend/mvnw```
+```chmod +x build.sh```

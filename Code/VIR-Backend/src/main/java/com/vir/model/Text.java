@@ -14,9 +14,10 @@ import com.vir.model.dto.WordDto;
  */
 public class Text {
 
-	private List<WordDto> words = new ArrayList<>();
+	private List<WordDto> words;
 	
 	public Text() {
+		this.words = new ArrayList<>();
 	}
 
 	public List<WordDto> getWords() {

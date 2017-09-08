@@ -3,7 +3,7 @@ spring:
     active: "@activatedProperties@"
   output:
     ansi:
-      enabled: always
+      enabled: detect
 ---
 spring:
   profiles: dev
@@ -36,15 +36,15 @@ spring:
     password: ENC(/98CfxmsjKBW5oZsLkLlmw==)
     driver-class-name: com.mysql.jdbc.Driver 
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+        
 jasypt:
   encryptor:
-    algorithm: "@encryptorAlgorithm@"
-    password: "@encryptorPassword@"
+    password: ${APP_ENCRYPTION_PASSWORD}
 server:
   port: 5000
