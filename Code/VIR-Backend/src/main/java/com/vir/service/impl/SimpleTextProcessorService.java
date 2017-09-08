@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,8 @@ import com.vir.service.WordService;
  */
 @Service("simpleTextProcessor")
 public class SimpleTextProcessorService implements TextProcessorService {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(SimpleTextProcessorService.class);
 
 	@Autowired
 	private WordRepository wordRepository;

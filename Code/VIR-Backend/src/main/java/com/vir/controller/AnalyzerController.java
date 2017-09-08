@@ -1,5 +1,7 @@
 package com.vir.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +24,8 @@ import com.vir.service.TextProcessorService;
 @RestController
 @RequestMapping("/api")
 public class AnalyzerController {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(AnalyzerController.class);
 
 	@Autowired
 	private TextProcessorService textProcessorService;
@@ -37,5 +41,5 @@ public class AnalyzerController {
 			@RequestParam(name = "type", required = true) FileType type) {
 
 		return null;
-	}
+	}	
 }
