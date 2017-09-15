@@ -16,8 +16,10 @@
     "high frequency": "High Frequency",
     "medium frequency" : "Medium Frequency",
     "low frequency": "Low Frequency",
-    "upload text" : "Upload Text",
-    "upload file" : "Upload File",
+    "text" : "Text",
+    "doc" : "Doc",
+    "pdf" : "PDF",
+    "image" : "Image",
     "dictionary": "Dictionary",
     "home": "Home"
 }

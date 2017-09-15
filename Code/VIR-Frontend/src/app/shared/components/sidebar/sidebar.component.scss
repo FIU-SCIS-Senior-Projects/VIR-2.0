@@ -110,9 +110,12 @@ $topnav-background-color: #222;
             height: auto;
             li {
                 a {
-                    color: #FFF;
+                    color: #999;
                     padding: 10px;
                     display: block;
+                }
+                a:hover {
+                    color: #FFF;
                 }
             }
         }
