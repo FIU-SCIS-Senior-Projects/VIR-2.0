@@ -14,7 +14,7 @@
 	<properties>
 		<ng.production.flag></ng.production.flag>
 		<npm.executable></npm.executable>
-		<ng.executbale></ng.executbale>
+		<ng.executable></ng.executable>
 	</properties>
 
 	<parent>
@@ -37,7 +37,7 @@
 						</goals>
 						<phase>generate-sources</phase>
 						<configuration>
-							<executable>npm.cmd</executable>
+							<executable>${npm.executable}</executable>
 							<arguments>
 								<argument>install</argument>
 							</arguments>
@@ -55,7 +55,7 @@
 						</goals>
 						<phase>generate-resources</phase>
 						<configuration>
-							<executable>ng.cmd</executable>
+							<executable>${ng.executable}</executable>
 							<arguments>
 								<argument>build</argument>
 								<argument>-op=../VIR-Backend/src/main/resources/static</argument>
@@ -72,7 +72,7 @@
 						</goals>
 						<phase>test</phase>
 						<configuration>
-							<executable>ng.cmd</executable>
+							<executable>${ng.executable}</executable>
 							<arguments>
 								<argument>test</argument>
 								<argument>--progress</argument>
@@ -91,7 +91,7 @@
 						</goals>
 						<phase>test</phase>
 						<configuration>
-							<executable>ng.cmd</executable>
+							<executable>${ng.executable}</executable>
 							<arguments>
 								<argument>e2e</argument>
 							</arguments>
@@ -102,5 +102,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
