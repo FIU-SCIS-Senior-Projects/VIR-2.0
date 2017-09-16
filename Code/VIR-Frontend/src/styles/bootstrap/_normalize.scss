@@ -15,6 +15,9 @@ html {
   line-height: 1.15; // 2
   -ms-text-size-adjust: 100%; // 3
   -webkit-text-size-adjust: 100%; // 3
+  //This is added to fix the footer responsive's issue
+  position: relative;
+  min-height: 100%;
 }
 
 // Sections
@@ -26,6 +29,8 @@ html {
 
 body {
   margin: 0;
+  //This is added to fix the footer responsive's issue
+  margin-bottom: 60px;
 }
 
 //
