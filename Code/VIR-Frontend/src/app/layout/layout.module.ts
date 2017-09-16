@@ -7,6 +7,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
 
+
 @NgModule({
     imports: [
         CommonModule,
