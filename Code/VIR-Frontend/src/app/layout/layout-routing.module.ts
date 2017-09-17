@@ -11,6 +11,7 @@ const routes: Routes = [
             {path : 'text', loadChildren: './text/text.module#TextModule' },
             {path : 'doc', loadChildren: './doc/doc.module#DocModule' },
             {path : 'pdf', loadChildren: './pdf/pdf.module#PdfModule' },
+            {path : 'image', loadChildren: './image/image.module#ImageModule' },
         ]
     }
     
