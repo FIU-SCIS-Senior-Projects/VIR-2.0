@@ -3,11 +3,6 @@ import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from "@angular/router/testing";
 
-import {
-  TimelineComponent,
-  NotificationComponent,
-  ChatComponent
-} from './components';
 import { StatModule } from '../../shared';
 import { DashboardComponent } from './dashboard.component';
 
@@ -26,9 +21,6 @@ describe('DashboardComponent', () => {
     ],
       declarations: [
         DashboardComponent,
-        TimelineComponent,
-        NotificationComponent,
-        ChatComponent
       ]
     })
     .compileComponents();
