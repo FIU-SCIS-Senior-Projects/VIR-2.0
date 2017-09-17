@@ -9,6 +9,7 @@ const routes: Routes = [
             { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
             { path: 'blank-page', loadChildren: './blank-page/blank-page.module#BlankPageModule' },
             {path : 'text', loadChildren: './text/text.module#TextModule' },
+            {path : 'doc', loadChildren: './doc/doc.module#DocModule' },
         ]
     }
     
