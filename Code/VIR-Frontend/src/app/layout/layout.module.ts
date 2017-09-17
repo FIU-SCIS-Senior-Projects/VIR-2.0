@@ -9,6 +9,7 @@ import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
 
 
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -21,6 +22,7 @@ import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
         HeaderComponent,
         SidebarComponent,
         FooterComponent,
+    
     ]
 })
 export class LayoutModule { }
