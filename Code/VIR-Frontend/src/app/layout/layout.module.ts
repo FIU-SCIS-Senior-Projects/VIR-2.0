@@ -7,6 +7,10 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
 
+
+
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -19,6 +23,7 @@ import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
         HeaderComponent,
         SidebarComponent,
         FooterComponent,
+    
     ]
 })
 export class LayoutModule { }
