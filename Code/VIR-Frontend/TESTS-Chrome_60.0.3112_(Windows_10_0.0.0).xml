@@ -1,23 +1,26 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 60.0.3112 (Windows 10 0.0.0)" package="" timestamp="2017-09-16T21:02:04" id="0" hostname="MiladPC" tests="15" errors="0" failures="0" time="1.869">
+<testsuite name="Chrome 60.0.3112 (Windows 10 0.0.0)" package="" timestamp="2017-09-17T04:02:52" id="0" hostname="MiladPC" tests="18" errors="0" failures="0" time="2.403">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"/>
   </properties>
-  <testcase name="AppComponent should create the app" time="0.115" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AppComponent"/>
-  <testcase name="BlankPageComponent should create" time="0.027" classname="Chrome_60_0_3112_(Windows_10_0_0_0).BlankPageComponent"/>
-  <testcase name="ChatComponent should create" time="0.157" classname="Chrome_60_0_3112_(Windows_10_0_0_0).ChatComponent"/>
-  <testcase name="NotificationComponent should create" time="0.085" classname="Chrome_60_0_3112_(Windows_10_0_0_0).NotificationComponent"/>
-  <testcase name="TimelineComponent should create" time="0.111" classname="Chrome_60_0_3112_(Windows_10_0_0_0).TimelineComponent"/>
-  <testcase name="DashboardComponent should create" time="0.352" classname="Chrome_60_0_3112_(Windows_10_0_0_0).DashboardComponent"/>
-  <testcase name="LayoutComponent should create" time="0.669" classname="Chrome_60_0_3112_(Windows_10_0_0_0).LayoutComponent"/>
-  <testcase name="TextComponent should be created" time="0.023" classname="Chrome_60_0_3112_(Windows_10_0_0_0).TextComponent"/>
-  <testcase name="LoginComponent should create" time="0.081" classname="Chrome_60_0_3112_(Windows_10_0_0_0).LoginComponent"/>
-  <testcase name="FooterComponent should create" time="0.041" classname="Chrome_60_0_3112_(Windows_10_0_0_0).FooterComponent"/>
-  <testcase name="HeaderComponent should create" time="0.06" classname="Chrome_60_0_3112_(Windows_10_0_0_0).HeaderComponent"/>
-  <testcase name="SidebarComponent should create" time="0.069" classname="Chrome_60_0_3112_(Windows_10_0_0_0).SidebarComponent"/>
-  <testcase name="AuthGuard should ..." time="0.016" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AuthGuard"/>
-  <testcase name="PageHeaderComponent should create" time="0.029" classname="Chrome_60_0_3112_(Windows_10_0_0_0).PageHeaderComponent"/>
-  <testcase name="StatComponent should create" time="0.034" classname="Chrome_60_0_3112_(Windows_10_0_0_0).StatComponent"/>
+  <testcase name="AppComponent should create the app" time="0.249" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AppComponent"/>
+  <testcase name="BlankPageComponent should create" time="0.05" classname="Chrome_60_0_3112_(Windows_10_0_0_0).BlankPageComponent"/>
+  <testcase name="ChatComponent should create" time="0.154" classname="Chrome_60_0_3112_(Windows_10_0_0_0).ChatComponent"/>
+  <testcase name="NotificationComponent should create" time="0.094" classname="Chrome_60_0_3112_(Windows_10_0_0_0).NotificationComponent"/>
+  <testcase name="TimelineComponent should create" time="0.1" classname="Chrome_60_0_3112_(Windows_10_0_0_0).TimelineComponent"/>
+  <testcase name="DashboardComponent should create" time="0.359" classname="Chrome_60_0_3112_(Windows_10_0_0_0).DashboardComponent"/>
+  <testcase name="DocComponent should be created" time="0.051" classname="Chrome_60_0_3112_(Windows_10_0_0_0).DocComponent"/>
+  <testcase name="ImageComponent should be created" time="0.045" classname="Chrome_60_0_3112_(Windows_10_0_0_0).ImageComponent"/>
+  <testcase name="LayoutComponent should create" time="0.913" classname="Chrome_60_0_3112_(Windows_10_0_0_0).LayoutComponent"/>
+  <testcase name="PdfComponent should be created" time="0.022" classname="Chrome_60_0_3112_(Windows_10_0_0_0).PdfComponent"/>
+  <testcase name="TextComponent should be created" time="0.031" classname="Chrome_60_0_3112_(Windows_10_0_0_0).TextComponent"/>
+  <testcase name="LoginComponent should create" time="0.062" classname="Chrome_60_0_3112_(Windows_10_0_0_0).LoginComponent"/>
+  <testcase name="FooterComponent should create" time="0.061" classname="Chrome_60_0_3112_(Windows_10_0_0_0).FooterComponent"/>
+  <testcase name="HeaderComponent should create" time="0.065" classname="Chrome_60_0_3112_(Windows_10_0_0_0).HeaderComponent"/>
+  <testcase name="SidebarComponent should create" time="0.077" classname="Chrome_60_0_3112_(Windows_10_0_0_0).SidebarComponent"/>
+  <testcase name="AuthGuard should ..." time="0.014" classname="Chrome_60_0_3112_(Windows_10_0_0_0).AuthGuard"/>
+  <testcase name="PageHeaderComponent should create" time="0.033" classname="Chrome_60_0_3112_(Windows_10_0_0_0).PageHeaderComponent"/>
+  <testcase name="StatComponent should create" time="0.023" classname="Chrome_60_0_3112_(Windows_10_0_0_0).StatComponent"/>
   <system-out>
     <![CDATA[Chrome 60.0.3112 (Windows 10 0.0.0) ERROR: 'Unhandled Promise rejection:', 'Cannot match any routes. URL Segment: 'dashboard'', '; Zone:', 'angular', '; Task:', 'Promise.then', '; Value:', Error{__zone_symbol__currentTask: ZoneTask{_zone: Zone{_properties: ..., _parent: ..., _name: ..., _zoneDelegate: ...}, runCount: 0, _zoneDelegates: null, _state: 'notScheduled', type: 'microTask', source: 'Promise.then', data: Object{__creationTrace__: ...}, scheduleFn: undefined, cancelFn: null, callback: function () { ... }, invoke: function () { ... }}}, 'Error: Cannot match any routes. URL Segment: 'dashboard'
     at ApplyRedirects.webpackJsonp.../../../router/@angular/router.es5.js.ApplyRedirects.noMatchError (http://localhost:9876/_karma_webpack_/webpack:/C:/Users/milad/Desktop/VIR-2.0/Code/VIR-Frontend/node_modules/@angular/router/@angular/router.es5.js:1466:1)

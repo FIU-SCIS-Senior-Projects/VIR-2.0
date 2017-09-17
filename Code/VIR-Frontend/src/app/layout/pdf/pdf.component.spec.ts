@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PdfComponent } from './pdf.component';
 
 describe('PdfComponent', () => {
@@ -8,9 +8,12 @@ describe('PdfComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PdfComponent ]
+      imports: [
+        BrowserAnimationsModule,
+      ],
+      declarations: [PdfComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
