@@ -47,12 +47,16 @@ public class SimpleTextProcessorService implements TextProcessorService {
 		Word result = null;
 		for (String s : orgiginalStrings) {
 			if (!map.containsKey(s)) {
+				
 				String cleanValue = wordService.removePunctuation(s).toLowerCase();
 				result = wordRepository.findFirstByValue(cleanValue);
 				
 				if (result == null) {
 					result = new Word(StringUtils.EMPTY, StringUtils.EMPTY, s);
+				} else {
+					result.setInitialValue(s);
 				}
+				
 				map.put(s, result);
 			} else {
 				result = map.get(s);
