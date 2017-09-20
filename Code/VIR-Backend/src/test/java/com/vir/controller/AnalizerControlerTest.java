@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AnalizerControler {
+public class AnalizerControlerTest {
 
 	// @formatter:off
 	
