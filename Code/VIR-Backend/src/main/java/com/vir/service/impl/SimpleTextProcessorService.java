@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import com.vir.model.Text;
 import com.vir.model.Word;
-import com.vir.model.dto.WordDto;
 import com.vir.repository.WordRepository;
 import com.vir.service.TextProcessorService;
 import com.vir.service.WordService;
@@ -28,7 +27,7 @@ import com.vir.service.WordService;
  */
 @Service("simpleTextProcessor")
 public class SimpleTextProcessorService implements TextProcessorService {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(SimpleTextProcessorService.class);
 
 	@Autowired
@@ -42,21 +41,23 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	public Text process(String textString) {
 
 		List<String> orgiginalStrings = Arrays.asList(textString.split(StringUtils.SPACE));
-		Map<String, String> map = new HashMap<>();
-		List<WordDto> finalList = new ArrayList<>();
+		Map<String, Word> map = new HashMap<>();
+		List<Word> finalList = new ArrayList<>();
 
+		Word result = null;
 		for (String s : orgiginalStrings) {
-			String cleanValue = wordService.removePunctuation(s).toLowerCase();
-			Word result = wordRepository.findFirstByValue(cleanValue);
-			
-			map.putIfAbsent(s, result == null ? null : result.getValue());
-
-			// Collect the values
-			if (result == null) {
-				finalList.add(new WordDto(StringUtils.EMPTY, StringUtils.EMPTY, s));
+			if (!map.containsKey(s)) {
+				String cleanValue = wordService.removePunctuation(s).toLowerCase();
+				result = wordRepository.findFirstByValue(cleanValue);
+				
+				if (result == null) {
+					result = new Word(StringUtils.EMPTY, StringUtils.EMPTY, s);
+				}
+				map.put(s, result);
 			} else {
-				finalList.add(new WordDto(result.getValue(), result.getCategory(), s));
+				result = map.get(s);
 			}
+			finalList.add(result);
 		}
 
 		Text text = new Text();
