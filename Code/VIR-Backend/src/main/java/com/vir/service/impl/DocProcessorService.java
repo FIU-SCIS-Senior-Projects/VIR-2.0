@@ -7,9 +7,21 @@ import com.vir.service.FileProcessorService;
 
 public class DocProcessorService implements FileProcessorService {
 
+	public DocProcessorService(MultipartFile file) {
+		// TODO Auto-generated constructor stub
+	}
+	
+
 	@Override
-	public Text process(MultipartFile file) {
+	public Text process() {
+		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void validate() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

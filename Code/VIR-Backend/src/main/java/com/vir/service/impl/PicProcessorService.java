@@ -7,9 +7,17 @@ import com.vir.service.FileProcessorService;
 
 public class PicProcessorService implements FileProcessorService {
 
+	public PicProcessorService(MultipartFile file) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public Text process(MultipartFile file) {
+	public Text process() {
 		return null;
+	}
+
+	@Override
+	public void validate() {
 	}
 
 }
