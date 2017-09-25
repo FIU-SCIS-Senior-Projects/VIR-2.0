@@ -1,27 +1,19 @@
 package com.vir.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 
+@Service("docProcessorService")
 public class DocProcessorService implements FileProcessorService {
 
-	public DocProcessorService(MultipartFile file) {
-		// TODO Auto-generated constructor stub
-	}
-	
-
 	@Override
-	public Text process() {
+	public Text process(MultipartFile file, FileType type) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void validate() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

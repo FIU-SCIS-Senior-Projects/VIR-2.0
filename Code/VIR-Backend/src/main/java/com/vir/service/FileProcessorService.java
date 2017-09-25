@@ -1,7 +1,9 @@
 package com.vir.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.model.FileType;
 import com.vir.model.Text;
 
 /**
@@ -12,6 +14,5 @@ import com.vir.model.Text;
  */
 @Service
 public interface FileProcessorService {
-	public Text process();
-	public void validate();
+	public Text process(MultipartFile file, FileType type) throws Exception;
 }

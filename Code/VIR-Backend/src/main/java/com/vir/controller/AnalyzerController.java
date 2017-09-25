@@ -1,13 +1,10 @@
 package com.vir.controller;
 
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.vir.model.FileType;
 import com.vir.model.Text;
-import com.vir.service.FileProcessorServiceFactory;
 import com.vir.service.FileProcessorService;
 import com.vir.service.TextProcessorService;
 
@@ -35,6 +31,10 @@ public class AnalyzerController {
 
 	@Autowired
 	private TextProcessorService textProcessorService;
+	
+	@Autowired
+	@Qualifier("fileProcessorServer")
+	private FileProcessorService fileProcessorService;
 
 	@PostMapping(value = "/analyzeText", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Text analizeText(@RequestBody(required = true) String text) {
@@ -45,10 +45,7 @@ public class AnalyzerController {
 	public Text analize(
 			@RequestParam(name = "file", required = true) MultipartFile file,
 			@RequestParam(name = "type", required = true) FileType type) throws Exception {
-
-		FileProcessorService service;
-		service = FileProcessorServiceFactory.getInstance(file, type);
-
-		return service.process();
+		
+		return fileProcessorService.process(file, type);
 	}
 }
