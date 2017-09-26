@@ -33,7 +33,7 @@ public class AnalyzerController {
 	private TextProcessorService textProcessorService;
 	
 	@Autowired
-	@Qualifier("fileProcessorServer")
+	@Qualifier("simpleFileProcessorService")
 	private FileProcessorService fileProcessorService;
 
 	@PostMapping(value = "/analyzeText", produces = MediaType.APPLICATION_JSON_VALUE)

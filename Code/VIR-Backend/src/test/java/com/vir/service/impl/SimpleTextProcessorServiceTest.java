@@ -20,7 +20,7 @@ import com.vir.service.TextProcessorService;
 public class SimpleTextProcessorServiceTest {
 	
 	@Autowired
-	@Qualifier("simpleTextProcessor")
+	@Qualifier("simpleTextProcessorService")
 	TextProcessorService textProcessorService;
 
 	@Test
