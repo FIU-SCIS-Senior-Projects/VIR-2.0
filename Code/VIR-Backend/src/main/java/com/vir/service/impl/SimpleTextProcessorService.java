@@ -39,8 +39,9 @@ public class SimpleTextProcessorService implements TextProcessorService {
 
 	@Override
 	public Text process(String textString) {
-
-		List<String> orgiginalStrings = Arrays.asList(textString.split(StringUtils.SPACE));
+		
+		String regex = "[\\n\\r\\s]";
+		List<String> orgiginalStrings = Arrays.asList(textString.split(regex));
 		Map<String, Word> map = new HashMap<>();
 		List<Word> finalList = new ArrayList<>();
 
