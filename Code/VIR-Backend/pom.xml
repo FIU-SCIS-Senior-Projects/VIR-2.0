@@ -25,6 +25,7 @@
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<swager.version>2.7.0</swager.version>
 		<thucydides-core.version>0.9.275</thucydides-core.version>
+		<tika.version>1.16</tika.version>
 	</properties>
 
 	<profiles>
@@ -88,8 +89,12 @@
 			<artifactId>thucydides-core</artifactId>
 			<version>${thucydides-core.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-parsers</artifactId>
+			<version>${tika.version}</version>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
