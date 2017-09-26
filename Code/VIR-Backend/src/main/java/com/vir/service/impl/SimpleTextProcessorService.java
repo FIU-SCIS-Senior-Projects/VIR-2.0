@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ import com.vir.service.WordService;
  * @author Alfredo Lopez
  *
  */
-@Service("simpleTextProcessor")
+@Service("simpleTextProcessorService")
 @Transactional
 public class SimpleTextProcessorService implements TextProcessorService {
 
@@ -49,7 +50,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 				result = map.get(initialString);
 			} else {
 				String cleanValue = wordService.removePunctuation(initialString);
-
+				
 				if (StringUtils.isEmpty(cleanValue)) {
 					result = new Word(initialString);
 				} else {

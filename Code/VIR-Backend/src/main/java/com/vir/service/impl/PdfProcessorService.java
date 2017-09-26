@@ -23,7 +23,7 @@ import com.vir.service.TextProcessorService;
 public class PdfProcessorService implements FileProcessorService {
 
 	@Autowired
-	@Qualifier("simpleTextProcessor")
+	@Qualifier("simpleTextProcessorService")
 	private TextProcessorService textProcessorService;
 
 	@Override

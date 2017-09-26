@@ -10,7 +10,7 @@ import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 
-@Service("fileProcessorServer")
+@Service("simpleFileProcessorService")
 public class SimpleFileProcessorService implements FileProcessorService {
 	
 
