@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,9 +26,8 @@ import com.vir.service.WordService;
  *
  */
 @Service("simpleTextProcessor")
+@Transactional
 public class SimpleTextProcessorService implements TextProcessorService {
-
-	private static final Logger LOG = LoggerFactory.getLogger(SimpleTextProcessorService.class);
 
 	@Autowired
 	private WordRepository wordRepository;
@@ -39,28 +38,24 @@ public class SimpleTextProcessorService implements TextProcessorService {
 
 	@Override
 	public Text process(String textString) {
-		
-		String regex = "[\\n\\r\\s]";
-		List<String> orgiginalStrings = Arrays.asList(textString.split(regex));
+
+		List<String> initialStrings = getStrings(textString);
 		Map<String, Word> map = new HashMap<>();
 		List<Word> finalList = new ArrayList<>();
 
 		Word result = null;
-		for (String s : orgiginalStrings) {
-			if (!map.containsKey(s)) {
-				
-				String cleanValue = wordService.removePunctuation(s).toLowerCase();
-				result = wordRepository.findFirstByValue(cleanValue);
-				
-				if (result == null) {
-					result = new Word(StringUtils.EMPTY, StringUtils.EMPTY, s);
-				} else {
-					result.setInitialValue(s);
-				}
-				
-				map.put(s, result);
+		for (String initialString : initialStrings) {
+			if (map.containsKey(initialString)) {
+				result = map.get(initialString);
 			} else {
-				result = map.get(s);
+				String cleanValue = wordService.removePunctuation(initialString);
+
+				if (StringUtils.isEmpty(cleanValue)) {
+					result = new Word(initialString);
+				} else {
+					result = getWord(cleanValue, initialString);
+				}
+				map.put(initialString, result);
 			}
 			finalList.add(result);
 		}
@@ -69,5 +64,48 @@ public class SimpleTextProcessorService implements TextProcessorService {
 		text.setWords(finalList);
 
 		return text;
+	}
+
+	/**
+	 * Gets the list of strings from a text.
+	 * 
+	 * @param textString
+	 *            the string to split
+	 * @return A list of strings
+	 * 
+	 *         Note: We make sure there is no more than two white spaces between the
+	 *         words.
+	 */
+	private List<String> getStrings(String textString) {
+
+		String regex = "[\\n\\r\\s]";
+		String regexPlus = "[\\n\\r\\s]+";
+
+		textString = textString.trim();
+		textString = textString.replaceAll(regexPlus, StringUtils.SPACE);
+
+		return Arrays.asList(textString.split(regex));
+	}
+
+	/**
+	 * Gets a word from a string.
+	 * 
+	 * @param cleanValue
+	 *            The clean value of the string
+	 * @param initialValue
+	 *            The initial value of the word.
+	 * @return A word if found, else and empty word with the initial value
+	 * 
+	 */
+	private Word getWord(String cleanValue, String initialValue) {
+		Word result;
+		result = wordRepository.findFirstByValue(cleanValue.toLowerCase());
+
+		if (result == null) {
+			result = new Word(initialValue);
+		} else {
+			result.setInitialValue(initialValue);
+		}
+		return result;
 	}
 }

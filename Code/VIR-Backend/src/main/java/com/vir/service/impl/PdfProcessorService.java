@@ -1,7 +1,5 @@
 package com.vir.service.impl;
 
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.tika.metadata.Metadata;
@@ -23,14 +21,14 @@ import com.vir.service.TextProcessorService;
 
 @Service("pdfProcessorService")
 public class PdfProcessorService implements FileProcessorService {
-	
+
 	@Autowired
 	@Qualifier("simpleTextProcessor")
 	private TextProcessorService textProcessorService;
 
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
-		
+
 		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
 
@@ -41,11 +39,11 @@ public class PdfProcessorService implements FileProcessorService {
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, config);
 		parseContext.set(PDFParserConfig.class, pdfConfig);
-		parseContext.set(Parser.class, parser); //need to add this to make sure recursive parsing happens!
-		
+		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
+
 		InputStream stream = file.getInputStream();
 		parser.parse(stream, handler, new Metadata(), parseContext);
-		
+
 		return textProcessorService.process(handler.toString());
 	}
 
