@@ -12,6 +12,7 @@ const routes: Routes = [
             {path : 'doc', loadChildren: './doc/doc.module#DocModule' },
             {path : 'pdf', loadChildren: './pdf/pdf.module#PdfModule' },
             {path : 'image', loadChildren: './image/image.module#ImageModule' },
+            {path : 'enhanced-text-result', loadChildren: './enhanced-text-result/enhanced-text-result.module#EnhancedTextResultModule' },
         ]
     }
     

@@ -1,13 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TextComponent } from './text.component';
+import { EnhancedTextResultComponent } from './enhanced-text-result.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
-import { TextService } from '../../shared'
 
-describe('TextComponent', () => {
-  let component: TextComponent;
-  let fixture: ComponentFixture<TextComponent>;
+describe('EnhancedTextResultComponent', () => {
+  let component: EnhancedTextResultComponent;
+  let fixture: ComponentFixture<EnhancedTextResultComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -16,16 +15,13 @@ describe('TextComponent', () => {
         HttpClientTestingModule,
         FormsModule 
       ],
-      declarations: [TextComponent],
-      providers:[
-        TextService
-      ],
+      declarations: [ EnhancedTextResultComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TextComponent);
+    fixture = TestBed.createComponent(EnhancedTextResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
