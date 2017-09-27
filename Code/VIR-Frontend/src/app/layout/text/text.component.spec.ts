@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextComponent } from './text.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { TextService } from '../../shared'
 
 describe('TextComponent', () => {
   let component: TextComponent;
@@ -15,7 +16,10 @@ describe('TextComponent', () => {
         HttpClientTestingModule,
         FormsModule 
       ],
-      declarations: [TextComponent]
+      declarations: [TextComponent],
+      providers:[
+        TextService
+      ],
     })
       .compileComponents();
   }));
