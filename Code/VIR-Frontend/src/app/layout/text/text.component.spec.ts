@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextComponent } from './text.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
 
 describe('TextComponent', () => {
   let component: TextComponent;
@@ -10,6 +12,8 @@ describe('TextComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
+        HttpClientTestingModule,
+        FormsModule 
       ],
       declarations: [TextComponent]
     })
