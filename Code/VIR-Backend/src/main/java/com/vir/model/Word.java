@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * Entity representation of a word.
@@ -19,21 +21,21 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  *
  */
 @Entity
-public class Word implements Serializable{
-	
+public class Word implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String value;
-	
+
 	private String category;
-	
+
 	@Transient
 	private String initialValue;
-	
+
 	public Word() {
 	}
 
@@ -43,11 +45,15 @@ public class Word implements Serializable{
 		this.initialValue = initialValue;
 	}
 
+	public Word(String initialValue) {
+		this(StringUtils.EMPTY, StringUtils.EMPTY, initialValue);
+	}
+
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this);
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);

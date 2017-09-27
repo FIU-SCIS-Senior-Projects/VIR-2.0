@@ -1,6 +1,5 @@
 package com.vir.controller;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.fileUpload;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -12,14 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class AnalizerControler {
+public class ExceptionAdviceControllerTest {
 
 	// @formatter:off
 	
@@ -37,16 +35,6 @@ public class AnalizerControler {
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(content().json(expected));
 	}
-
-	@Test
-	public void analizePdf_Endpoint_Returns200Ok() throws Exception {
-		final String url = "/api/analyzeFile?type=PDF";
-		final MockMultipartFile file = new MockMultipartFile("file", "myFile.txt", "text/plain", "hello".getBytes());
-		mockMvc.perform(
-				fileUpload(url)
-				.file(file))
-			.andDo(print())
-			.andExpect(status().isOk());
-	}
+	
 	// @formatter:on
 }

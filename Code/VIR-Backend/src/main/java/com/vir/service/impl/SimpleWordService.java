@@ -1,7 +1,6 @@
 package com.vir.service.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.stereotype.Service;
 
 import com.vir.service.WordService;
@@ -10,12 +9,19 @@ import net.thucydides.core.util.Inflector;
 
 @Service("simpleWordService")
 public class SimpleWordService implements WordService {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(SimpleWordService.class);
 
 	@Override
 	public String removePunctuation(String word) {
-		return word.replaceAll("([~`!@#$%^&*;:\",.])", "");
+		
+		Character[] chars = ArrayUtils.toObject(word.toCharArray());
+		StringBuilder stringBuilder = new StringBuilder();
+			
+		for (int i = 0; i < chars.length; i++) {
+			if (Character.isLetterOrDigit(chars[i])) {
+				stringBuilder.append(chars[i]);
+			}
+		}
+		return stringBuilder.toString();
 	}
 
 	@Override

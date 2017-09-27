@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 60.0.3112 (Mac OS X 10.11.6)" package="" timestamp="2017-09-15T01:08:52" id="0" hostname="alfredo-mac.local" tests="14" errors="0" failures="0" time="1.108">
+<testsuite name="Chrome 60.0.3112 (Mac OS X 10.11.6)" package="" timestamp="2017-09-26T03:07:51" id="0" hostname="alfredo-mac.local" tests="15" errors="0" failures="0" time="0.981">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"/>
   </properties>
-  <testcase name="AppComponent should create the app" time="0.073" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).AppComponent"/>
-  <testcase name="BlankPageComponent should create" time="0.018" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).BlankPageComponent"/>
-  <testcase name="ChatComponent should create" time="0.123" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).ChatComponent"/>
-  <testcase name="NotificationComponent should create" time="0.043" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).NotificationComponent"/>
-  <testcase name="TimelineComponent should create" time="0.063" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).TimelineComponent"/>
-  <testcase name="DashboardComponent should create" time="0.213" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).DashboardComponent"/>
-  <testcase name="LayoutComponent should create" time="0.366" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).LayoutComponent"/>
-  <testcase name="LoginComponent should create" time="0.029" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).LoginComponent"/>
-  <testcase name="HeaderComponent should create" time="0.053" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).HeaderComponent"/>
-  <testcase name="SidebarComponent should create" time="0.05" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).SidebarComponent"/>
-  <testcase name="AuthGuard should ..." time="0.011" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).AuthGuard"/>
-  <testcase name="PageHeaderComponent should create" time="0.02" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).PageHeaderComponent"/>
-  <testcase name="StatComponent should create" time="0.017" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).StatComponent"/>
-  <testcase name="SignupComponent should create" time="0.029" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).SignupComponent"/>
+  <testcase name="AppComponent should create the app" time="0.08" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).AppComponent"/>
+  <testcase name="BlankPageComponent should create" time="0.017" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).BlankPageComponent"/>
+  <testcase name="DashboardComponent should create" time="0.17" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).DashboardComponent"/>
+  <testcase name="DocComponent should be created" time="0.027" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).DocComponent"/>
+  <testcase name="ImageComponent should be created" time="0.022" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).ImageComponent"/>
+  <testcase name="LayoutComponent should create" time="0.38" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).LayoutComponent"/>
+  <testcase name="PdfComponent should be created" time="0.02" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).PdfComponent"/>
+  <testcase name="TextComponent should be created" time="0.052" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).TextComponent"/>
+  <testcase name="LoginComponent should create" time="0.032" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).LoginComponent"/>
+  <testcase name="FooterComponent should create" time="0.034" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).FooterComponent"/>
+  <testcase name="HeaderComponent should create" time="0.038" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).HeaderComponent"/>
+  <testcase name="SidebarComponent should create" time="0.052" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).SidebarComponent"/>
+  <testcase name="AuthGuard should ..." time="0.013" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).AuthGuard"/>
+  <testcase name="PageHeaderComponent should create" time="0.018" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).PageHeaderComponent"/>
+  <testcase name="StatComponent should create" time="0.026" classname="Chrome_60_0_3112_(Mac_OS_X_10_11_6).StatComponent"/>
   <system-out>
     <![CDATA[Chrome 60.0.3112 (Mac OS X 10.11.6) ERROR: 'Unhandled Promise rejection:', 'Cannot match any routes. URL Segment: 'dashboard'', '; Zone:', 'angular', '; Task:', 'Promise.then', '; Value:', Error{__zone_symbol__currentTask: ZoneTask{_zone: Zone{_properties: ..., _parent: ..., _name: ..., _zoneDelegate: ...}, runCount: 0, _zoneDelegates: null, _state: 'notScheduled', type: 'microTask', source: 'Promise.then', data: Object{__creationTrace__: ...}, scheduleFn: undefined, cancelFn: null, callback: function () { ... }, invoke: function () { ... }}}, 'Error: Cannot match any routes. URL Segment: 'dashboard'
     at ApplyRedirects.webpackJsonp.../../../router/@angular/router.es5.js.ApplyRedirects.noMatchError (http://localhost:9876/_karma_webpack_/webpack:/Users/alfredo/github/vir-2.0/Code/VIR-Frontend/node_modules/@angular/router/@angular/router.es5.js:1466:1)
