@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 61.0.3163 (Mac OS X 10.11.6)" package="" timestamp="2017-09-28T20:24:08" id="0" hostname="alfredo-mac.local" tests="15" errors="0" failures="0" time="0.663">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"/>
+  </properties>
+  <testcase name="AppComponent should create the app" time="0.077" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).AppComponent"/>
+  <testcase name="BlankPageComponent should create" time="0.017" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).BlankPageComponent"/>
+  <testcase name="DashboardComponent should create" time="0.137" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).DashboardComponent"/>
+  <testcase name="DocComponent should be created" time="0.031" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).DocComponent"/>
+  <testcase name="ImageComponent should be created" time="0.017" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).ImageComponent"/>
+  <testcase name="LayoutComponent should create" time="0.12" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).LayoutComponent"/>
+  <testcase name="PdfComponent should be created" time="0.015" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).PdfComponent"/>
+  <testcase name="TextComponent should be created" time="0.038" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).TextComponent"/>
+  <testcase name="LoginComponent should create" time="0.039" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).LoginComponent"/>
+  <testcase name="FooterComponent should create" time="0.025" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).FooterComponent"/>
+  <testcase name="HeaderComponent should create" time="0.048" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).HeaderComponent"/>
+  <testcase name="SidebarComponent should create" time="0.052" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).SidebarComponent"/>
+  <testcase name="AuthGuard should ..." time="0.007" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).AuthGuard"/>
+  <testcase name="PageHeaderComponent should create" time="0.018" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).PageHeaderComponent"/>
+  <testcase name="StatComponent should create" time="0.022" classname="Chrome_61_0_3163_(Mac_OS_X_10_11_6).StatComponent"/>
+  <system-out>
+    <![CDATA[Chrome 61.0.3163 (Mac OS X 10.11.6) ERROR: 'Unhandled Promise rejection:', 'Cannot match any routes. URL Segment: 'dashboard'', '; Zone:', 'angular', '; Task:', 'Promise.then', '; Value:', Error{__zone_symbol__currentTask: ZoneTask{_zone: Zone{_properties: ..., _parent: ..., _name: ..., _zoneDelegate: ...}, runCount: 0, _zoneDelegates: null, _state: 'notScheduled', type: 'microTask', source: 'Promise.then', data: Object{__creationTrace__: ...}, scheduleFn: undefined, cancelFn: null, callback: function () { ... }, invoke: function () { ... }}}, 'Error: Cannot match any routes. URL Segment: 'dashboard'
+    at ApplyRedirects.webpackJsonp.../../../router/@angular/router.es5.js.ApplyRedirects.noMatchError (http://localhost:9876/_karma_webpack_/vendor.bundle.js:81343:16)
+    at CatchSubscriber.selector (http://localhost:9876/_karma_webpack_/vendor.bundle.js:81318:29)
+    at CatchSubscriber.webpackJsonp.../../../../rxjs/operator/catch.js.CatchSubscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:9496:31)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at LastSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)'
+,Chrome 61.0.3163 (Mac OS X 10.11.6) ERROR: Error{rejection: Error{__zone_symbol__currentTask: ZoneTask{_zone: ..., runCount: ..., _zoneDelegates: ..., _state: ..., type: ..., source: ..., data: ..., scheduleFn: ..., cancelFn: ..., callback: ..., invoke: ...}}, promise: ZoneAwarePromise{__zone_symbol__state: 0, __zone_symbol__value: Error{__zone_symbol__currentTask: ...}}, zone: Zone{_properties: Object{isAngularZone: ...}, _parent: Zone{_properties: ..., _parent: ..., _name: ..., _zoneDelegate: ...}, _name: 'angular', _zoneDelegate: ZoneDelegate{_taskCounts: ..., zone: ..., _parentDelegate: ..., _forkZS: ..., _forkDlgt: ..., _forkCurrZone: ..., _interceptZS: ..., _interceptDlgt: ..., _interceptCurrZone: ..., _invokeZS: ..., _invokeDlgt: ..., _invokeCurrZone: ..., _handleErrorZS: ..., _handleErrorDlgt: ..., _handleErrorCurrZone: ..., _scheduleTaskZS: ..., _scheduleTaskDlgt: ..., _scheduleTaskCurrZone: ..., _invokeTaskZS: ..., _invokeTaskDlgt: ..., _invokeTaskCurrZone: ..., _cancelTaskZS: ..., _cancelTaskDlgt: ..., _cancelTaskCurrZone: ..., _hasTaskZS: ..., _hasTaskDlgt: ..., _hasTaskDlgtOwner: ..., _hasTaskCurrZone: ...}}, task: ZoneTask{_zone: Zone{_properties: ..., _parent: ..., _name: ..., _zoneDelegate: ...}, runCount: 0, _zoneDelegates: null, _state: 'notScheduled', type: 'microTask', source: 'Promise.then', data: Object{__creationTrace__: ...}, scheduleFn: undefined, cancelFn: null, callback: function () { ... }, invoke: function () { ... }}, longStack: 'Error: Uncaught (in promise): Error: Cannot match any routes. URL Segment: 'dashboard'
+Error: Cannot match any routes. URL Segment: 'dashboard'
+    at ApplyRedirects.webpackJsonp.../../../router/@angular/router.es5.js.ApplyRedirects.noMatchError (http://localhost:9876/_karma_webpack_/vendor.bundle.js:81343:16)
+    at CatchSubscriber.selector (http://localhost:9876/_karma_webpack_/vendor.bundle.js:81318:29)
+    at CatchSubscriber.webpackJsonp.../../../../rxjs/operator/catch.js.CatchSubscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:9496:31)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at MapSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber.error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7633:18)
+    at LastSubscriber.webpackJsonp.../../../../rxjs/Subscriber.js.Subscriber._error (http://localhost:9876/_karma_webpack_/vendor.bundle.js:7659:26)
+    at resolvePromise (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6282:31)
+    at resolvePromise (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6253:17)
+    at http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6330:17
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5936:31)
+    at ProxyZoneSpec.webpackJsonp.../../../../zone.js/dist/proxy.js.ProxyZoneSpec.onInvokeTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:13152:39)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5935:36)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5814:100)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5935:36)
+    at Object.onInvokeTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:56133:37)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.invokeTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5935:36)
+    at ____________________Elapsed_2_ms__At__Thu_Sep_28_2017_16_24_08_GMT_0400__EDT_ (http://localhost)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:12976:22)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5812:29)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5747:43)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleMicroTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5767:25)
+    at scheduleResolveOrReject (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6328:14)
+    at resolvePromise (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6277:21)
+    at ____________________Elapsed_0_ms__At__Thu_Sep_28_2017_16_24_08_GMT_0400__EDT_ (http://localhost)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:12976:22)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5812:29)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5747:43)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleMicroTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5767:25)
+    at scheduleResolveOrReject (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6328:14)
+    at resolvePromise (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6277:21)
+    at ____________________Elapsed_0_ms__At__Thu_Sep_28_2017_16_24_08_GMT_0400__EDT_ (http://localhost)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:12976:22)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5812:29)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5747:43)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleMicroTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5767:25)
+    at scheduleResolveOrReject (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6328:14)
+    at resolvePromise (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6277:21)
+    at ____________________Elapsed_0_ms__At__Thu_Sep_28_2017_16_24_08_GMT_0400__EDT_ (http://localhost)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:12976:22)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5812:29)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5747:43)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleMicroTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5767:25)
+    at scheduleResolveOrReject (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6328:14)
+    at ZoneAwarePromise.then (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6417:17)
+    at ____________________Elapsed_7_ms__At__Thu_Sep_28_2017_16_24_08_GMT_0400__EDT_ (http://localhost)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/vendor.bundle.js:12976:22)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Object.onScheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5812:29)
+    at ZoneDelegate.webpackJsonp.../../../../zone.js/dist/zone.js.ZoneDelegate.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5916:51)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5747:43)
+    at Zone.webpackJsonp.../../../../zone.js/dist/zone.js.Zone.scheduleMicroTask (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:5767:25)
+    at scheduleResolveOrReject (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6328:14)
+    at ZoneAwarePromise.then (http://localhost:9876/_karma_webpack_/polyfills.bundle.js:6417:17)'}
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
