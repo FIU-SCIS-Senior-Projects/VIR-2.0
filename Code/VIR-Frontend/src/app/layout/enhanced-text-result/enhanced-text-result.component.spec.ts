@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EnhancedTextResultComponent } from './enhanced-text-result.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
+import { TextService } from '../../shared'
 
 describe('EnhancedTextResultComponent', () => {
   let component: EnhancedTextResultComponent;
@@ -15,7 +16,10 @@ describe('EnhancedTextResultComponent', () => {
         HttpClientTestingModule,
         FormsModule 
       ],
-      declarations: [ EnhancedTextResultComponent ]
+      declarations: [ EnhancedTextResultComponent ],
+      providers:[
+        TextService
+      ],
     })
     .compileComponents();
   }));

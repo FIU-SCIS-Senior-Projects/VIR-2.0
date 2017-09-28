@@ -4,6 +4,8 @@ import { TextComponent } from './text.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
+import { Router } from '@angular/router';
+
 
 describe('TextComponent', () => {
   let component: TextComponent;
@@ -14,11 +16,12 @@ describe('TextComponent', () => {
       imports: [
         BrowserAnimationsModule,
         HttpClientTestingModule,
-        FormsModule 
+        FormsModule,
       ],
       declarations: [TextComponent],
       providers:[
-        TextService
+        TextService,
+        {provide: Router}
       ],
     })
       .compileComponents();

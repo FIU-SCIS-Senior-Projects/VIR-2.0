@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TextService, IText, IWord  } from '../../shared'
 
 @Component({
   selector: 'app-enhanced-text-result',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnhancedTextResultComponent implements OnInit {
 
-  constructor() { }
+  text: IText;
+  constructor(private _textService: TextService) { }
 
   ngOnInit() {
+    this.text = this._textService.resultText;
   }
 
 }
