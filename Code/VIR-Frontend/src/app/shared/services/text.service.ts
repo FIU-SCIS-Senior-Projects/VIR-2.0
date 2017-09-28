@@ -3,31 +3,24 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IText, IWord } from '../interface'
-
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TextService {
 
-  text: IText;
-
   constructor(private http: HttpClient) { }
 
-  enhancedText(textArea: string): void {
-    // Make the HTTP request:
-    this.http.post<IText>('http://localhost:8080/api/analyzeText', textArea)
-      .subscribe
-      (res => {
-        console.log(res);
-        this.text = res;
-      },
-      (err: HttpErrorResponse) => {
-        if (err.error instanceof Error) {
-          console.log('Client-side Error occured');
-        } else {
-          console.log('Server-side Error occured');
-        }
-      }
-      );
+  //TextService store the result from text component into resultText so later on can be passed to enhancedTextResultPage
+  public resultText: IText;
+
+  enhancedText(textArea: string): Observable<IText> {
+    return this.http.post<IText>('/api/analyzeText', textArea)
+      .do((res => console.log(res)));
   }
 
 }
+
+

@@ -1,7 +1,7 @@
 <div [@routerTransition]>
 
 	<div class="row  margin-responsive topMargin">
-		<div class="card card-primary card-inverse mb-3 col-lg-8 center-block">
+		<div class="card card-info card-inverse mb-3 col-lg-11 center-block">
 			<div class="card-header card-primary fontTitle">
 				<i class="fa fa-fw fa-keyboard-o fa-2x float-right" title="Enter your text"></i>Enter your text
 			</div>
@@ -49,15 +49,9 @@
 			</select>
 				</div>
 				<div class="col-lg-2 col-md-2">
-					<button type="button" class="btn btn-secondary" (click)= "enhancedText2()" ng-disabled="textArea.$invalid" >Proceed</button>
+					<button type="button" class="btn btn-secondary" (click)="enhancedText2()" ng-disabled="textArea.$invalid">Proceed</button>
 				</div>
 
-				<div *ngIf='text'>
-					<h1>Result</h1>
-				<div class="oneLine" *ngFor='let word of _TextService.text.words'>
-					<tr>{{word.value}}</tr>
-				</div>
-				</div>
 			</div>
 		</div>
 	</div>
