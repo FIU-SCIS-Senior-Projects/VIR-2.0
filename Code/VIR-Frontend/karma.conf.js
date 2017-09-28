@@ -24,11 +24,17 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: ['progress', 'kjhtml'],
+    junitReporter: {
+      outputDir: 'reports',
+      outputFile: undefined,
+      suite: '',
+    }, 
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
     singleRun: false
+
   });
 };
