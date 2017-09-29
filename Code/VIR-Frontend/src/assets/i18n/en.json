@@ -21,5 +21,6 @@
     "pdf" : "PDF",
     "image" : "Image",
     "dictionary": "Dictionary",
-    "home": "Home"
+    "home": "Home",
+    "instruction": "Instruction"
 }
