@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.vir.model.Text;
-import com.vir.model.Word;
+import com.vir.model.WordMatch;
 import com.vir.service.TextProcessorService;
 
 @RunWith(SpringRunner.class)
@@ -50,9 +50,8 @@ public class SimpleTextProcessorServiceTest {
 	@Test
 	public void process_UnknownWord_ReturnsWordWithoutData() {
 		final String word = "zzzz";
-		final Word expected = new Word(StringUtils.EMPTY, StringUtils.EMPTY, word);
+		final WordMatch expected = new WordMatch(StringUtils.EMPTY, StringUtils.EMPTY, word);
 		final Text result = textProcessorService.process(word);
 		assertEquals(expected, result.getWords().get(0));
 	}
-
 }
