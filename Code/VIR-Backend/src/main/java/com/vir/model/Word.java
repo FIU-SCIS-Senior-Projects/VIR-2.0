@@ -6,9 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -33,20 +31,7 @@ public class Word implements Serializable {
 
 	private String category;
 
-	@Transient
-	private String initialValue;
-
 	public Word() {
-	}
-
-	public Word(String value, String category, String initialValue) {
-		this.value = value;
-		this.category = category;
-		this.initialValue = initialValue;
-	}
-
-	public Word(String initialValue) {
-		this(StringUtils.EMPTY, StringUtils.EMPTY, initialValue);
 	}
 
 	@Override
@@ -87,13 +72,5 @@ public class Word implements Serializable {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public String getInitialValue() {
-		return initialValue;
-	}
-
-	public void setInitialValue(String initialValue) {
-		this.initialValue = initialValue;
 	}
 }

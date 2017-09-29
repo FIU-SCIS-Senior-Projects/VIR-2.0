@@ -9,13 +9,13 @@ import java.util.Map;
 import javax.transaction.Transactional;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.util.SystemOutLogger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.vir.model.Text;
 import com.vir.model.Word;
+import com.vir.model.WordMatch;
 import com.vir.repository.WordRepository;
 import com.vir.service.TextProcessorService;
 import com.vir.service.WordService;
@@ -41,10 +41,10 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	public Text process(String textString) {
 
 		List<String> initialStrings = getStrings(textString);
-		Map<String, Word> map = new HashMap<>();
-		List<Word> finalList = new ArrayList<>();
+		Map<String, WordMatch> map = new HashMap<>();
+		List<WordMatch> finalList = new ArrayList<>();
 
-		Word result = null;
+		WordMatch result = null;
 		for (String initialString : initialStrings) {
 			if (map.containsKey(initialString)) {
 				result = map.get(initialString);
@@ -52,7 +52,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 				String cleanValue = wordService.removePunctuation(initialString);
 				
 				if (StringUtils.isEmpty(cleanValue)) {
-					result = new Word(initialString);
+					result = new WordMatch(initialString);
 				} else {
 					result = getWord(cleanValue, initialString);
 				}
@@ -98,15 +98,14 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	 * @return A word if found, else and empty word with the initial value
 	 * 
 	 */
-	private Word getWord(String cleanValue, String initialValue) {
+	private WordMatch getWord(String cleanValue, String initialValue) {
 		Word result;
 		result = wordRepository.findFirstByValue(cleanValue.toLowerCase());
 
 		if (result == null) {
-			result = new Word(initialValue);
+			return new WordMatch(initialValue);
 		} else {
-			result.setInitialValue(initialValue);
+			return new WordMatch(result.getValue(), result.getCategory(), initialValue);
 		}
-		return result;
 	}
 }

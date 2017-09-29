@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vir.model.Word;
 
@@ -16,4 +17,7 @@ public interface  WordRepository extends PagingAndSortingRepository<Word, Long> 
 	List<Word> findAllIn(@Param("words") List<String> words);
 	
 	Word findFirstByValue(String value);
+	
+	@Transactional
+    Long removeByValue(String value);
 }
