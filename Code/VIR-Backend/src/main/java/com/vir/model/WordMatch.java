@@ -1,5 +1,11 @@
 package com.vir.model;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class WordMatch {
 
 	private String value;
@@ -11,6 +17,26 @@ public class WordMatch {
 		this.value = value;
 		this.category = category;
 		this.initialValue = initialValue;
+	}
+	
+	public WordMatch(String initialValue) {
+		this(StringUtils.EMPTY, StringUtils.EMPTY, initialValue);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		WordMatch that = (WordMatch) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
 	}
 	
 	public String getValue() {

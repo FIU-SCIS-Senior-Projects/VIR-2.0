@@ -12,17 +12,17 @@ import java.util.List;
  */
 public class Text {
 
-	private List<Word> words;
+	private List<WordMatch> words;
 	
 	public Text() {
 		this.words = new ArrayList<>();
 	}
 
-	public List<Word> getWords() {
+	public List<WordMatch> getWords() {
 		return words;
 	}
 
-	public void setWords(List<Word> words) {
+	public void setWords(List<WordMatch> words) {
 		this.words = words;
 	}
 }
