@@ -1,6 +1,10 @@
 <div *ngIf='text'>
 	<h1>Result</h1>
-	<div class="oneLine" *ngFor='let word of text.words'>
-		<tr>{{word.value}}</tr>
+	<div class="oneLine" *ngFor='let word of text.words' >
+		<div class="oneLine blue" *ngIf = "word.category == 'hi'" >{{word.initialValue}}</div>
+		<div class="oneLine red" *ngIf = "word.category == 'med'" >{{word.initialValue}}</div>
+		<div class="oneLine green" *ngIf = "word.category == 'low'" >{{word.initialValue}}</div>
+		<div class="oneLine gold" *ngIf = "word.category == 'awl'" >{{word.initialValue}}</div>
+		<div class="oneLine" *ngIf = "word.category == ''" >{{word.initialValue}}</div>
 	</div>
 </div>
