@@ -7,10 +7,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
-
 @Configuration
-@EnableEncryptableProperties
 public class DataConfig {
 	
 	@Value("${spring.datasource.username}")
