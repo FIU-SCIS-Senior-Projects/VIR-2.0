@@ -16,4 +16,5 @@ public interface  WordRepository extends PagingAndSortingRepository<Word, Long> 
 	List<Word> findAllIn(@Param("words") List<String> words);
 	
 	Word findFirstByValue(String value);
+	
 }
