@@ -1,9 +1,20 @@
+    
 spring:
   profiles:
     active: "@activatedProperties@"
   output:
     ansi:
       enabled: detect
+      
+jasypt:
+  encryptor:
+    password: ${APP_ENCRYPTION_PASSWORD}
+ 
+security:
+  user:
+    name: admin
+    password: ENC(E4nbtM4lNXAYJ1Z2HwwpAxwVlIrVgroS)
+    
 ---
 spring:
   profiles: dev
@@ -43,8 +54,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
         
-jasypt:
-  encryptor:
-    password: ${APP_ENCRYPTION_PASSWORD}
 server:
   port: 5000
