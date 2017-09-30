@@ -14,11 +14,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Value("${security.user.name}")
 	private String user;
-	
+
 	@Value("${security.user.password}")
 	private String password;
-	
-	
+
 	@Override
 	@Bean
 	public UserDetailsService userDetailsService() {

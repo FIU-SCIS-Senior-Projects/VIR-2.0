@@ -31,7 +31,7 @@ public class CSVResourceService implements ResourceService {
 
 	@Autowired
 	private WordRepository wordRepository;
-	
+
 	@Autowired
 	private WordRepositoryHelper wordRepositoryHelper;
 
@@ -51,7 +51,7 @@ public class CSVResourceService implements ResourceService {
 
 			BeanToCsv<Word> bc = new BeanToCsv<>();
 			ColumnPositionMappingStrategy<Word> mappingStrategy = new ColumnPositionMappingStrategy<>();
-			String[] columns = new String[] { "id", "value", "category" };
+			String[] columns = new String[] { HEADER_ID, HEADER_VALUE, HEADER_CATEGORY };
 			mappingStrategy.setColumnMapping(columns);
 			// We need this otherwise we get an error.
 			// No getting it from the generic yet.
@@ -70,7 +70,7 @@ public class CSVResourceService implements ResourceService {
 
 		List<Word> words = new ArrayList<>();
 		List<CSVRecord> records = parseRecords(file);
-		
+
 		if (!hasValidHeaders(records.get(0))) {
 			String error = String.format("Headers should be specified as follows and in the same order:\n %s, %s",
 					HEADER_VALUE, HEADER_CATEGORY);
@@ -81,11 +81,11 @@ public class CSVResourceService implements ResourceService {
 		for (int i = 1; i < size; i++) {
 			words.add(WordTranslator.fromCSVRecordToWord(records.get(i)));
 		}
-		
+
 		if (replace) {
 			wordRepositoryHelper.truncateWordTable();
 		}
-		
+
 		wordRepository.save(words);
 
 		return true;
