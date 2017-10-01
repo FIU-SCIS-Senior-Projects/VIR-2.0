@@ -4,6 +4,7 @@ import { EnhancedTextResultComponent } from './enhanced-text-result.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EnhancedTextResultComponent', () => {
   let component: EnhancedTextResultComponent;
@@ -14,6 +15,7 @@ describe('EnhancedTextResultComponent', () => {
       imports: [
         BrowserAnimationsModule,
         HttpClientTestingModule,
+        RouterTestingModule,
         FormsModule 
       ],
       declarations: [ EnhancedTextResultComponent ],
