@@ -1,10 +1,41 @@
-<div *ngIf='text'>
-	<h1>Result</h1>
-	<div class="oneLine" *ngFor='let word of text.words' >
-		<div class="oneLine blue" *ngIf = "word.category == 'hi'" >{{word.initialValue}}</div>
-		<div class="oneLine red" *ngIf = "word.category == 'med'" >{{word.initialValue}}</div>
-		<div class="oneLine green" *ngIf = "word.category == 'low'" >{{word.initialValue}}</div>
-		<div class="oneLine gold" *ngIf = "word.category == 'awl'" >{{word.initialValue}}</div>
-		<div class="oneLine" *ngIf = "word.category == ''" >{{word.initialValue}}</div>
+<div *ngIf="text;  else elseBlock">
+	<div class="row">
+		<div class="col-6">
+			<h1>Result</h1>
+		</div>
+		<div class="col-6">
+			<div class="float-right">
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+				<button type="button" class="btn btn-success"><i class="fa fa-pie-chart" aria-hidden="true" ></i> Statistics</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<div class="oneLine" *ngFor='let word of text.words'>
+		<div class="oneLine blue" *ngIf="word.category == 'hi'">{{word.initialValue}}</div>
+		<div class="oneLine red" *ngIf="word.category == 'med'">{{word.initialValue}}</div>
+		<div class="oneLine green" *ngIf="word.category == 'low'">{{word.initialValue}}</div>
+		<div class="oneLine gold" *ngIf="word.category == 'awl'">{{word.initialValue}}</div>
+		<div class="oneLine" *ngIf="word.category == ''">{{word.initialValue}}</div>
 	</div>
 </div>
+
+<ng-template #elseBlock>
+	<div class="row">
+		<div class="col-6">
+			<h1>Oops!</h1>
+		</div>
+		<div class="col-6">
+			<div class="float-right">
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<div>
+		<h4> Please go back and enter your text...</h4>
+	</div>
+	
+</ng-template>

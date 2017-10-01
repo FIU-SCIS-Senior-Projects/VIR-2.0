@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Http } from '@angular/http';
 import { TranslateModule, TranslateService, TranslateLoader } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -13,7 +12,6 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        Ng4LoadingSpinnerModule,
         TranslateModule.forRoot()
       ],
       declarations: [
