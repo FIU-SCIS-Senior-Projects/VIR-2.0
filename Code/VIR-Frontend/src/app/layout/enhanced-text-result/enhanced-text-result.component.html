@@ -1,8 +1,10 @@
+<!--if it sees the object it will show the result, else it prompt the user to go back-->
 <div *ngIf="text;  else elseBlock">
 	<div class="row">
 		<div class="col-6">
-			<h1>Result</h1>
+			<h1>Enhanced Text</h1>
 		</div>
+
 		<div class="col-6">
 			<div class="float-right">
 				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
@@ -12,15 +14,44 @@
 	</div>
 	<hr>
 
-	<div class="oneLine" *ngFor='let word of text.words'>
-		<div class="oneLine blue" *ngIf="word.category == 'hi'">{{word.initialValue}}</div>
-		<div class="oneLine red" *ngIf="word.category == 'med'">{{word.initialValue}}</div>
-		<div class="oneLine green" *ngIf="word.category == 'low'">{{word.initialValue}}</div>
-		<div class="oneLine gold" *ngIf="word.category == 'awl'">{{word.initialValue}}</div>
-		<div class="oneLine" *ngIf="word.category == ''">{{word.initialValue}}</div>
+	<!--Colors Information -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<span>High Frequency</span>
+				<span class="foo blueBox"></span>
+			</div>
+			<div class="col-md-3">
+				<span>Med Frequency</span>
+				<div class="foo redBox"></div>
+			</div>
+			<div class="col-md-3">
+				<span>Low Frequency</span>
+				<div class="foo greenBox"></div>
+			</div>
+			<div class="col-md-3">
+				<span>AWL</span>
+				<div class="foo goldBox"></div>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<!--Print each word from the word object and color it base on the category -->
+	<div class="enhancedTextbox equalLength">
+		<div class="oneLine" *ngFor='let word of text.words'>
+			<div class="oneLine blue" *ngIf="word.category == 'hi'">{{word.initialValue}}</div>
+			<div class="oneLine red" *ngIf="word.category == 'med'">{{word.initialValue}}</div>
+			<div class="oneLine green" *ngIf="word.category == 'low'">{{word.initialValue}}</div>
+			<div class="oneLine gold" *ngIf="word.category == 'awl'">{{word.initialValue}}</div>
+			<div class="oneLine" *ngIf="word.category == ''">{{word.initialValue}}</div>
+			<div class="oneLine" *ngIf="word.initialValue == ''"><br></div>
+		</div>
 	</div>
 </div>
 
+
+<!--if page refreshes it promt the user to go to the previous page-->
 <ng-template #elseBlock>
 	<div class="row">
 		<div class="col-6">
@@ -37,5 +68,5 @@
 	<div>
 		<h4> Please go back and enter your text...</h4>
 	</div>
-	
+
 </ng-template>

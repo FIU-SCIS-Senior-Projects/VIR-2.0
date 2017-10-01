@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextService, IText, IWord, IColor  } from '../../shared'
+import { TextService, IText, IWord } from '../../shared'
 import { Router } from '@angular/router';
 
 
@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
 })
 export class EnhancedTextResultComponent implements OnInit {
 
-  color: IColor;
   text: IText;
   
   constructor(private _textService: TextService, public router: Router) { }
