@@ -9,7 +9,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 // AoT requires an exported function for factories
@@ -29,7 +28,6 @@ export function HttpLoaderFactory(http: Http) {
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        Ng4LoadingSpinnerModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
