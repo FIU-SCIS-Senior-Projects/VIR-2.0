@@ -5,7 +5,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
 import { Router } from '@angular/router';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 describe('TextComponent', () => {
   let component: TextComponent;
@@ -21,7 +20,6 @@ describe('TextComponent', () => {
       declarations: [TextComponent],
       providers:[
         TextService,
-        Ng4LoadingSpinnerService,
         {provide: Router}
       ],
     })
