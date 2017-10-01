@@ -11,18 +11,21 @@
 
 				<div class="form-group">
 					<div class="col-md-12">
-						<textarea class="form-control" name="textArea" id="exampleTextarea" rows="20" maxlength="30000" [(ngModel)]="textArea" placeholder="Enter your text here (required)"></textarea>
+						<textarea class="form-control" name="textArea" id="exampleTextarea" rows="20" maxlength="30000" [(ngModel)]="textArea" placeholder="Enter your text here (required)" required></textarea>
 					</div>
 				</div>
 
 
 				<!-- Button (Double) -->
 				<div class="row">
-					<div class="col-md-12 float-right">
-						<button type="button" class="btn btn-secondary float-right" (click)="enhancedText2()" *ngIf="textArea"><i class="fa fa-file-text" aria-hidden="true"></i> Enhanced Text</button>
-						<button type="button" class="btn btn-success float-right" *ngIf="textArea"><i class="fa fa-pie-chart" aria-hidden="true"></i> Statistics</button>
+					<div class="col-md-12 ">
+						<div class="float-right">
+							<button type="button" class="btn btn-success " [disabled]="!textArea"><i class="fa fa-pie-chart" aria-hidden="true" ></i> Statistics</button>
+							<button type="button" class="btn btn-secondary " (click)="enhancedText2()" [disabled]="!textArea" ><i class="fa fa-file-text" aria-hidden="true"></i> Enhanced Text</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>

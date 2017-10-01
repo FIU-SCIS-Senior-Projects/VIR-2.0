@@ -43,3 +43,11 @@
 .buttonPadding{
     padding-right: 30px;
 }
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 10px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 10px solid #a94442; /* red */
+}
