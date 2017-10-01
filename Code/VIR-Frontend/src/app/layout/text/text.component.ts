@@ -14,20 +14,19 @@ import { Router } from '@angular/router';
 export class TextComponent implements OnInit {
 
   text: IText;
+  processing: boolean;
   constructor(private _textService: TextService, public router: Router) { }
   
   @Input() textArea: string;
-  @Input() hiColor: string;
-  @Input() medColor: string;
-  @Input() lowColor: string;
-  @Input() awlColor: string;
 
   enhancedText2(): void {
+    this.processing = true;
     this._textService.enhancedText(this.textArea)
     .subscribe
       (res => {
         this.text = res;
         this._textService.resultText = this.text;
+        this.processing = false;
         this.router.navigateByUrl('/enhanced-text-result');
       },
       (err: HttpErrorResponse) => {
