@@ -5,16 +5,15 @@ spring:
   output:
     ansi:
       enabled: detect
+  http:
+    multipart:
+      max-file-size: 50485760
+      max-request-size: 50485760
       
 jasypt:
   encryptor:
     password: ${APP_ENCRYPTION_PASSWORD}
- 
-security:
-  user:
-    name: admin
-    password: ENC(E4nbtM4lNXAYJ1Z2HwwpAxwVlIrVgroS)
-    
+  
 ---
 spring:
   profiles: dev
@@ -32,9 +31,14 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+        
+security:
+  user:
+    name: admin
+    password: admin
+    
 server:
   port: 8080
-
 ---
 
 spring:
@@ -42,9 +46,9 @@ spring:
   application:
     name: App-Prod
   datasource:
-    url: jdbc:mysql://localhost:3306/vir?useSSL=false
-    username: root
-    password: ENC(/98CfxmsjKBW5oZsLkLlmw==)
+    url: ENC(H5rcrCkCEEH2hxqNtVfXLTn7L8ujXX2mwSGwLSn7xPYnNCSbCS24AJTSblTMesmTlYooIoqJxAV6UsnhmDLbKoqXVP7vo5sXu+TjRd4hrkblDviAHYuaAw==)
+    username: ENC(UTkNIxV6ppTay6dw1Y2Ko7wslhPUEBlt)
+    password: ENC(e727rLvbmnoUNdmsXj7CpZPWtklCNXW0)
     driver-class-name: com.mysql.jdbc.Driver 
   jpa:
     show-sql: false
@@ -53,6 +57,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
+
+security:
+  user:
+    name: ENC(FDR1l4UOnbo2E7qq1ByDzg==)
+    password: ENC(E4nbtM4lNXAYJ1Z2HwwpAxwVlIrVgroS)
         
 server:
   port: 5000

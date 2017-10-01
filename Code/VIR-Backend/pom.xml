@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
@@ -27,6 +27,7 @@
 		<thucydides-core.version>0.9.275</thucydides-core.version>
 		<tika.version>1.16</tika.version>
 		<jasypt.starter.version>1.16</jasypt.starter.version>
+		<commons-csv.version>1.4</commons-csv.version>
 	</properties>
 
 	<profiles>
@@ -99,6 +100,14 @@
 			<artifactId>tika-parsers</artifactId>
 			<version>${tika.version}</version>
 		</dependency>
+		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-csv</artifactId> 
+			<version>${commons-csv.version}</version> </dependency> -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>3.3</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

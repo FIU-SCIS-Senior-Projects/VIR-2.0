@@ -33,6 +33,12 @@ public class Word implements Serializable {
 
 	public Word() {
 	}
+	
+	public Word(String value, String category) {
+		super();
+		this.value = value;
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
