@@ -5,10 +5,12 @@
 			<h1>Enhanced Text</h1>
 		</div>
 
-		<div class="col-6">
+		<div class="col-6" (window:resize)="onResize($event)">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
-				<button type="button" class="btn btn-success"><i class="fa fa-pie-chart" aria-hidden="true" ></i> Statistics</button>
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']">
+					<i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
+				<button type="button" class="btn btn-success">
+					<i class="fa fa-pie-chart" aria-hidden="true" ></i>{{statisticsLabel}}</button>
 			</div>
 		</div>
 	</div>
@@ -57,9 +59,9 @@
 		<div class="col-6">
 			<h1>Oops!</h1>
 		</div>
-		<div class="col-6">
+		<div class="col-6" (window:resize)="onResize($event)">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
 			</div>
 		</div>
 	</div>
