@@ -21,7 +21,7 @@ export class EnhancedTextResultComponent implements OnInit {
   constructor(private _textService: TextService, public router: Router) { }
 
   ngOnInit() {
-    this.showOnlyIcons = window.innerWidth <= 572;
+    this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     this.text = this._textService.resultText;
   }
@@ -31,7 +31,7 @@ export class EnhancedTextResultComponent implements OnInit {
   }
 
   onResize(event) {
-    this.showOnlyIcons = window.innerWidth <= 572;
+    this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     event.target.innerWidth;
   }

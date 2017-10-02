@@ -1,11 +1,10 @@
 <!--if it sees the object it will show the result, else it prompt the user to go back-->
 <div *ngIf="text;  else elseBlock">
 	<div class="row">
-		<div class="col-6">
-			<h1>Enhanced Text</h1>
+		<div class="col-8 col-md-8">
+			<h2>Enhanced Text</h2>
 		</div>
-
-		<div class="col-6" (window:resize)="onResize($event)">
+		<div class="col-4 col-md-4" (window:resize)="onResize($event)">
 			<div class="float-right">
 				<button type="button" class="btn btn-warning" [routerLink]="['/text']">
 					<i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
@@ -17,21 +16,21 @@
 	<hr>
 
 	<!--Colors Information -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3">
+	<div class="container center">
+		<div class="row center">
+			<div class="col-md-3 col-6">
 				<span>High Frequency</span>
 				<span class="foo blueBox"></span>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-6">
 				<span>Med Frequency</span>
 				<div class="foo redBox"></div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-6">
 				<span>Low Frequency</span>
 				<div class="foo greenBox"></div>
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-6">
 				<span>AWL</span>
 				<div class="foo goldBox"></div>
 			</div>
