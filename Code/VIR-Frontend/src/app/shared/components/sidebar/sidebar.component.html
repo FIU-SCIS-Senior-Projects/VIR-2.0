@@ -3,36 +3,59 @@
 		<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
 			<i class="fa fa-fw fa-home"></i>&nbsp;{{ 'home' | translate }}
 		</a>
-		<a [routerLink]="['/text']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-			<i class="fa fa-fw fa-keyboard-o"></i>&nbsp;{{ 'text' | translate }}
-		</a>
-		<a [routerLink]="['/doc']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-			<i class="fa fa-fw fa-file-text"></i>&nbsp;{{ 'doc' | translate }}
-		</a>
-		<a [routerLink]="['/pdf']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-			<i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;{{ 'pdf' | translate }}
-		</a>
-		<a [routerLink]="['/image']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-			<i class="fa fa-fw fa-picture-o"></i>&nbsp;{{ 'image' | translate }}
-		</a>
+
+
+
+
 		<div class="nested-menu">
-			<a class="list-group-item" (click)="addExpandClass('pages')">
-				<span><i class="fa fa-plus"></i>&nbsp; {{ 'dictionary' | translate }}</span>
+			<a class="list-group-item" (click)="addExpandClass('upload')">
+				<span><i class="fa fa-plus"></i>&nbsp; {{ 'Upload' | translate }}</span>
 			</a>
-			<li class="nested" [class.expand]="showMenu === 'pages'">
+			<li class="nested" [class.expand]="showMenu === 'upload'">
 				<ul class="submenu">
 					<li>
-                        <a [routerLink]="['/awk']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+						<a [routerLink]="['/text']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-keyboard-o"></i>&nbsp;{{ 'text' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/doc']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-file-text"></i>&nbsp;{{ 'doc' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/pdf']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;{{ 'pdf' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/image']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-picture-o"></i>&nbsp;{{ 'image' | translate }}
+						</a>
+					</li>
+				</ul>
+			</li>
+		</div>
+
+
+		<div class="nested-menu">
+			<a class="list-group-item" (click)="addExpandClass('dictionary')">
+				<span><i class="fa fa-plus"></i>&nbsp; {{ 'dictionary' | translate }}</span>
+			</a>
+			<li class="nested" [class.expand]="showMenu === 'dictionary'">
+				<ul class="submenu">
+					<li>
+						<a [routerLink]="['/awk']" [routerLinkActive]="['router-link-active']" class="list-group-item">
 							&nbsp;{{ 'AWK' | translate }}
 						</a>
 					</li>
 					<li>
-                        <a [routerLink]="['/lowfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+						<a [routerLink]="['/lowfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
 							&nbsp;{{ 'low frequency' | translate }}
 						</a>
 					</li>
 					<li>
-                        <a [routerLink]="['/mediumfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+						<a [routerLink]="['/mediumfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
 							&nbsp;{{ 'medium frequency' | translate }}
 						</a>
 					</li>
