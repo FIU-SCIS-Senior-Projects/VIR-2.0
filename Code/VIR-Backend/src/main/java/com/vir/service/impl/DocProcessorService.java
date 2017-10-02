@@ -6,8 +6,6 @@ import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
-import org.apache.tika.parser.ocr.TesseractOCRConfig;
-import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.apache.tika.sax.BodyContentHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +21,7 @@ import com.vir.service.TextProcessorService;
 public class DocProcessorService implements FileProcessorService {
 	
 	@Autowired
-	@Qualifier("simpleTextProcessorService")
+	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
 
 	@Override
