@@ -27,7 +27,8 @@
 		<thucydides-core.version>0.9.275</thucydides-core.version>
 		<tika.version>1.16</tika.version>
 		<jasypt.starter.version>1.16</jasypt.starter.version>
-		<commons-csv.version>1.4</commons-csv.version>
+		<opencsv.version>3.3</opencsv.version>
+		<tess4j.version>3.4.1</tess4j.version>
 	</properties>
 
 	<profiles>
@@ -100,14 +101,16 @@
 			<artifactId>tika-parsers</artifactId>
 			<version>${tika.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-csv</artifactId> 
-			<version>${commons-csv.version}</version> </dependency> -->
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
-			<version>3.3</version>
+			<version>${opencsv.version}</version>
 		</dependency>
-
+		<dependency>
+			<groupId>net.sourceforge.tess4j</groupId>
+			<artifactId>tess4j</artifactId>
+			<version>${tess4j.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
