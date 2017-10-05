@@ -26,7 +26,7 @@ public class ImgProcessorServiceTest {
 	private FileProcessorService imgProcessorService;
 
 	@Test
-	public void process_WithPdfFile_ReturnsString() throws Exception {
+	public void process_WithImgFile_ReturnsString() throws Exception {
 		final String filePath= "a_christmas_carol_by_charles_dickens_segment.png";
 		checkValues(filePath);
 	}

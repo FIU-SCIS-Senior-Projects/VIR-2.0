@@ -40,27 +40,15 @@ public class ImgProcessorService implements FileProcessorService {
 		config.setTessdataPath(tessdataPath);
 		config.setTesseractPath(tesseractPath);
 
-		
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, config);
 		
 		JpegParser.parse(file.getInputStream(), handler, new Metadata(), parseContext);
+		
+		if (handler.toString().equals("")) {
+			return new Text();
+		}
+		
 		return textProcessorService.process(handler.toString());
-
-		//
-		// try {
-		// ITesseract instance = new Tesseract();
-		// instance.setDatapath(tessData);
-		//
-		// File convFile = File.createTempFile("temp", file.getOriginalFilename());
-		// FileOutputStream fos = new FileOutputStream(convFile);
-		// fos.write(file.getBytes());
-		// fos.close();
-		//
-		// String result = instance.doOCR(convFile);
-		// return textProcessorService.process(result.toString());
-		// } catch (Exception e) {
-		// throw e;
-		// }
 	}
 }
