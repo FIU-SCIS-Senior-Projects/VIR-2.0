@@ -1,0 +1,7 @@
+#Mon Oct 02 19:51:02 EDT 2017
+base.0=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dbe8d8c938e9b56fc5a22ad687dfdbf33adaa34d
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d155b0864eaaaa3a5c2fe2b5c8d1d4694d669726/classes.dex
+base.1=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d155b0864eaaaa3a5c2fe2b5c8d1d4694d669726
+file.0=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dbe8d8c938e9b56fc5a22ad687dfdbf33adaa34d/classes.dex

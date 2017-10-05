@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/layout-v21/notification_action.xml",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/layout-v21/notification_action.xml"
+    }
+]
