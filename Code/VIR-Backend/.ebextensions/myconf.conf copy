@@ -1,2 +1,0 @@
-sources:  
-  /etc/tessdatatop: https://s3.amazonaws.com/tessdata-for-download/tessdata.zip
