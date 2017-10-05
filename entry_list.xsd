@@ -1,0 +1,168 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="wav" type="xs:string"/>
+  <xs:element name="il" type="xs:string"/>
+  <xs:element name="if" type="xs:string"/>
+  <xs:element name="it" type="xs:string"/>
+  <xs:element name="phrase" type="xs:string"/>
+  <xs:element name="dxt" type="xs:string"/>
+  <xs:element name="vi">
+    <xs:complexType mixed="true">
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="it"/>
+        <xs:element ref="phrase"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dx">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="dxt" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="un">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="it" minOccurs="0"/>
+        <xs:element ref="vi" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sx" type="xs:string"/>
+  <xs:element name="gram" type="xs:string"/>
+  <xs:element name="sn" type="xs:byte"/>
+  <xs:element name="dt">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="sx" minOccurs="0"/>
+        <xs:element ref="vi" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="dx" minOccurs="0"/>
+        <xs:element ref="un" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ssl">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="sx" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dre" type="xs:string"/>
+  <xs:element name="def">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="dt"/>
+        <xs:element ref="gram"/>
+        <xs:element ref="sn"/>
+        <xs:element ref="ssl"/>
+        <xs:element ref="sgram"/>
+        <xs:element ref="sl"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="hw">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="highlight" use="optional"/>
+          <xs:attribute type="xs:byte" name="hindex" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sound">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="wav"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pr" type="xs:string"/>
+  <xs:element name="fl" type="xs:string"/>
+  <xs:element name="in">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="il" minOccurs="0"/>
+        <xs:element ref="if"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="dre"/>
+        <xs:element ref="vr" minOccurs="0"/>
+        <xs:element ref="def" minOccurs="0"/>
+        <xs:element ref="dx" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dxnl">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="dxt" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="wsgram" type="xs:string"/>
+  <xs:element name="sgram" type="xs:string"/>
+  <xs:element name="vl" type="xs:string"/>
+  <xs:element name="va" type="xs:string"/>
+  <xs:element name="vr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="vl"/>
+        <xs:element ref="va"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ure" type="xs:string"/>
+  <xs:element name="utxt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="vi"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="altpr" type="xs:string"/>
+  <xs:element name="uro">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ure"/>
+        <xs:element ref="sound" minOccurs="0"/>
+        <xs:element ref="pr" minOccurs="0"/>
+        <xs:element ref="fl"/>
+        <xs:element ref="in" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="gram" minOccurs="0"/>
+        <xs:element ref="utxt"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sl" type="xs:string"/>
+  <xs:element name="entry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="hw"/>
+        <xs:element ref="sound" minOccurs="0"/>
+        <xs:element ref="pr" minOccurs="0"/>
+        <xs:element ref="altpr" minOccurs="0"/>
+        <xs:element ref="fl"/>
+        <xs:element ref="in" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="def"/>
+        <xs:element ref="dro" maxOccurs="unbounded" minOccurs="0"/>
+        <xs:element ref="dxnl" minOccurs="0"/>
+        <xs:element ref="uro" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="id" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entry_list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entry" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:float" name="version"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
