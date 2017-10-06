@@ -16,31 +16,15 @@ export class DashboardComponent implements OnInit {
         this.sliders.push({
             imagePath: 'assets/images/11.jpg',
             label: 'Vocabulary in Reading',
-            text: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
+            text: 'Analyzing one word at a time.'
         }, {
             imagePath: 'assets/images/22.jpg',
-            label: 'Second slide label',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            label: 'Statistics and Words',
+            text: 'Detailed information and data representation of the word lists.'
         }, {
             imagePath: 'assets/images/33.jpg',
-            label: 'Third slide label',
-            text: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-        });
-
-        this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
-        }, {
-            id: 2,
-            type: 'warning',
-            message: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Voluptates est animi quibusdam praesentium quam, et perspiciatis,
-                consectetur velit culpa molestias dignissimos
-                voluptatum veritatis quod aliquam! Rerum placeat necessitatibus, vitae dolorum`
+            label: 'Explore more',
+            text: 'Information about the word is only a click away. '
         });
     }
 

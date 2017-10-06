@@ -26,8 +26,9 @@ import com.vir.service.TextProcessorService;
 public class AnalyzerController {
 
 	@Autowired
+	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
-		
+	
 	@Autowired
 	@Qualifier("simpleFileProcessorService")
 	private FileProcessorService fileProcessorService;

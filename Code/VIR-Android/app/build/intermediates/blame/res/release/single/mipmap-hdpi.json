@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/mipmap-hdpi/ic_launcher.png",
+        "source": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/src/main/res/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/mipmap-hdpi/ic_launcher_round.png",
+        "source": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
+    }
+]

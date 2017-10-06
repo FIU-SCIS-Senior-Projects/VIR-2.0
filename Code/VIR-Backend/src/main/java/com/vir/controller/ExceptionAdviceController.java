@@ -23,15 +23,16 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.vir.exception.ApiError;
+import com.vir.exception.UnableToGetEntryException;
 
 /**
  * All exceptions will be handled through this controller.
  * 
  * @author Alfredo Lopez
  *
- * @see <a href="http://www.baeldung.com/global-error-handler-in-a-spring-rest-api">
- * I grabbed this puppy from here :P </a>
- *	All rights to the original Authors.
+ * @see <a href=
+ *      "http://www.baeldung.com/global-error-handler-in-a-spring-rest-api"> I
+ *      grabbed this puppy from here :P </a> All rights to the original Authors.
  *
  */
 @ControllerAdvice
@@ -113,6 +114,13 @@ public class ExceptionAdviceController extends ResponseEntityExceptionHandler {
 
 		ApiError apiError = new ApiError(HttpStatus.UNSUPPORTED_MEDIA_TYPE, ex.getLocalizedMessage(),
 				builder.toString());
+		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+	}
+
+	@ExceptionHandler({ UnableToGetEntryException.class })
+	public ResponseEntity<Object> handleAPIConnections(Exception ex, WebRequest request) {
+		ApiError apiError = new ApiError(HttpStatus.SERVICE_UNAVAILABLE,
+				"We are having some problems with the Dictionary", "error occurred");
 		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
 	}
 

@@ -22,5 +22,8 @@
     "image" : "Image",
     "dictionary": "Dictionary",
     "home": "Home",
-    "instruction": "Instruction"
+    "instruction": "Instruction",
+    "tests": "Tests",
+    "reading": "Reading",
+    "vocabulary": "Vocabulary"
 }

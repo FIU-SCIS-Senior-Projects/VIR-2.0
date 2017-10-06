@@ -1,4 +1,4 @@
-    
+
 spring:
   profiles:
     active: "@activatedProperties@"
@@ -7,8 +7,25 @@ spring:
       enabled: detect
   http:
     multipart:
-      max-file-size: 50485760
-      max-request-size: 50485760
+      max-file-size: 250MB
+      max-request-size: 250MB
+
+  # Configuration needed to keep the JPA entity open
+  # Used from here: https://github.com/GluuFederation/message-consumer/issues/4
+  # This would be enough: https://github.com/netgloo/spring-boot-samples/blob/master/spring-boot-mysql-springdatajpa-hibernate/src/main/resources/application.properties
+  datasource:
+    tomcat:
+      initial-size: 34
+      max-active: 377
+      max-idle: 233
+      min-idle: 89
+      time-between-eviction-runs-millis: 34000
+      min-evictable-idle-time-millis: 55000
+      validation-query: SELECT 1
+      validation-interval: 4000
+      test-on-borrow: true
+      remove-abandoned: true
+      remove-abandoned-timeout: 55
       
 jasypt:
   encryptor:
@@ -23,7 +40,8 @@ spring:
     url: jdbc:mysql://localhost:3306/vir?useSSL=false
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver 
+    driver-class-name: com.mysql.jdbc.Driver
+    
   jpa:
     show-sql: true
     hibernate:
@@ -39,6 +57,11 @@ security:
     
 server:
   port: 8080
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)
 ---
 
 spring:
@@ -65,3 +88,8 @@ security:
         
 server:
   port: 5000
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)

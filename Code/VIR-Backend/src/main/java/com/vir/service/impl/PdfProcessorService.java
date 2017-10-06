@@ -11,6 +11,7 @@ import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.apache.tika.sax.BodyContentHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,9 +24,15 @@ import com.vir.service.TextProcessorService;
 public class PdfProcessorService implements FileProcessorService {
 
 	@Autowired
-	@Qualifier("simpleTextProcessorService")
+	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
-
+	
+	@Value("${TESSDATA_PREFIX}")
+	String tessdataPath;
+	
+	@Value("${TESSERACT_PATH}")
+	String tesseractPath;
+	
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
 
@@ -33,9 +40,12 @@ public class PdfProcessorService implements FileProcessorService {
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
 
 		TesseractOCRConfig config = new TesseractOCRConfig();
+		config.setTessdataPath(tessdataPath);
+		config.setTesseractPath(tesseractPath);
+		
 		PDFParserConfig pdfConfig = new PDFParserConfig();
 		pdfConfig.setExtractInlineImages(true);
-
+				
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, config);
 		parseContext.set(PDFParserConfig.class, pdfConfig);
@@ -46,5 +56,4 @@ public class PdfProcessorService implements FileProcessorService {
 
 		return textProcessorService.process(handler.toString());
 	}
-
 }

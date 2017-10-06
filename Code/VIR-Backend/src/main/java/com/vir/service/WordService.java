@@ -12,4 +12,5 @@ import org.springframework.stereotype.Service;
 public interface WordService {
 	public String removePunctuation(String word);
 	public String getSingular(String word);
+	public String clean(String word);
 }

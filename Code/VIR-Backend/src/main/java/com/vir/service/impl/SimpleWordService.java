@@ -26,7 +26,16 @@ public class SimpleWordService implements WordService {
 
 	@Override
 	public String getSingular(String word) {
-		return Inflector.getInstance().singularize(word);
+		final int minPluralLength = 2;
+		if (word.length() > minPluralLength) {
+			return Inflector.getInstance().singularize(word);
+		}
+		return word;
+	}
+
+	@Override
+	public String clean(String word) {
+		return removePunctuation(getSingular(word)).toLowerCase();
 	}
 
 }

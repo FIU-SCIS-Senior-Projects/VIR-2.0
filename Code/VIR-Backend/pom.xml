@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.13-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
@@ -27,7 +27,10 @@
 		<thucydides-core.version>0.9.275</thucydides-core.version>
 		<tika.version>1.16</tika.version>
 		<jasypt.starter.version>1.16</jasypt.starter.version>
-		<commons-csv.version>1.4</commons-csv.version>
+		<opencsv.version>3.3</opencsv.version>
+		<imageio.version>2.0</imageio.version>
+		<imageio-core.version>1.3.1</imageio-core.version>
+		<imageio-jpeg2000.version>1.3.0</imageio-jpeg2000.version>
 	</properties>
 
 	<profiles>
@@ -66,6 +69,10 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -100,12 +107,31 @@
 			<artifactId>tika-parsers</artifactId>
 			<version>${tika.version}</version>
 		</dependency>
-		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-csv</artifactId> 
-			<version>${commons-csv.version}</version> </dependency> -->
 		<dependency>
 			<groupId>com.opencsv</groupId>
 			<artifactId>opencsv</artifactId>
-			<version>3.3</version>
+			<version>${opencsv.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.levigo.jbig2</groupId>
+			<artifactId>levigo-jbig2-imageio</artifactId>
+			<version>${imageio.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-core</artifactId>
+			<version>${imageio-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.jai-imageio</groupId>
+			<artifactId>jai-imageio-jpeg2000</artifactId>
+			<version>${imageio-jpeg2000.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.2.11</version>
 		</dependency>
 
 	</dependencies>
