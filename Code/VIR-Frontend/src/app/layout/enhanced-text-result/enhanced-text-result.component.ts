@@ -11,15 +11,11 @@ import { Router } from '@angular/router';
 export class EnhancedTextResultComponent implements OnInit {
 
   text: IText;
-  
+
   constructor(private _textService: TextService, public router: Router) { }
 
   ngOnInit() {
     this.text = this._textService.resultText;
-  }
-
-   redirectBack(): void {
-    this.router.navigateByUrl('/dashboard');
   }
 
 }

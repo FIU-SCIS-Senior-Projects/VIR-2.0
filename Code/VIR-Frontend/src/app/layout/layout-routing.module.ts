@@ -13,9 +13,10 @@ const routes: Routes = [
             {path : 'pdf', loadChildren: './pdf/pdf.module#PdfModule' },
             {path : 'image', loadChildren: './image/image.module#ImageModule' },
             {path : 'enhanced-text-result', loadChildren: './enhanced-text-result/enhanced-text-result.module#EnhancedTextResultModule' },
+            {path : 'text-statistics', loadChildren: './text-statistics/text-statistics.module#TextStatisticsModule' },
         ]
     }
-    
+
 ];
 
 @NgModule({
