@@ -57,6 +57,11 @@ security:
     
 server:
   port: 8080
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)
 ---
 
 spring:
@@ -83,3 +88,8 @@ security:
         
 server:
   port: 5000
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)

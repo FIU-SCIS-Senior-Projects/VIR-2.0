@@ -25,10 +25,10 @@ public class ImgProcessorService implements FileProcessorService {
 	private TextProcessorService textProcessorService;
 
 	@Value("${TESSDATA_PREFIX}")
-	String tessdataPath;
+	private String tessdataPath;
 
 	@Value("${TESSERACT_PATH}")
-	String tesseractPath;
+	private String tesseractPath;
 
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
