@@ -7,8 +7,8 @@ spring:
       enabled: detect
   http:
     multipart:
-      max-file-size: 50485760
-      max-request-size: 50485760
+      max-file-size: 250MB
+      max-request-size: 250MB
 
   # Configuration needed to keep the JPA entity open
   # Used from here: https://github.com/GluuFederation/message-consumer/issues/4
@@ -22,7 +22,7 @@ spring:
       time-between-eviction-runs-millis: 34000
       min-evictable-idle-time-millis: 55000
       validation-query: SELECT 1
-      validation-interval: 34000
+      validation-interval: 4000
       test-on-borrow: true
       remove-abandoned: true
       remove-abandoned-timeout: 55
@@ -57,6 +57,11 @@ security:
     
 server:
   port: 8080
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)
 ---
 
 spring:
@@ -83,3 +88,8 @@ security:
         
 server:
   port: 5000
+  
+oxford:
+  api:
+    id: ENC(1u9g0s3t62OyBexMq3LfYDnzJ1XtJlmd)
+    key: ENC(VKef7KMN0A9KyKYSM0Eqm1g1iK6Mq1Jc4t4BpS5ugTwpweLMV+fQKBXSAsLouZCC)
