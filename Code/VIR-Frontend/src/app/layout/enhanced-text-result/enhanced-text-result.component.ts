@@ -14,12 +14,9 @@ export class EnhancedTextResultComponent implements OnInit {
   public static readonly STATISTICS_LABEL: string = ' Statistics';
 
   text: IText;
-<<<<<<< HEAD
-=======
   showOnlyIcons: boolean;
   backLabel: string = EnhancedTextResultComponent.BACK_LABEL;
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
->>>>>>> 13449dbcda811b2abb80dd5a8b18fa017b5db02f
 
   constructor(private _textService: TextService, public router: Router) { }
 
@@ -29,8 +26,6 @@ export class EnhancedTextResultComponent implements OnInit {
     this.text = this._textService.resultText;
   }
 
-<<<<<<< HEAD
-=======
   redirectBack(): void {
     this.router.navigateByUrl('/dashboard');
   }
@@ -46,5 +41,4 @@ export class EnhancedTextResultComponent implements OnInit {
     this.statisticsLabel = this.showOnlyIcons ?  '' : EnhancedTextResultComponent.STATISTICS_LABEL;
   }
 
->>>>>>> 13449dbcda811b2abb80dd5a8b18fa017b5db02f
 }
