@@ -7,8 +7,8 @@ spring:
       enabled: detect
   http:
     multipart:
-      max-file-size: 250MB
-      max-request-size: 250MB
+      max-file-size: 50MB
+      max-request-size: 50MB
 
   # Configuration needed to keep the JPA entity open
   # Used from here: https://github.com/GluuFederation/message-consumer/issues/4

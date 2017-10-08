@@ -1,3 +1,7 @@
+# Project specifics
+bundle/*.jar
+dist/*.zip
+
 
 # Created by https://www.gitignore.io/api/maven,eclipse
 
