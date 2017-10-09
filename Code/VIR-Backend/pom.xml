@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.13-SNAPSHOT</version>
+	<version>0.0.14-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
@@ -19,9 +19,13 @@
 	</parent>
 
 	<properties>
+		<!-- General properties -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+
+
+		<!-- Versions properties -->
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<swager.version>2.7.0</swager.version>
 		<thucydides-core.version>0.9.275</thucydides-core.version>
@@ -31,6 +35,14 @@
 		<imageio.version>2.0</imageio.version>
 		<imageio-core.version>1.3.1</imageio-core.version>
 		<imageio-jpeg2000.version>1.3.0</imageio-jpeg2000.version>
+
+		<!-- AWS bundling properties -->
+		<bundle.dir>${basedir}/bundle</bundle.dir>
+		<target.jar>${project.build.directory}/${project.build.finalName}.jar</target.jar>
+		<bundle.jar>${bundle.dir}/${project.build.finalName}.jar</bundle.jar>
+		<release.bundle.zip>${basedir}/release/bundle-${project.build.finalName}.zip</release.bundle.zip>
+		<procfile.file>${bundle.dir}/Procfile</procfile.file>
+		<procfile.contents>web: java -jar ${project.build.finalName}.jar</procfile.contents>
 	</properties>
 
 	<profiles>
@@ -152,6 +164,26 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<target>
+								<copy toFile="${bundle.jar}" file="${target.jar}" />
+								<echo file="${procfile.file}">${procfile.contents}</echo>
+								<zip compress="false" destfile="${release.bundle.zip}" basedir="${bundle.dir}" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
