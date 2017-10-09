@@ -47,17 +47,17 @@ public class IOHelper {
 	}
 
 	public static InputStream bufferedImageToInputStream(BufferedImage bufferedImage) throws Exception {
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		ImageIO.write(bufferedImage, "png", os);
-		return new ByteArrayInputStream(os.toByteArray());
+		ByteArrayOutputStream fos = new ByteArrayOutputStream();
+		ImageIO.write(bufferedImage, "jpg", fos);
+		fos.flush();
+		return new ByteArrayInputStream(fos.toByteArray());
 	}
 
 	public static InputStream Mat2InputStream(Mat matrix) throws Exception {
 		BufferedImage finalImg = IOHelper.Mat2BufferedImage(matrix);
 		ByteArrayOutputStream fos = new ByteArrayOutputStream();
-
 		ImageIO.write(finalImg, "jpg", fos);
-
+		fos.flush();
 		return new ByteArrayInputStream(fos.toByteArray());
 
 	}
