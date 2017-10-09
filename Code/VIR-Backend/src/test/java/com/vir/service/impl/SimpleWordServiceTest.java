@@ -28,8 +28,8 @@ public class SimpleWordServiceTest {
 
 	@Test
 	public void getSingular_WordEndingInS_ReturnsWordWithoutS() throws Exception {
-		final String word = "dogs";
-		final String expected = "dog";
+		final String word = "animals";
+		final String expected = "animal";
 		assertEquals(expected, wordService.getSingular(word));
 	}
 	
