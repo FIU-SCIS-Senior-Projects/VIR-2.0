@@ -18,7 +18,7 @@ describe('TextComponent', () => {
         FormsModule,
       ],
       declarations: [TextComponent],
-      providers:[
+      providers: [
         TextService,
         {provide: Router}
       ],
