@@ -1,33 +1,33 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DocComponent } from './doc.component';
+import { TextStatisticsComponent } from './text-statistics.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
-import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
-describe('DocComponent', () => {
-  let component: DocComponent;
-  let fixture: ComponentFixture<DocComponent>;
+describe('TextStatisticsComponent', () => {
+  let component: TextStatisticsComponent;
+  let fixture: ComponentFixture<TextStatisticsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
         HttpClientTestingModule,
-        FormsModule,
-    ],
-      declarations: [ DocComponent ],
+        RouterTestingModule,
+        FormsModule
+      ],
+      declarations: [ TextStatisticsComponent ],
       providers: [
-        TextService,
-        {provide: Router}
+        TextService
       ],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DocComponent);
+    fixture = TestBed.createComponent(TextStatisticsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

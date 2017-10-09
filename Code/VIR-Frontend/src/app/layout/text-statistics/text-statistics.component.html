@@ -1,0 +1,41 @@
+<!--if it sees the object it will show the result, else it prompt the user to go back-->
+<div *ngIf="text;  else elseBlock">
+	<div class="row">
+		<div class="col-6">
+			<h1>Text Statistics</h1>
+		</div>
+
+		<div class="col-6">
+			<div class="float-right">
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+				<button type="button" class="btn btn-success"><i class="fa fa-pie-chart" aria-hidden="true" ></i> Enhanced Text</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+	
+	<span>{{statistics.awl}} </span>
+
+
+</div>
+
+
+<!--if page refreshes it promt the user to go to the previous page-->
+<ng-template #elseBlock>
+	<div class="row">
+		<div class="col-6">
+			<h1>Oops!</h1>
+		</div>
+		<div class="col-6">
+			<div class="float-right">
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+			</div>
+		</div>
+	</div>
+	<hr>
+
+	<div>
+		<h4> Please go back and enter your text...</h4>
+	</div>
+
+</ng-template>
