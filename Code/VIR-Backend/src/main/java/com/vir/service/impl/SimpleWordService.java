@@ -26,7 +26,7 @@ public class SimpleWordService implements WordService {
 
 	@Override
 	public String getSingular(String word) {
-		final int minPluralLength = 2;
+		final int minPluralLength = 4;
 		if (word.length() > minPluralLength) {
 			return Inflector.getInstance().singularize(word);
 		}

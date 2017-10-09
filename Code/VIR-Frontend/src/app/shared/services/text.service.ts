@@ -23,6 +23,12 @@ export class TextService {
       .do((res => console.log(res)));
   }
 
+
+  public enhancedDoc(formdata: FormData): Observable<IText> {
+    return this.http.post<IText>('/api/analyzeFile?type=DOC', formdata)
+      .do((res => console.log(res)));
+  }
+
 }
 
 
