@@ -38,7 +38,7 @@ export class ImageComponent implements OnInit {
       this._textService.enhancedImage(this.formData)
       .subscribe
         (res => {
-          this.text = res;s
+          this.text = res;
           this._textService.resultText = this.text;
           this.processing = false;
           this.router.navigateByUrl('/enhanced-text-result');
