@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PdfComponent } from './pdf.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from '@angular/forms';
+import { TextService } from '../../shared'
+import { Router } from '@angular/router';
 
 describe('PdfComponent', () => {
   let component: PdfComponent;
@@ -10,8 +14,14 @@ describe('PdfComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserAnimationsModule,
+        HttpClientTestingModule,
+        FormsModule,
       ],
-      declarations: [PdfComponent]
+      declarations: [PdfComponent],
+      providers: [
+        TextService,
+        {provide: Router}
+      ],
     })
       .compileComponents();
   }));

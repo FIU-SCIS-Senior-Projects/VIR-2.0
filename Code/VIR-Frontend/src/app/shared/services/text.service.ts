@@ -29,6 +29,11 @@ export class TextService {
       .do((res => console.log(res)));
   }
 
+  public enhancedPDF(formdata: FormData): Observable<IText> {
+    return this.http.post<IText>('/api/analyzeFile?type=PDF', formdata)
+      .do((res => console.log(res)));
+  }
+
 }
 
 
