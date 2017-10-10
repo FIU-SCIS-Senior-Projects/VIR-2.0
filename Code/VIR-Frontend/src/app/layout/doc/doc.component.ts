@@ -23,9 +23,8 @@ export class DocComponent implements OnInit {
   constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient) { }
 
 
-  public upload(): void {
+  public uploadDoc(): void {
     this.processing = true;
-
     const fileBrowser = this.fileInput.nativeElement;
     if (fileBrowser.files && fileBrowser.files[0]) {
       this.userDocFile = fileBrowser.files[0];
