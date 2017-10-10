@@ -34,6 +34,11 @@ export class TextService {
       .do((res => console.log(res)));
   }
 
+  public enhancedImage(formdata: FormData): Observable<IText> {
+    return this.http.post<IText>('/api/analyzeFile?type=IMG', formdata)
+      .do((res => console.log(res)));
+  }
+
 }
 
 
