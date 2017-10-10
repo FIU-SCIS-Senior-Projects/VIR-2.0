@@ -2,6 +2,11 @@
 
 We will get you up an running in no time. 
 
+* Install Tesseract for your system. https://github.com/tesseract-ocr/tesseract/wiki
+* Create an environment variable TESSERACT_PATH pointing to your installation directory. Where the executable is.
+* Create an environment variable TESSDATA_PREFIX poiting to the directory above the 'tessdata' one; should be in your installation directory but it can be downloaded from the web.
+
+
 * Clone the repo (you probably already did this part ??)
 * Create a local MySQL account with credentials
  ```
