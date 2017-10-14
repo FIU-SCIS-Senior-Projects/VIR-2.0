@@ -14,18 +14,12 @@ spring:
   # Used from here: https://github.com/GluuFederation/message-consumer/issues/4
   # This would be enough: https://github.com/netgloo/spring-boot-samples/blob/master/spring-boot-mysql-springdatajpa-hibernate/src/main/resources/application.properties
   datasource:
-    tomcat:
-      initial-size: 34
-      max-active: 377
-      max-idle: 233
-      min-idle: 89
-      time-between-eviction-runs-millis: 34000
-      min-evictable-idle-time-millis: 55000
-      validation-query: SELECT 1
-      validation-interval: 4000
-      test-on-borrow: true
-      remove-abandoned: true
-      remove-abandoned-timeout: 55
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      connection-test-query: SELECT 1
   
   jpa:
     properties:
@@ -77,6 +71,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     
   jpa:
+    generate-ddl: false
     show-sql: false
     hibernate:
       ddl-auto: none
