@@ -26,6 +26,11 @@ spring:
       test-on-borrow: true
       remove-abandoned: true
       remove-abandoned-timeout: 55
+  
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
       
 jasypt:
   encryptor:
@@ -46,9 +51,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
         
 security:
   user:
@@ -72,14 +74,12 @@ spring:
     url: ENC(H5rcrCkCEEH2hxqNtVfXLTn7L8ujXX2mwSGwLSn7xPYnNCSbCS24AJTSblTMesmTlYooIoqJxAV6UsnhmDLbKoqXVP7vo5sXu+TjRd4hrkblDviAHYuaAw==)
     username: ENC(UTkNIxV6ppTay6dw1Y2Ko7wslhPUEBlt)
     password: ENC(e727rLvbmnoUNdmsXj7CpZPWtklCNXW0)
-    driver-class-name: com.mysql.jdbc.Driver 
+    driver-class-name: com.mysql.jdbc.Driver
+    
   jpa:
     show-sql: false
     hibernate:
       ddl-auto: none
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
 
 security:
   user:
