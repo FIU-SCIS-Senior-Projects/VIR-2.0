@@ -40,6 +40,7 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
+    initialize: false
     
   jpa:
     show-sql: true
