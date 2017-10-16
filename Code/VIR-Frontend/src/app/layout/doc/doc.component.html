@@ -1,5 +1,13 @@
 <div [@routerTransition] class="container-fluid">
 
+	<!--Alert-->
+	<div class="alert alert-danger" role="alert" *ngIf='error'>
+		<strong>Oh snap!</strong> The file is not readable.
+	</div>
+
+	<div class="alert alert-warning" role="alert" *ngIf='fileSizeExceeded'>
+			<strong>Oh snap!</strong> The file is too big, please choose a smaller file. Maximum 5 mb.
+	</div>
 
 	<div class="card card-info card-inverse mb-3 col-lg-12 center-block">
 		<div class="card-header card-info fontTitle">
