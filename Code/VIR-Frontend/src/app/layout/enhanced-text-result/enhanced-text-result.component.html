@@ -6,7 +6,7 @@
 		</div>
 		<div class="col-4 col-md-4" (window:resize)="onResize($event)">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']">
+				<button type="button" class="btn btn-warning" (click)="backClicked()">
 					<i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
 				<button type="button" class="btn btn-success">
 					<i class="fa fa-pie-chart" aria-hidden="true" ></i>{{statisticsLabel}}</button>
@@ -60,14 +60,14 @@
 		</div>
 		<div class="col-6" (window:resize)="onResize($event)">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
+				<button type="button" class="btn btn-warning" (click)="backClicked()"><i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
 			</div>
 		</div>
 	</div>
 	<hr>
 
 	<div>
-		<h4> Please go back and enter your text...</h4>
+		<h4> Please go back</h4>
 	</div>
 
 </ng-template>

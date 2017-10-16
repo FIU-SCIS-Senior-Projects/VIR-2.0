@@ -9,8 +9,15 @@
     overflow: hidden;
 
 }
+
 @media screen and (max-width: 992px) {
     .main-container {
         margin-left: 0px !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .margin-responsive {
+        margin-bottom: 150px;
     }
 }
