@@ -4,9 +4,6 @@
     margin-top: 25px;
 }
 
-.card1{
-    background-color: #FF7919;
-}
 .box1{
     background-color: #FF7919;
     min-height: 150px;
@@ -16,6 +13,7 @@
     color: white;
     text-align: center;
     padding-top: 35px;
+    border-radius: 8px;
 
 }
 
@@ -28,6 +26,7 @@
     color: white;
     text-align: center;
     padding-top: 35px;
+    border-radius: 8px;
 }
 
 .box3{
@@ -39,9 +38,14 @@
     color: white;
     text-align: center;
     padding-top: 35px;
+    border: 2px solid;
+    border-radius: 8px;
 }
+
 h2{
     display: block;
 }
+
+
 
 
