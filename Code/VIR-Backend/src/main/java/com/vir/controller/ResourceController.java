@@ -14,13 +14,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.vir.service.ResourceService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/admin/resources")
+@Api(tags = "resources")
 public class ResourceController {
 
 	@Autowired
 	private ResourceService resourceService;
-
+	
+	@ApiOperation("Downloads all the words from the database")
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public ResponseEntity<Resource> download() {
 
@@ -34,6 +39,7 @@ public class ResourceController {
 	}
 
 	
+	@ApiOperation("Uploads words to the database")
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public Boolean upload(
 			@RequestParam(value = "file", required = true) MultipartFile file,

@@ -20,13 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vir.model.Word;
 import com.vir.repository.WordRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/admin/words")
+@Api(tags="words-admin")
 public class WordAdminController {
 	
 	@Autowired
 	WordRepository wordRepository;
-
+	
+	@ApiOperation("Finds all the words")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	Page<Word> findAll(
 			@RequestParam(value="page", defaultValue="0") int page,
@@ -40,6 +45,7 @@ public class WordAdminController {
 		return wordRepository.findAll(pageRequest);
 	}
 	
+	@ApiOperation("Adds or modifies a word")
 	@RequestMapping(method= {RequestMethod.POST, RequestMethod.PUT}, produces = MediaType.APPLICATION_JSON_VALUE)
 	Word save(@RequestBody(required=true) Word word){
 		
@@ -50,6 +56,7 @@ public class WordAdminController {
 		return wordRepository.save(word);
 	}
 	
+	@ApiOperation("Finds a word by value")
 	@GetMapping(value = "{value}", produces = MediaType.APPLICATION_JSON_VALUE)
 	Word findOneByValue(@PathVariable(name="value", required=true) String value) {
 		
@@ -62,6 +69,7 @@ public class WordAdminController {
 		}
 	}
 	
+	@ApiOperation("Deletes a word by value")
 	@DeleteMapping(value="{value}", produces = MediaType.APPLICATION_JSON_VALUE)
 	void delete(@PathVariable(name="value", required=true) String value){
 		wordRepository.removeByValue(value);

@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vir.model.Word;
 import com.vir.repository.WordRepository;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api/words")
+@Api(tags = "word")
 public class WordController {
 
 	@Autowired
 	WordRepository wordRepository;
-
+	
+	@ApiOperation("Retrieves a list of words by category")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	Page<Word> findAll(@RequestParam(value = "category", required = true) String category,
 			@RequestParam(value = "page", defaultValue = "0") int page,

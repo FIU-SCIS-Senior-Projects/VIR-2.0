@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vir.model.dictionary.oxford.RetrieveEntry;
 import com.vir.service.DictionaryEntryService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api")
+@Api(tags = "dictionary")
 public class DictionaryEntryController {
 
 	@Autowired
 	@Qualifier("oxfordDictionaryEntryService")
 	private DictionaryEntryService dictionaryEntryService;
-
+	
+	@ApiOperation("Get's the definition for a word.")
 	@GetMapping(value = "/entries/{wordId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public RetrieveEntry getEntry(@PathVariable("wordId") String wordId) throws Exception {
 		return dictionaryEntryService.getEntry(wordId);
