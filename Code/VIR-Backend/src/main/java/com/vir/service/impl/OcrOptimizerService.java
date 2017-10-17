@@ -1,18 +1,13 @@
 package com.vir.service.impl;
 
 import static org.opencv.imgproc.Imgproc.COLOR_BGR2GRAY;
-import static org.opencv.imgproc.Imgproc.COLOR_BGR2YUV;
-import static org.opencv.imgproc.Imgproc.COLOR_YUV2BGR;
 import static org.opencv.imgproc.Imgproc.CV_WARP_FILL_OUTLIERS;
 import static org.opencv.imgproc.Imgproc.GaussianBlur;
 import static org.opencv.imgproc.Imgproc.INTER_LINEAR;
 import static org.opencv.imgproc.Imgproc.THRESH_BINARY;
 import static org.opencv.imgproc.Imgproc.THRESH_OTSU;
-import static org.opencv.imgproc.Imgproc.cvtColor;
-import static org.opencv.imgproc.Imgproc.equalizeHist;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.image.BufferedImage;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -21,6 +16,9 @@ import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.springframework.stereotype.Service;
 
+import com.vir.helpers.IOHelper;
+
+import net.sourceforge.tess4j.util.ImageHelper;
 import nu.pattern.OpenCV;
 
 @Service
@@ -34,12 +32,13 @@ public class OcrOptimizerService {
 		OpenCV.loadShared();
 	}
 
-	public Mat optimize(Mat image) {
+	public Mat optimize(Mat image) throws Exception {
 
 		Mat result;
-
 		result = deskew(image);
-
+		result = convertToGreyScaleOpencv(image);
+		result = threshold(result);
+		
 		return result;
 	}
 
@@ -47,7 +46,7 @@ public class OcrOptimizerService {
 
 		Mat result = new Mat();
 
-		convertToGreyScale(image);
+		convertToGreyScaleOpencv(image);
 		Core.bitwise_not(image, result);
 		Imgproc.threshold(result, result, 0, 255, THRESH_BINARY + THRESH_OTSU);
 
@@ -72,7 +71,7 @@ public class OcrOptimizerService {
 	 * @param matrix the matrix to convert.
 	 * @return the converted matrix.
 	 */
-	public Mat convertToGreyScale(Mat matrix) {
+	private Mat convertToGreyScaleOpencv(Mat matrix) {
 
 		// Only convert to grey is the image has more than 1 channel.
 		if (matrix.channels() > 1) {
@@ -83,21 +82,22 @@ public class OcrOptimizerService {
 	}
 
 	
+	/**
+	 * Converts to a grey scale using Tesseract.
+	 * 
+	 * @param matrix the matrix to convert.
+	 * @return the converted matrix.
+	 * @throws Exception 
+	 */
+	public Mat convertToGreyScaleTess(Mat matrix) throws Exception {
+		BufferedImage grey = ImageHelper.convertImageToGrayscale(IOHelper.matToBufferedImage(matrix));
+		return IOHelper.bufferedImageToMat(grey);
+	}
+	
 	public Mat threshold( Mat matrix) {
-		
-		//preprocess the image
-		Mat newColor = new Mat();
-		cvtColor(matrix, newColor, COLOR_BGR2YUV);
-		List<Mat> channels = new ArrayList<>();
-		Core.split(newColor, channels);
-		equalizeHist(channels.get(0), channels.get(1));
-		Core.merge(channels, newColor);
-		cvtColor(newColor, matrix, COLOR_YUV2BGR);
-		
-		
-		matrix = convertToGreyScale(matrix);
+		matrix = convertToGreyScaleOpencv(matrix);
 		GaussianBlur(matrix, matrix, new Size(5, 5), 0);
-		Imgproc.adaptiveThreshold(matrix, matrix, 255, Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY, 15, 40);
+		Imgproc.adaptiveThreshold(matrix, matrix, 255, Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY, 15, 18);
 		return matrix;
 	}
 	

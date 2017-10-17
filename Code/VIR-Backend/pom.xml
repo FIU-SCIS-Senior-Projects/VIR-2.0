@@ -143,7 +143,6 @@
 			<version>${opencv.version}</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
