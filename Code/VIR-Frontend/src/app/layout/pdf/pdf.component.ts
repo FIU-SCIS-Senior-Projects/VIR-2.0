@@ -19,6 +19,8 @@ export class PdfComponent implements OnInit {
   statistics: IStatistics;
   processing: boolean;
   userPDFFile: File;
+  error: boolean;
+  fileSizeExceeded: boolean;
   formData = new FormData();
   constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient) { }
 
@@ -28,6 +30,14 @@ export class PdfComponent implements OnInit {
     const fileBrowser = this.fileInput.nativeElement;
     if (fileBrowser.files && fileBrowser.files[0]) {
       this.userPDFFile = fileBrowser.files[0];
+      console.log(this.userPDFFile);
+
+      if (this.userPDFFile.size > 5000000) {
+        this.fileSizeExceeded = true;
+        this.processing = false;
+        return;
+      }
+
       this.formData.append('file', fileBrowser.files[0]);
     } else {
       return;
@@ -48,6 +58,8 @@ export class PdfComponent implements OnInit {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');
         } else {
+          this.error = true;
+          this.processing = false;
           console.log('Server-side Error occured');
         }
       }

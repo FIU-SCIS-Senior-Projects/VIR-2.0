@@ -18,22 +18,32 @@ export class ImageComponent implements OnInit {
     text: IText;
     statistics: IStatistics;
     processing: boolean;
-    userDocFile: File;
+    userImageFile: File;
+    error: boolean;
+    fileSizeExceeded: boolean;
     formData = new FormData();
     constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient) { }
 
 
-    public uploadDoc(): void {
+    public uploadImage(): void {
       this.processing = true;
       const fileBrowser = this.fileInput.nativeElement;
       if (fileBrowser.files && fileBrowser.files[0]) {
-        this.userDocFile = fileBrowser.files[0];
+        this.userImageFile = fileBrowser.files[0];
+
+        // check filesize
+      if (this.userImageFile.size > 5000000) {
+        this.fileSizeExceeded = true;
+        this.processing = false;
+        return;
+      }
+
         this.formData.append('file', fileBrowser.files[0]);
       } else {
         return;
       }
 
-      const DocFile: File = this.userDocFile;
+      const DocFile: File = this.userImageFile;
       console.log(this.formData);
       this._textService.enhancedImage(this.formData)
       .subscribe
@@ -48,6 +58,8 @@ export class ImageComponent implements OnInit {
           if (err.error instanceof Error) {
             console.log('Client-side Error occured');
           } else {
+            this.error = true;
+            this.processing = false;
             console.log('Server-side Error occured');
           }
         }
@@ -55,7 +67,6 @@ export class ImageComponent implements OnInit {
 
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
   }

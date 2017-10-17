@@ -56,3 +56,9 @@
   margin-right: 30px;
   margin-top: 30px;
 }
+
+@media screen and (max-width: 992px) {
+  .margin-responsive {
+      margin-bottom: 70px;
+  }
+}

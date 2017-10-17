@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TextService, IText, IWord } from '../../shared'
 import { Router } from '@angular/router';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-enhanced-text-result',
@@ -18,7 +18,7 @@ export class EnhancedTextResultComponent implements OnInit {
   backLabel: string = EnhancedTextResultComponent.BACK_LABEL;
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
 
-  constructor(private _textService: TextService, public router: Router) { }
+  constructor(private _textService: TextService, public router: Router, private _location: Location) { }
 
   ngOnInit() {
     this.showOnlyIcons = window.innerWidth <= 680;
@@ -26,9 +26,9 @@ export class EnhancedTextResultComponent implements OnInit {
     this.text = this._textService.resultText;
   }
 
-  redirectBack(): void {
-    this.router.navigateByUrl('/dashboard');
-  }
+  backClicked() {
+    this._location.back();
+}
 
   onResize(event) {
     this.showOnlyIcons = window.innerWidth <= 680;
