@@ -2,6 +2,8 @@ package com.vir.service.impl;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 
 import org.junit.Test;
@@ -42,5 +44,19 @@ public class OcrOptimizerServiceTest {
 		
 		Mat grey = ocrOptimizerService.convertToGreyScale(image);
 		assertEquals(1, grey.channels());
+	}
+	
+	@Test
+	public void cropBorders_withImage_returnsImageWithBordersCropped() throws Exception {
+		
+		final String filePath= "/Users/alfredo/Downloads/sample-pictures/poetry.JPG";
+		InputStream stream = new FileInputStream(new File(filePath));
+		Mat image = IOHelper.inputStreamToMat(stream);
+		
+		Mat cropped = ocrOptimizerService.threshold(image);
+		
+		InputStream is = IOHelper.matToInputStream(cropped);
+		IOHelper.writeToPath("/Users/alfredo/Downloads/cropped.jpg", is);
+		
 	}
 }
