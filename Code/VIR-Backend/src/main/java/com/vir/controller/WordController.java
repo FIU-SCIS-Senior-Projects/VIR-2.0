@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/words")
-@Api(tags = "word")
+@Api(tags = "words")
 public class WordController {
 
 	@Autowired
