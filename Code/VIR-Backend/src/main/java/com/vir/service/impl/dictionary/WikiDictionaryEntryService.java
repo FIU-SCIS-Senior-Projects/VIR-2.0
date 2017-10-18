@@ -26,7 +26,7 @@ public class WikiDictionaryEntryService implements DictionaryEntryService {
 	private WikiConverterService wikiConverterService;
 	
 	@Autowired
-	private WikiHtmlCleaner wikiHtmlCleaner;
+	private WikiHtmlCleanerService wikiHtmlCleaner;
 	
 	@Override
 	public DictionaryEntry getEntry(String wordId) throws UnableToGetEntryException {
@@ -48,7 +48,7 @@ public class WikiDictionaryEntryService implements DictionaryEntryService {
 			
 			WikiEntry entry = wikiConverterService.wikiResultToWikiEntry(wikiResult);
 			entry.setHtml(wikiHtmlCleaner.clean(entry.getHtml()));
-
+			
 			return entry;
 
 		} catch (Exception e) {
