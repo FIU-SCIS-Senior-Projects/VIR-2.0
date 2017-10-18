@@ -1,4 +1,4 @@
-package com.vir.service.impl;
+package com.vir.service.impl.dictionary;
 
 import java.util.List;
 
