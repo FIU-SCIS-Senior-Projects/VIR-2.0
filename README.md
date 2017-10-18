@@ -57,7 +57,7 @@ Code             | Contains all the code for the application.
 .mvn             | Folder needed for the maven wrapper. (safely ignore, but not delete)
 VIR-Android      | Contains all the code for the Android application.
 VIR-Backend      | Contains all the code for the backend of the application.
-VIR-Frontend     | Contains all the code for the fornend of the application.
+VIR-Frontend     | Contains all the code for the frontend of the application.
 VIR-Scripts      | Contains scripts for the application. (not used frequently)
 VIR-iPhone       | Contains all the code for the iPhone application.
 build.cmd        | Script to build the application from Windows.
