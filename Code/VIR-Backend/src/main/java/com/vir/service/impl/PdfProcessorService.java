@@ -11,7 +11,6 @@ import org.apache.tika.parser.pdf.PDFParserConfig;
 import org.apache.tika.sax.BodyContentHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,11 +26,8 @@ public class PdfProcessorService implements FileProcessorService {
 	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
 	
-	@Value("${TESSDATA_PREFIX}")
-	String tessdataPath;
-	
-	@Value("${TESSERACT_PATH}")
-	String tesseractPath;
+	@Autowired
+	private TesseractConfigurationService tessConfiguration;
 	
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
@@ -39,15 +35,11 @@ public class PdfProcessorService implements FileProcessorService {
 		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
 
-		TesseractOCRConfig config = new TesseractOCRConfig();
-		config.setTessdataPath(tessdataPath);
-		config.setTesseractPath(tesseractPath);
-		
 		PDFParserConfig pdfConfig = new PDFParserConfig();
 		pdfConfig.setExtractInlineImages(true);
 				
 		ParseContext parseContext = new ParseContext();
-		parseContext.set(TesseractOCRConfig.class, config);
+		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
 		parseContext.set(PDFParserConfig.class, pdfConfig);
 		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
 

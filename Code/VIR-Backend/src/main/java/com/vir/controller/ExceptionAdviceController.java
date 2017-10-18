@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import com.vir.exception.ApiError;
 import com.vir.exception.UnableToGetEntryException;
+import com.vir.exception.UnparseableContentException;
 
 /**
  * All exceptions will be handled through this controller.
@@ -124,6 +125,13 @@ public class ExceptionAdviceController extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
 	}
 
+	@ExceptionHandler({ UnparseableContentException.class })
+	public ResponseEntity<Object> handleUnparseableContent(Exception ex, WebRequest request) {
+		ApiError apiError = new ApiError(HttpStatus.NO_CONTENT,
+				"We were unable to parse the selected file", "error occurred");
+		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+	}
+	
 	@ExceptionHandler({ Exception.class })
 	public ResponseEntity<Object> handleAll(Exception ex, WebRequest request) {
 		ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getLocalizedMessage(), "error occurred");

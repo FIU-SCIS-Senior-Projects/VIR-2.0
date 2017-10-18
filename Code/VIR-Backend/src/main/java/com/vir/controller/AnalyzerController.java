@@ -1,5 +1,5 @@
 package com.vir.controller;
-		
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
@@ -15,6 +15,9 @@ import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 import com.vir.service.TextProcessorService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Main controller for the Analyzer.
  * 
@@ -23,26 +26,28 @@ import com.vir.service.TextProcessorService;
  */
 @RestController
 @RequestMapping("/api")
+@Api(tags = "analyzer")
 public class AnalyzerController {
 
 	@Autowired
 	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
-	
+
 	@Autowired
 	@Qualifier("simpleFileProcessorService")
 	private FileProcessorService fileProcessorService;
 
+	@ApiOperation(value = "Analyzes text input")
 	@PostMapping(value = "/analyzeText", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Text analizeText(@RequestBody(required = true) String text) {
 		return textProcessorService.process(text);
 	}
 
+	@ApiOperation(value = "Analyzes a file input.")
 	@PostMapping(value = "/analyzeFile", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Text analize(
-			@RequestParam(name = "file", required = true) MultipartFile file,
+	public Text analize(@RequestParam(name = "file", required = true) MultipartFile file,
 			@RequestParam(name = "type", required = true) FileType type) throws Exception {
-		
+
 		return fileProcessorService.process(file, type);
 	}
 }

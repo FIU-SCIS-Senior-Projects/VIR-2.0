@@ -1,0 +1,1 @@
+This scripts are only to be run if for whatever reason the EC2 instance is lost and a new one has to be created, 
