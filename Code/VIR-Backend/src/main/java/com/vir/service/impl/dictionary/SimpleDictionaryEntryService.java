@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.vir.exception.UnableToGetEntryException;
 import com.vir.model.Dictionary;
 import com.vir.model.SourceType;
+import com.vir.model.dictionary.oxford.RetrieveEntry;
+import com.vir.model.dictionary.wiki.WikiEntry;
 import com.vir.service.DictionaryEntryService;
  
 /**
@@ -24,7 +26,11 @@ public class SimpleDictionaryEntryService {
 	
 	@Autowired
 	@Qualifier("oxfordDictionaryEntryService")
-	private DictionaryEntryService dictionaryEntryService;
+	private DictionaryEntryService oxfordService;
+	
+	@Autowired
+	@Qualifier("wikiDictionaryEntryService")
+	private DictionaryEntryService wikiService;
 
 	public Dictionary getEntry(String wordId, List<SourceType> types) throws UnableToGetEntryException {
 		
@@ -33,9 +39,10 @@ public class SimpleDictionaryEntryService {
 		for (SourceType sourceType : types) {
 			switch (sourceType) {
 			case OXFORD:
-				data.setOxford(dictionaryEntryService.getEntry(wordId));
+				data.setOxford((RetrieveEntry) oxfordService.getEntry(wordId));
 				break;
 			case WIKI:
+				data.setWiki((WikiEntry) wikiService.getEntry(wordId));
 				break;
 			case WORD_API:
 				break;

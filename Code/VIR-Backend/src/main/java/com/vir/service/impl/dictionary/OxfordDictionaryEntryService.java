@@ -35,7 +35,7 @@ public class OxfordDictionaryEntryService implements DictionaryEntryService {
 
 		try {
 
-			URL url = new URL(OxfordDictionaryEntryService.API_URL_ENGLISH + wordId);
+			URL url = new URL(API_URL_ENGLISH + wordId);
 			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 			urlConnection.setRequestProperty(OxfordDictionaryEntryService.HEADERS_ACCEPT,
 					MediaType.APPLICATION_JSON_VALUE);

@@ -2,6 +2,7 @@ package com.vir.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vir.model.dictionary.oxford.RetrieveEntry;
+import com.vir.model.dictionary.wiki.WikiEntry;
 
 /**
  * Class to hole the definitons data.
@@ -13,7 +14,7 @@ import com.vir.model.dictionary.oxford.RetrieveEntry;
 public class Dictionary {
 
 	private RetrieveEntry oxford;
-	private DictionaryEntry wiki;
+	private WikiEntry wiki;
 	private DictionaryEntry wordAPI;
 	private DictionaryEntry merriam;
 	
@@ -23,10 +24,10 @@ public class Dictionary {
 	public void setOxford(RetrieveEntry oxford) {
 		this.oxford = oxford;
 	}
-	public DictionaryEntry getWiki() {
+	public WikiEntry getWiki() {
 		return wiki;
 	}
-	public void setWiki(DictionaryEntry wiki) {
+	public void setWiki(WikiEntry wiki) {
 		this.wiki = wiki;
 	}
 	public DictionaryEntry getWordAPI() {
