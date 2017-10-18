@@ -17,22 +17,26 @@ export class PdfComponent implements OnInit {
 
   text: IText;
   statistics: IStatistics;
-  processing: boolean;
+  processing: boolean; // loading spinner
   userPDFFile: File;
-  error: boolean;
-  fileSizeExceeded: boolean;
-  formData = new FormData();
+  error: boolean; // Error received from server
+  fileSizeExceeded: boolean;  // input file size exceeded the limit
+  formData = new FormData();  // the file type that server (API) Accepts
+
   constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient) { }
 
-
+  // Cast the input file to FormData - Upload PDF(FormData) to server
+  // receive the analyzed PDF - navigate to the enhanced text page to show the result
   public uploadPDF(): void {
     this.processing = true;
+    this.error = false;
     const fileBrowser = this.fileInput.nativeElement;
     if (fileBrowser.files && fileBrowser.files[0]) {
       this.userPDFFile = fileBrowser.files[0];
       console.log(this.userPDFFile);
 
-      if (this.userPDFFile.size > 5000000) {
+      // check the file size - more than 25mb will throw an alert to user
+      if (this.userPDFFile.size > 25000000) {
         this.fileSizeExceeded = true;
         this.processing = false;
         return;
@@ -46,7 +50,7 @@ export class PdfComponent implements OnInit {
     const DocFile: File = this.userPDFFile;
     console.log(this.formData);
     this._textService.enhancedPDF(this.formData)
-    .subscribe
+      .subscribe
       (res => {
         this.text = res;
         this._textService.resultText = this.text;
@@ -54,6 +58,7 @@ export class PdfComponent implements OnInit {
         this.router.navigateByUrl('/enhanced-text-result');
       },
 
+      // Error Handling
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');

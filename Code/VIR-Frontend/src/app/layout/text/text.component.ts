@@ -17,7 +17,7 @@ export class TextComponent implements OnInit {
   text: IText;
   statistics: IStatistics;
   processing: boolean;
-
+  error: boolean;
   constructor(private _textService: TextService, public router: Router) { }
 
   // Function for enhanced text
@@ -35,6 +35,8 @@ export class TextComponent implements OnInit {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');
         } else {
+          this.error = true;
+          this.processing = false;
           console.log('Server-side Error occured');
         }
       }
@@ -57,6 +59,8 @@ export class TextComponent implements OnInit {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');
         } else {
+          this.error = true;
+          this.processing = false;
           console.log('Server-side Error occured');
         }
       }
