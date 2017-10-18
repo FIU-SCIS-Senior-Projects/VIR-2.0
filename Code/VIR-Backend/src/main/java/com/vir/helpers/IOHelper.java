@@ -1,64 +1,105 @@
 package com.vir.helpers;
 
+import static org.opencv.imgcodecs.Imgcodecs.CV_LOAD_IMAGE_UNCHANGED;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
-import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Class to help with the conveertion between the different file formats.
+ * 
+ * @author Alfredo Lopez
+ *
+ */
 public class IOHelper {
 
-	public static File convert(MultipartFile file) throws Exception {
-		File convFile = new File(file.getOriginalFilename());
-		convFile.createNewFile();
-		FileOutputStream fos = new FileOutputStream(convFile);
-		fos.write(file.getBytes());
-		fos.close();
-		return convFile;
+	/**
+	 * Small method to write an input stream to a file.
+	 * 
+	 * @param path The path where to write to.
+	 * @param image The inputstream of the image
+	 * @throws Exception
+	 */
+	public static void writeToPath(String path, InputStream image) throws Exception {
+
+		byte[] buffer = new byte[image.available()];
+		image.read(buffer);
+		File targetFile = new File(path);
+		try (OutputStream outStream = new FileOutputStream(targetFile)) {
+			outStream.write(buffer);
+		}
 	}
 
-	public static File multipartToFile(MultipartFile multipart) throws IllegalStateException, IOException {
-		File convFile = new File(multipart.getOriginalFilename());
-		multipart.transferTo(convFile);
-		return convFile;
+	/**
+	 * Converts from a Mat object to an InputStream.
+	 * 
+	 * @param matrix the Mat object with the data.
+	 * @return an instance of an InputStream.
+	 * @throws Exception
+	 */
+	public static InputStream matToInputStream(Mat matrix) throws Exception {
+		MatOfByte matOfBytes = new MatOfByte();
+		Imgcodecs.imencode(".jpg", matrix, matOfBytes);
+		ByteArrayInputStream io = new ByteArrayInputStream(matOfBytes.toArray());
+		return io;
 	}
 
-	public static Mat BufferedImage2Mat(BufferedImage image) throws IOException {
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-		ImageIO.write(image, "jpg", byteArrayOutputStream);
-		byteArrayOutputStream.flush();
-		return Imgcodecs.imdecode(new MatOfByte(byteArrayOutputStream.toByteArray()),
-				Imgcodecs.CV_LOAD_IMAGE_UNCHANGED);
+	/**
+	 * Converts from a Matrix to a Buffered Image.
+	 * 
+	 * @param matrix the Mat object with the data.
+	 * @return an instance of an BufferedImage.
+	 * @throws Exception
+	 */
+	public static BufferedImage matToBufferedImage(Mat matrix) throws Exception {
+		BufferedImage image = ImageIO.read(IOHelper.matToInputStream(matrix));
+		return image;
 	}
 
-	public static BufferedImage Mat2BufferedImage(Mat matrix) throws IOException {
-		MatOfByte mob = new MatOfByte();
-		Imgcodecs.imencode(".jpg", matrix, mob);
-		return ImageIO.read(new ByteArrayInputStream(mob.toArray()));
+	/**
+	 * Converts from a Buffered Image to a Mat.
+	 * 
+	 * @param image the BufferedImage to convert.
+	 * @return an instance of an Mat.
+	 * @throws Exception
+	 */
+	public static Mat bufferedImageToMat(BufferedImage image) throws Exception {
+		ByteArrayOutputStream os = new ByteArrayOutputStream();
+		ImageIO.write(image, "jpg", os);
+		InputStream stream = new ByteArrayInputStream(os.toByteArray());
+		Mat matrix = IOHelper.inputStreamToMat(stream);
+		return matrix;
 	}
 
-	public static InputStream bufferedImageToInputStream(BufferedImage bufferedImage) throws Exception {
-		ByteArrayOutputStream fos = new ByteArrayOutputStream();
-		ImageIO.write(bufferedImage, "jpg", fos);
-		fos.flush();
-		return new ByteArrayInputStream(fos.toByteArray());
-	}
+	/**
+	 * Converts from an InputStream to a Mat object.
+	 * 
+	 * @param stream the stream to read
+	 * @return an instance of a Mat
+	 * @throws Exception
+	 */
+	public static Mat inputStreamToMat(InputStream stream) throws Exception {
 
-	public static InputStream Mat2InputStream(Mat matrix) throws Exception {
-		BufferedImage finalImg = IOHelper.Mat2BufferedImage(matrix);
-		ByteArrayOutputStream fos = new ByteArrayOutputStream();
-		ImageIO.write(finalImg, "jpg", fos);
-		fos.flush();
-		return new ByteArrayInputStream(fos.toByteArray());
+		int nRead;
+		byte[] data = new byte[16 * 1024];
+		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+		while ((nRead = stream.read(data, 0, data.length)) != -1) {
+			buffer.write(data, 0, nRead);
+		}
+		byte[] bytes = buffer.toByteArray();
 
+		Mat mat = Imgcodecs.imdecode(new MatOfByte(bytes), CV_LOAD_IMAGE_UNCHANGED);
+		return mat;
 	}
 }

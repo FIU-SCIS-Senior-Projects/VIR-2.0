@@ -21,7 +21,6 @@ public class DataConfig {
 	
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
-	
 		
 	@Bean
 	DataSource dataSource() {

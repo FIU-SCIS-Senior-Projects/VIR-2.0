@@ -3,9 +3,10 @@ package com.vir.model.dictionary.oxford;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.vir.model.DictionaryEntry;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RetrieveEntry {
+public class RetrieveEntry implements DictionaryEntry {
 
 	private Object metadata;
 	private List<HeadwordEntry> results;
