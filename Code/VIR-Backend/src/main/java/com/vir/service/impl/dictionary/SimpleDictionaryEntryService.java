@@ -44,10 +44,6 @@ public class SimpleDictionaryEntryService {
 			case WIKI:
 				data.setWiki((WikiEntry) wikiService.getEntry(wordId));
 				break;
-			case WORD_API:
-				break;
-			case MERRIAM:
-				break;
 			}
 		}
 		return data;

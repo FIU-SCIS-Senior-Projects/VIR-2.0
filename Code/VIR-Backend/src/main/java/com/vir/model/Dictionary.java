@@ -5,7 +5,7 @@ import com.vir.model.dictionary.oxford.RetrieveEntry;
 import com.vir.model.dictionary.wiki.WikiEntry;
 
 /**
- * Class to hole the definitons data.
+ * Class to hole the definitions data.
  * 
  * @author Alfredo Lopez
  *
@@ -15,8 +15,6 @@ public class Dictionary {
 
 	private RetrieveEntry oxford;
 	private WikiEntry wiki;
-	private DictionaryEntry wordAPI;
-	private DictionaryEntry merriam;
 	
 	public RetrieveEntry getOxford() {
 		return oxford;
@@ -30,16 +28,4 @@ public class Dictionary {
 	public void setWiki(WikiEntry wiki) {
 		this.wiki = wiki;
 	}
-	public DictionaryEntry getWordAPI() {
-		return wordAPI;
-	}
-	public void setWordAPI(DictionaryEntry wordAPI) {
-		this.wordAPI = wordAPI;
-	}
-	public DictionaryEntry getMerriam() {
-		return merriam;
-	}
-	public void setMerriam(DictionaryEntry merriam) {
-		this.merriam = merriam;
-	}	
 }
