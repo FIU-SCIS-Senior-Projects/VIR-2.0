@@ -17,24 +17,33 @@ import com.vir.model.dictionary.wiki.WikiResult;
 import com.vir.service.DictionaryEntryService;
 import com.vir.service.impl.dictionary.converter.WikiConverterService;
 
+/**
+ * Service to retrieve data from a wiki-dictionary.
+ * 
+ * @author Alfredo Lopez
+ *
+ */
 @Service("wikiDictionaryEntryService")
 public class WikiDictionaryEntryService implements DictionaryEntryService {
 
-	private static final String API_URL = "https://en.wiktionary.org/w/api.php?format=json&action=query&prop=extracts&exlimit=1&titles=";
-	
+	private static final String API_BASE_URL = "https://en.wiktionary.org/w/api.php";
+	private static final String API_QUERY_URL = "?format=json&action=query&prop=extracts&exlimit=1&titles=";
+	private static final String API_URL = API_BASE_URL + API_QUERY_URL;
+
 	@Autowired
 	private WikiConverterService wikiConverterService;
-	
+
 	@Autowired
 	private WikiHtmlCleanerService wikiHtmlCleaner;
-	
+
 	@Override
 	public DictionaryEntry getEntry(String wordId) throws UnableToGetEntryException {
 
 		try {
 			URL url = new URL(API_URL + wordId);
-			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();;
-			
+			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+			;
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			StringBuilder stringBuilder = new StringBuilder();
 
@@ -45,15 +54,14 @@ public class WikiDictionaryEntryService implements DictionaryEntryService {
 
 			ObjectMapper mapper = new ObjectMapper();
 			WikiResult wikiResult = mapper.readValue(stringBuilder.toString(), WikiResult.class);
-			
+
 			WikiEntry entry = wikiConverterService.wikiResultToWikiEntry(wikiResult);
 			entry.setHtml(wikiHtmlCleaner.clean(entry.getHtml()));
-			
+
 			return entry;
 
 		} catch (Exception e) {
 			throw new UnableToGetEntryException(e.getMessage());
 		}
 	}
-
 }
