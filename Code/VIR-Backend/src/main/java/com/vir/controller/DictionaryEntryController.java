@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vir.model.Dictionary;
 import com.vir.model.SourceType;
-import com.vir.service.impl.SimpleDictionaryEntryService;
+import com.vir.service.impl.dictionary.SimpleDictionaryEntryService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

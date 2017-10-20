@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.30-SNAPSHOT</version>
+	<version>0.0.34-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
@@ -151,7 +151,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
 		<profile>
 			<id>dev</id>

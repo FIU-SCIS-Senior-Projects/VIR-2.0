@@ -1,4 +1,4 @@
-package com.vir.service.impl;
+package com.vir.service.impl.processor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
