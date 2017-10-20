@@ -57,6 +57,8 @@ public class WikiDictionaryEntryService implements DictionaryEntryService {
 
 			WikiEntry entry = wikiConverterService.wikiResultToWikiEntry(wikiResult);
 			entry.setHtml(wikiHtmlCleaner.clean(entry.getHtml()));
+			
+			System.err.println(entry.getHtml());
 
 			return entry;
 
