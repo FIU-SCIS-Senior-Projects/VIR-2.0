@@ -1,4 +1,4 @@
-package com.vir.service.impl;
+package com.vir.service.impl.dictionary;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -6,6 +6,7 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -29,13 +30,15 @@ public class OxfordDictionaryEntryService implements DictionaryEntryService {
 
 	@Value("${oxford.api.key}")
 	private String apiKey;
+	
+	@Autowired
+	ObjectMapper mapper;
 
 	@Override
 	public RetrieveEntry getEntry(String wordId) throws UnableToGetEntryException {
 
 		try {
-
-			URL url = new URL(OxfordDictionaryEntryService.API_URL_ENGLISH + wordId);
+			URL url = new URL(API_URL_ENGLISH + wordId);
 			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 			urlConnection.setRequestProperty(OxfordDictionaryEntryService.HEADERS_ACCEPT,
 					MediaType.APPLICATION_JSON_VALUE);
@@ -50,11 +53,9 @@ public class OxfordDictionaryEntryService implements DictionaryEntryService {
 				stringBuilder.append(line + "\n");
 			}
 
-			ObjectMapper mapper = new ObjectMapper();
 			RetrieveEntry retrieveEntry = mapper.readValue(stringBuilder.toString(), RetrieveEntry.class);
-
 			return retrieveEntry;
-
+			
 		} catch (Exception e) {
 			throw new UnableToGetEntryException(e.getMessage());
 		}
