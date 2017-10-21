@@ -13,6 +13,8 @@ import java.util.List;
 public class Text {
 
 	private List<WordMatch> words;
+	private Double FleschReadingScore;
+	private Statistics statistics;
 	
 	public Text() {
 		this.words = new ArrayList<>();
@@ -25,4 +27,20 @@ public class Text {
 	public void setWords(List<WordMatch> words) {
 		this.words = words;
 	}
+
+	public Double getFleschReadingScore() {
+		return FleschReadingScore;
+	}
+
+	public void setFleschReadingScore(Double fleschReadingScore) {
+		FleschReadingScore = fleschReadingScore;
+	}
+
+	public Statistics getStatistics() {
+		return statistics;
+	}
+
+	public void setStatistics(Statistics statistics) {
+		this.statistics = statistics;
+	}	
 }

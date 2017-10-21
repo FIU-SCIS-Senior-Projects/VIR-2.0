@@ -41,10 +41,8 @@ public class SimpleWordService implements WordService {
 	/**
 	 * Function to return the count of syllables in a word.
 	 * 
-	 * Note:
-	 * We are removing one of the syllables from the word
-	 * if the words ends with 't' or 'd' and verb past
-	 * ends with '-ed'.
+	 * Note: We are removing one of the syllables from the word if the words ends
+	 * with 't' or 'd' and verb past ends with '-ed'.
 	 * 
 	 * https://www.espressoenglish.net/105-regular-verbs-with-ed-in-the-past/
 	 */
@@ -54,8 +52,12 @@ public class SimpleWordService implements WordService {
 		String[] result = word.split(regex);
 		int count = result.length;
 
+		if (count == 0) {
+			return 0;
+		}
+
 		final String verbTest = result[count - 1];
-		if (!verbTest.endsWith("t") || !verbTest.endsWith("d")) {
+		if ((!verbTest.endsWith("t") && !verbTest.endsWith("d")) && count > 1) {
 			count--;
 		}
 
