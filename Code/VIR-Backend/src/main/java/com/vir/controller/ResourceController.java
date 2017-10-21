@@ -24,7 +24,7 @@ public class ResourceController {
 
 	@Autowired
 	private ResourceService resourceService;
-	
+
 	@ApiOperation("Downloads all the words from the database")
 	@GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public ResponseEntity<Resource> download() {
@@ -38,13 +38,13 @@ public class ResourceController {
 				.body(file);
 	}
 
-	
 	@ApiOperation("Uploads words to the database")
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public Boolean upload(
 			@RequestParam(value = "file", required = true) MultipartFile file,
-			@RequestParam(value = "replace", required = true, defaultValue = "false") Boolean replace) throws Exception {
-		
+			@RequestParam(value = "replace", required = true, defaultValue = "false") Boolean replace)
+			throws Exception {
+
 		return resourceService.save(file, replace);
 	}
 }

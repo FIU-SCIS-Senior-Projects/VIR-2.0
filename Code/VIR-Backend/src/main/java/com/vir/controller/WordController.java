@@ -27,7 +27,8 @@ public class WordController {
 	
 	@ApiOperation("Retrieves a list of words by category")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	Page<Word> findAll(@RequestParam(value = "category", required = true) String category,
+	Page<Word> findAll (
+			@RequestParam(value = "category", required = true) String category,
 			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "20") int size,
 			@RequestParam(value = "sortKey", defaultValue = "value") String sortField,
