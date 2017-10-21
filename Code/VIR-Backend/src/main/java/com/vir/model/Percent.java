@@ -6,6 +6,7 @@ public class Percent {
 	private double hi;
 	private double med;
 	private double low;
+	private double noCategory;
 	private double total;
 
 	private Percent() {
@@ -16,6 +17,7 @@ public class Percent {
 		this.hi = (double) count.getHi() / count.getTotal();
 		this.med = (double) count.getMed() / count.getTotal();
 		this.low = (double) count.getLow() / count.getTotal();
+		this.noCategory = (double) count.getNoCategory() / count.getTotal();
 		this.total = (double) count.getTotal() / count.getTotal();
 	}
 
@@ -48,5 +50,11 @@ public class Percent {
 	}
 	public void setTotal(double total) {
 		this.total = total;
+	}
+	public double getNoCategory() {
+		return noCategory;
+	}
+	public void setNoCategory(double noCategory) {
+		this.noCategory = noCategory;
 	}
 }

@@ -95,17 +95,22 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 		long hi = 0;
 		long low = 0;
 		long med = 0;
+		long noCategory = 0;
 
 		for (WordMatch wordMatch : words) {
-			if (StringUtils.isNoneBlank(wordMatch.getInitialValue())) {
+			if (!StringUtils.isBlank(wordMatch.getInitialValue())) {
 				awl += wordMatch.getCategory().equalsIgnoreCase("awl") ? 1 : 0;
 				hi += wordMatch.getCategory().equalsIgnoreCase("hi") ? 1 : 0;
 				med += wordMatch.getCategory().equalsIgnoreCase("med") ? 1 : 0;
 				low += wordMatch.getCategory().equalsIgnoreCase("low") ? 1 : 0;
+				
+				if (StringUtils.isBlank(wordMatch.getCategory())) {
+					noCategory++;
+				}
 			}
 		}
 
-		return new Count(awl, hi, med, low);
+		return new Count(awl, hi, med, low, noCategory);
 	}
 
 	/**

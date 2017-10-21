@@ -6,17 +6,19 @@ public class Count {
 	private long hi;
 	private long med;
 	private long low;
+	private long noCategory;
 	private long total;
 
 	private Count() {
 	}
 
-	public Count(long awl, long hi, long med, long low) {
+	public Count(long awl, long hi, long med, long low, long noCategory) {
 		this.awl = awl;
 		this.hi = hi;
 		this.med = med;
 		this.low = low;
-		this.total = this.awl + this.hi + this.med + this.low;
+		this.noCategory = noCategory;
+		this.total = this.awl + this.hi + this.med + this.low + this.noCategory;
 	}
 	public long getAwl() {
 		return awl;
@@ -41,6 +43,12 @@ public class Count {
 	}
 	public void setLow(long low) {
 		this.low = low;
+	}
+	public long getNoCategory() {
+		return noCategory;
+	}
+	public void setNoCategory(long noCategory) {
+		this.noCategory = noCategory;
 	}
 	public long getTotal() {
 		return total;
