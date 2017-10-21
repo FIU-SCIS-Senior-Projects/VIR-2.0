@@ -119,4 +119,9 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	public long countSentences(String text) {
 		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
 	}
+
+	@Override
+	public double getFleschReadingEase(long wordCount, long sentenceCount, long syllableCount) {
+		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
+	}
 }

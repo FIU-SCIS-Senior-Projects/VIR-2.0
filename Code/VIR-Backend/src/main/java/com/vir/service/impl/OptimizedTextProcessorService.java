@@ -124,4 +124,21 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 		List<String> sentences = Arrays.asList(textString.split(regex));
 		return sentences.size();
 	}
+
+	/**
+	 * Calculation for the FleschReadingEase
+	 * 
+	 * http://www.readabilityformulas.com/flesch-reading-ease-readability-formula.php
+	 */
+	@Override
+	public double getFleschReadingEase(long wordCount, long sentenceCount, long syllableCount) {
+
+		final double baseConstant = 206.835;
+		final double sentenceLengthRatio = 1.015;
+		final double syllableRatio = 84.6;
+		final double ASL = ((double) wordCount / sentenceCount);
+		final double ASW = ((double) syllableCount / wordCount);
+		
+		return (baseConstant - (sentenceLengthRatio * ASL) - (syllableRatio * ASW));
+	}
 }

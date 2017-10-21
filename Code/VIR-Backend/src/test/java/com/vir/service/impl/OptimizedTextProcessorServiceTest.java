@@ -21,7 +21,7 @@ import com.vir.service.TextProcessorService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OptimizedTextProcessorServiceTest {
-	
+
 	@Autowired
 	@Qualifier("optimizedTextProcessorService")
 	TextProcessorService textProcessorService;
@@ -32,14 +32,14 @@ public class OptimizedTextProcessorServiceTest {
 		final Text result = textProcessorService.process(word);
 		assertFalse(result.getWords().isEmpty());
 	}
-	
+
 	@Test
 	public void process_WordDogWithCapitalLettersAndADot_ReturnsADogValue() {
 		final String word = "Dog.";
 		final Text result = textProcessorService.process(word);
 		assertEquals("dog", result.getWords().get(0).getValue());
 	}
-	
+
 	@Test
 	public void process_DogWithDotTestGoodTest_ReturnsValidList() {
 		final String word = "Dog. test good test";
@@ -57,58 +57,61 @@ public class OptimizedTextProcessorServiceTest {
 		final Text result = textProcessorService.process(word);
 		assertEquals(expected, result.getWords().get(0));
 	}
-	
+
 	@Test
-	public void countWords_WithTextWith2WordsWithNoSpace_Returns2 () {
+	public void countWords_WithTextWith2WordsWithNoSpace_Returns2() {
 		Text text = new Text();
 		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", "pet"));
 		text.setWords(words);
 		assertEquals(2, textProcessorService.countWords(text));
 	}
-	
+
 	@Test
-	public void countWords_WithTextWith2WordsWithSpace_Returns2 () {
+	public void countWords_WithTextWith2WordsWithSpace_Returns2() {
 		Text text = new Text();
-		List<WordMatch> words = Arrays.asList(
-				new WordMatch("", "", "dog"),
-				new WordMatch("", "", " "), 
+		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", " "),
 				new WordMatch("", "", "pet"));
-		
+
 		text.setWords(words);
 		assertEquals(2, textProcessorService.countWords(text));
 	}
-	
+
 	@Test
-	public void countWords_WithTextWith2WordsWithTab_Returns2 () {
+	public void countWords_WithTextWith2WordsWithTab_Returns2() {
 		Text text = new Text();
-		List<WordMatch> words = Arrays.asList(
-				new WordMatch("", "", "dog"),
-				new WordMatch("", "", "\t"), 
+		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", "\t"),
 				new WordMatch("", "", "pet"));
-		
+
 		text.setWords(words);
 		assertEquals(2, textProcessorService.countWords(text));
 	}
-	
+
 	@Test
-	public void countWords_WithTextWith1WordWith3Paces_Returns0 () {
+	public void countWords_WithTextWith1WordWith3Paces_Returns0() {
 		Text text = new Text();
-		List<WordMatch> words = Arrays.asList(
-				new WordMatch("", "", "   "));
-		
+		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "   "));
+
 		text.setWords(words);
 		assertEquals(0, textProcessorService.countWords(text));
 	}
-	
+
 	@Test
-	public void countSentences_WithTextWith1Dot1Question1Exclamation_Returns3 () {
+	public void countSentences_WithTextWith1Dot1Question1Exclamation_Returns3() {
 		final String sample = "This is a sentense. Hey! Is that interrogation?";
 		assertEquals(3, textProcessorService.countSentences(sample));
 	}
-	
+
 	@Test
-	public void countSentences_WithTextWithInMiddle_Returns1 () {
+	public void countSentences_WithTextWithInMiddle_Returns1() {
 		final String sample = "Is 2.5 a sentence?";
 		assertEquals(1, textProcessorService.countSentences(sample));
+	}
+
+	@Test
+	public void getFleschReadingEase_WithDataFromWebSite_Returns60_20() {
+		long wordCount = 300;
+		long sentenceCount = 12;
+		long syllableCount = 430;
+		assertEquals(60.20d, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
 	}
 }

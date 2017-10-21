@@ -13,4 +13,5 @@ public interface WordService {
 	public String removePunctuation(String word);
 	public String getSingular(String word);
 	public String clean(String word);
+	public int countSyllables(String word);
 }
