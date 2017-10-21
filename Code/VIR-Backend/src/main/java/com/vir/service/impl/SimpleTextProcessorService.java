@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -107,5 +108,15 @@ public class SimpleTextProcessorService implements TextProcessorService {
 		} else {
 			return new WordMatch(result.getValue(), result.getCategory(), initialValue);
 		}
+	}
+
+	@Override
+	public long countWords(Text text) {
+		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
+	}
+
+	@Override
+	public long countSentences(String text) {
+		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
 	}
 }

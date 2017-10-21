@@ -35,6 +35,6 @@ public class WordController {
 
 		Sort sort = new Sort(direction, sortField);
 		PageRequest pageRequest = new PageRequest(page, size, sort);
-		return wordRepository.findAlByCategory(pageRequest, category);
+		return wordRepository.findAllByCategory(pageRequest, category);
 	}
 }

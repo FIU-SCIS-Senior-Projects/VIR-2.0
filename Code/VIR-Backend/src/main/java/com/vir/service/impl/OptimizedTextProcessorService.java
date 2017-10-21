@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -75,12 +76,52 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	 * @param textString the string to split
 	 * @return A list of strings
 	 * 
-	 *         Note: We make sure there is no more than two white spaces between
-	 *         the words.
+	 *         Note: We make sure there is no more than two white spaces between the
+	 *         words.
 	 */
 	private List<String> getStrings(String textString) {
-		String regex = "[\\n\\r\\s]";
+		final String regex = "[\\n\\r\\s]";
 		textString = textString.trim();
 		return Arrays.asList(textString.split(regex));
+	}
+
+	/**
+	 * Get's the counts of the words from a text.
+	 */
+	@Override
+	public long countWords(Text text) {
+		return text.getWords().stream().filter(isValidWord()).count();
+	}
+
+	/**
+	 * Predicate to determine what is a valid word.
+	 * 
+	 * @return True if is a valid word, else false
+	 */
+	public static Predicate<WordMatch> isValidWord() {
+		return w -> {
+			String value = w.getInitialValue().trim();
+
+			if (value.length() > 1) {
+				return true;
+			}
+			if ((value.length() == 1) && Character.isLetterOrDigit(w.getInitialValue().toCharArray()[0])) {
+				return true;
+			}
+			return false;
+		};
+	}
+
+	/**
+	 * Counts the amount of sentences in a text.
+	 * 
+	 * We are taking into consideration the decimal numbers.
+	 */
+	@Override
+	public long countSentences(String textString) {
+		final String regex = "([a-zA-Z\\s](?:[\\.?!]){1,3}[\\s])";
+		textString = textString.trim();
+		List<String> sentences = Arrays.asList(textString.split(regex));
+		return sentences.size();
 	}
 }
