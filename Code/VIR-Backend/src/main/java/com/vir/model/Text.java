@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to hold the list of words. In a way an abstract 
- * representation of a text fragment.
+ * Class to hold the list of words. In a way an abstract representation of a
+ * text fragment.
  * 
  * @author Alfredo Lopez
  *
@@ -15,7 +15,8 @@ public class Text {
 	private List<WordMatch> words;
 	private Double FleschReadingScore;
 	private Statistics statistics;
-	
+	private Long sentenceCount;
+
 	public Text() {
 		this.words = new ArrayList<>();
 	}
@@ -42,5 +43,13 @@ public class Text {
 
 	public void setStatistics(Statistics statistics) {
 		this.statistics = statistics;
-	}	
+	}
+
+	public Long getSentenceCount() {
+		return sentenceCount;
+	}
+
+	public void setSentenceCount(Long sentenceCount) {
+		this.sentenceCount = sentenceCount;
+	}
 }

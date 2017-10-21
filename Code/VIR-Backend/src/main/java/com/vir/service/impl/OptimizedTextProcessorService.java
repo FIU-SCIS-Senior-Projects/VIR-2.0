@@ -69,17 +69,27 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 
 		Text text = new Text();
 		text.setWords(matches);
+		populateStatistics(textString, text);
 
-		// Get statistics
+		return text;
+	}
+
+	/**
+	 * Collects and calculates all statistics data needed.
+	 * 
+	 * @param textString The original text string.
+	 * @param text The text instances generated from the string,
+	 */
+	private void populateStatistics(String textString, Text text) {
 		Count wordCount = getWordCount(text);
 		Percent wordPercent = new Percent(wordCount);
 		Statistics statistics = new Statistics(wordCount, wordPercent);
+		Long sentenceCount = countSentences(textString);
+		Double fleschReadingScore = getFleschReadingEase(countWords(text), sentenceCount, getSyllableCount(text));
 
+		text.setSentenceCount(sentenceCount);
 		text.setStatistics(statistics);
-		text.setFleschReadingScore(
-				getFleschReadingEase(countWords(text), countSentences(textString), getSyllableCount(text)));
-
-		return text;
+		text.setFleschReadingScore(fleschReadingScore);
 	}
 
 	/**
@@ -103,7 +113,7 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 				hi += wordMatch.getCategory().equalsIgnoreCase("hi") ? 1 : 0;
 				med += wordMatch.getCategory().equalsIgnoreCase("med") ? 1 : 0;
 				low += wordMatch.getCategory().equalsIgnoreCase("low") ? 1 : 0;
-				
+
 				if (StringUtils.isBlank(wordMatch.getCategory())) {
 					noCategory++;
 				}
@@ -157,6 +167,10 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	@Override
 	public double getFleschReadingEase(long wordCount, long sentenceCount, long syllableCount) {
 
+		if (wordCount < 100) {
+			return 0.0;
+		}
+
 		final double baseConstant = 206.835;
 		final double sentenceLengthRatio = 1.015;
 		final double syllableRatio = 84.6;
@@ -165,7 +179,7 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 
 		return (baseConstant - (sentenceLengthRatio * ASL) - (syllableRatio * ASW));
 	}
-	
+
 	/**
 	 * Predicate to determine what is a valid word.
 	 * 
@@ -178,14 +192,14 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 			if (value.length() > 1) {
 				return true;
 			}
-			
+
 			if ((value.length() == 1) && Character.isLetterOrDigit(w.getInitialValue().toCharArray()[0])) {
 				return true;
 			}
 			return false;
 		};
 	}
-	
+
 	/**
 	 * Gets a total of all the syllables in a text.
 	 * 
