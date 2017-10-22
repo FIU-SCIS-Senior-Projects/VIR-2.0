@@ -53,4 +53,22 @@ public class SimpleWordServiceTest {
 		final String expected = "deer";
 		assertEquals(expected, wordService.getSingular(word));
 	}
+	
+	@Test
+	public void countSyllables_WithDeer_Returns1() throws Exception {
+		final String word = "deer";
+		assertEquals(1, wordService.countSyllables(word));
+	}
+	
+	@Test
+	public void countSyllables_WithAccepted_Returns3() throws Exception {
+		final String word = "accepted";
+		assertEquals(3, wordService.countSyllables(word));
+	}
+	
+	@Test
+	public void countSyllables_WithAsked_Returns1() throws Exception {
+		final String word = "asked";
+		assertEquals(1, wordService.countSyllables(word));
+	}
 }
