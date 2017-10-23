@@ -11,18 +11,27 @@
 # Become a super user
 sudo su -
 
+# Install dependencies
+yum install pango libpng ghostscript-fonts ghostscript
+
 # Start installation
 cd /opt
 wget http://www.imagemagick.org/download/ImageMagick.tar.gz
 tar xvzf ImageMagick.tar.gz
-cd ImageMagick-7.0.7-7
+cd ImageMagick-7.0.7-8
 touch configure
-./configure
+./configure --with-gslib=yes
 make
 make install
 ldconfig /usr/local/lib
 /usr/local/bin/convert logo: logo.gif
+
+# Check the installation
+# Some of these tests will faail no matter what. Feel free to research
+# and improve the script. 
+# They seem not to have any impact in work so far.
 make check
 
 # Clean up
- rm -fr ImageMagick*.tar.gz
+cd ..
+rm -fr ImageMagick*.tar.gz
