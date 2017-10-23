@@ -2,6 +2,7 @@ package com.vir.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,15 +26,18 @@ public class Word implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "[id]")
 	private Long id;
 
+	@Column(name = "[value]")
 	private String value;
 
+	@Column(name = "[category]")
 	private String category;
 
 	public Word() {
 	}
-	
+
 	public Word(String value, String category) {
 		super();
 		this.value = value;

@@ -27,7 +27,7 @@ public class DictionaryEntryController {
 	
 	@ApiOperation("Get's the definition for a word.")
 	@GetMapping(value = "/entries/{wordId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Dictionary getEntry(
+	public Dictionary getEntry (
 			@PathVariable("wordId") String wordId,
 			@RequestParam(value = "source", required=true) List<SourceType> sources) throws Exception {
 		return simpleDictionaryEntryService.getEntry(wordId, sources);

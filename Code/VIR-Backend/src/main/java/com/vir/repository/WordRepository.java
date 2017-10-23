@@ -24,6 +24,6 @@ public interface  WordRepository extends JpaRepository<Word, Long> {
 	@Transactional
     Long removeByValue(String value);
 
-	Page<Word> findAlByCategory(Pageable pageable, String category);
+	Page<Word> findAllByCategory(Pageable pageable, String category);
 }
 	

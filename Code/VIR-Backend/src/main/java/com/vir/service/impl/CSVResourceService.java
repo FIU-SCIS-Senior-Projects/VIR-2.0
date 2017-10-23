@@ -72,8 +72,8 @@ public class CSVResourceService implements ResourceService {
 		List<CSVRecord> records = parseRecords(file);
 
 		if (!hasValidHeaders(records.get(0))) {
-			String error = String.format("Headers should be specified as follows and in the same order:\n %s, %s",
-					HEADER_VALUE, HEADER_CATEGORY);
+			String error = String.format("Headers should be specified as follows and in the same order: '%s', '%s' and we found %s",
+					HEADER_VALUE, HEADER_CATEGORY, records.get(0));
 			throw new HeaderMalformattedError(error);
 		}
 

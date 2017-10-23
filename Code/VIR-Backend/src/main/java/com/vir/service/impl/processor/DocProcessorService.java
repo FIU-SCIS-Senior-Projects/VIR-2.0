@@ -2,6 +2,7 @@ package com.vir.service.impl.processor;
 
 import java.io.InputStream;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.exception.UnparseableContentException;
 import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
@@ -35,8 +37,11 @@ public class DocProcessorService implements FileProcessorService {
 		InputStream stream = file.getInputStream();
 		parser.parse(stream, handler, new Metadata(), parseContext);
 
+		if (StringUtils.isEmpty(handler.toString().trim())) {
+			throw new UnparseableContentException("Could not parse the file.");
+		}
+		
 		return textProcessorService.process(handler.toString());
-
 	}
 
 }
