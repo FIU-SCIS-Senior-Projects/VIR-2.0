@@ -9,6 +9,7 @@ public class Percent {
 	private double noCategory;
 	private double total;
 
+	@SuppressWarnings("unused")
 	private Percent() {
 	}
 

@@ -5,6 +5,7 @@ public class Statistics {
 	private Count wordCount;
 	private Percent wordPercentage;
 
+	@SuppressWarnings("unused")
 	private Statistics() {
 	}
 
