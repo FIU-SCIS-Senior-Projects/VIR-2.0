@@ -1,10 +1,10 @@
 <!-- Buttons - Visible only on desktops-->
 <div class="container">
   <div class="btn-group hidden-sm-down">
-    <button type="button" class="btn btn-primary" (click)="getAWLWordList(awlpage)">AWL</button>
-    <button type="button" class="btn btn-danger" (click)="getHIWordList(hipage)">High Frequency</button>
-    <button type="button" class="btn btn-success" (click)="getMedWordList(medpage)">Medium Frequency</button>
-    <button type="button" class="btn btn-warning" (click)="getLowWordList(lowpage)">Low Frequency</button>
+    <button type="button" class="btn btn-primary" (click)="updateCategory('awl')">AWL</button>
+    <button type="button" class="btn btn-danger" (click)="updateCategory('hi')">High Frequency</button>
+    <button type="button" class="btn btn-success" (click)="updateCategory('med')">Medium Frequency</button>
+    <button type="button" class="btn btn-warning" (click)="updateCategory('low')">Low Frequency</button>
   </div>
 </div>
 
@@ -56,7 +56,7 @@
       (pageChange)="getHIWordList(hipage)" [boundaryLinks]="true"></ngb-pagination>
 
     <hr>
-    
+
     <pre>Current page: {{hipage}}</pre>
   </div>
 
@@ -74,7 +74,7 @@
   <div *ngIf="lowPagination">
     <ngb-pagination [collectionSize]="text.totalElements" [pageSize]="20" [(page)]="lowpage" [maxSize]="5" [rotate]="true" [ellipses]="false"
       (pageChange)="getLowWordList(lowpage)" [boundaryLinks]="true"></ngb-pagination>
-
+      
     <hr>
 
     <pre>Current page: {{lowpage}}</pre>

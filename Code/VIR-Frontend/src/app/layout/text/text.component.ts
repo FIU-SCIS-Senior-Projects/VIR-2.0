@@ -2,7 +2,7 @@ import { Component, Input, NgModule, OnInit} from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { TextService, IText, IWord, IStatistics } from '../../shared'
+import { TextService, IText, IWordMatch, IStatistics } from '../../shared'
 import { Router } from '@angular/router';
 
 @Component({
