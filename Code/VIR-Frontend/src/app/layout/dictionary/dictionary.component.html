@@ -1,0 +1,82 @@
+<!-- Buttons - Visible only on desktops-->
+<div class="container">
+  <div class="btn-group hidden-sm-down">
+    <button type="button" class="btn btn-primary" (click)="getAWLWordList(awlpage)">AWL</button>
+    <button type="button" class="btn btn-danger" (click)="getHIWordList(hipage)">High Frequency</button>
+    <button type="button" class="btn btn-success" (click)="getMedWordList(medpage)">Medium Frequency</button>
+    <button type="button" class="btn btn-warning" (click)="getLowWordList(lowpage)">Low Frequency</button>
+  </div>
+</div>
+
+<!-- Buttons - Visible only on cellphones-->
+<div class="container">
+  <div class="btn-group hidden-md-up" style="width: 200%;">
+    <button type="button" class="btn btn-primary" (click)="getAWLWordList(page)">AWL</button>
+    <button type="button" class="btn btn-danger" (click)="getHIWordList(page)">High Frequency</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="btn-group hidden-md-up" style="width: 200%;">
+    <button type="button" class="btn btn-success" (click)="getMedWordList(page)">Medium Frequency</button>
+    <button type="button" class="btn btn-warning" (click)="getLowWordList(page)">Low Frequency</button>
+  </div>
+</div>
+
+<!--Table-->
+<div class='table-responsive table-hover table-striped' *ngIf='turnOn'>
+  <table class='table table-hover'>
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let word of text.content'>
+        <td ngbPopover="definition" placement="top">{{ word.value }}</td>
+        <td>{{ word.category }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!--Table Pagination for AWL-->
+  <div *ngIf="awlPagination">
+    <ngb-pagination [collectionSize]="text.totalElements" [pageSize]="20" [(page)]="awlpage" [maxSize]="5" [rotate]="true" [ellipses]="false"
+      (pageChange)="getAWLWordList(awlpage)" [boundaryLinks]="true"></ngb-pagination>
+
+    <hr>
+
+    <pre>Current page: {{awlpage}}</pre>
+  </div>
+
+  <!--Table Pagination for hi-->
+  <div *ngIf="hiPagination">
+    <ngb-pagination [collectionSize]="text.totalElements" [pageSize]="20" [(page)]="hipage" [maxSize]="5" [rotate]="true" [ellipses]="false"
+      (pageChange)="getHIWordList(hipage)" [boundaryLinks]="true"></ngb-pagination>
+
+    <hr>
+    
+    <pre>Current page: {{hipage}}</pre>
+  </div>
+
+  <!--Table Pagination for med-->
+  <div *ngIf="medPagination">
+    <ngb-pagination [collectionSize]="text.totalElements" [pageSize]="20" [(page)]="medpage" [maxSize]="5" [rotate]="true" [ellipses]="false"
+      (pageChange)="getMedWordList(medpage)" [boundaryLinks]="true"></ngb-pagination>
+
+    <hr>
+
+    <pre>Current page: {{medpage}}</pre>
+  </div>
+
+  <!--Table Pagination for low-->
+  <div *ngIf="lowPagination">
+    <ngb-pagination [collectionSize]="text.totalElements" [pageSize]="20" [(page)]="lowpage" [maxSize]="5" [rotate]="true" [ellipses]="false"
+      (pageChange)="getLowWordList(lowpage)" [boundaryLinks]="true"></ngb-pagination>
+
+    <hr>
+
+    <pre>Current page: {{lowpage}}</pre>
+  </div>
+</div>

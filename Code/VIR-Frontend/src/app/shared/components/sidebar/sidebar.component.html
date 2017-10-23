@@ -61,41 +61,9 @@
 			</li>
 		</div>
 
-
-		<div class="nested-menu">
-			<a class="list-group-item" (click)="addExpandClass('dictionary')">
-				<span>
-					<i class="fa fa-plus"></i>&nbsp; {{ 'dictionary' | translate }}</span>
-			</a>
-			<li class="nested" [class.expand]="showMenu === 'dictionary'">
-				<ul class="submenu">
-					<li>
-						<a [routerLink]="['/awk']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'AWK' | translate }}
-						</a>
-					</li>
-					<li>
-						<a [routerLink]="['/lowfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'low frequency' | translate }}
-						</a>
-					</li>
-					<li>
-						<a [routerLink]="['/mediumfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'medium frequency' | translate }}
-						</a>
-					</li>
-					<li>
-						<a [routerLink]="['/highfrequency']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'high frequency' | translate }}
-						</a>
-					</li>
-				</ul>
-			</li>
-		</div>
-
-
-		<a [routerLink]="['#']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-			<i class="fa fa-fw fa-info-circle"></i>&nbsp;{{ 'instruction' | translate }}
+		<a routerLink="/dictionary" [routerLinkActive]="['router-link-active']" class="list-group-item">
+			<i class="fa fa-fw fa-home"></i>&nbsp;{{ 'word lists' | translate }}
 		</a>
+
 	</ul>
 </nav>

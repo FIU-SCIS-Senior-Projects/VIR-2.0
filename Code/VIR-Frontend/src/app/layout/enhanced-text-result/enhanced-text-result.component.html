@@ -7,9 +7,9 @@
 		<div class="col-4 col-md-4" (window:resize)="onResize($event)">
 			<div class="float-right">
 				<button type="button" class="btn btn-warning" (click)="backClicked()">
-					<i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
+					<i class="fa fa-step-backward" aria-hidden="true"></i>{{backLabel}}</button>
 				<button type="button" class="btn btn-success">
-					<i class="fa fa-pie-chart" aria-hidden="true" ></i>{{statisticsLabel}}</button>
+					<i class="fa fa-pie-chart" aria-hidden="true"></i>{{statisticsLabel}}</button>
 			</div>
 		</div>
 	</div>
@@ -34,6 +34,10 @@
 				<span>AWL</span>
 				<div class="foo goldBox"></div>
 			</div>
+			<div class="col-md-3 col-6">
+				<span>None</span>
+				<div class="foo blackBox"></div>
+			</div>
 		</div>
 	</div>
 	<hr>
@@ -41,14 +45,16 @@
 	<!--Print each word from the word object and color it base on the category -->
 	<div class="enhancedTextbox equalLength">
 		<div class="oneLine" *ngFor='let word of text.words'>
-			<span [class] = "word.category">{{word.initialValue}} </span>
-			<div class="oneLine" *ngIf="word.initialValue == ''"><br></div>
+			<span [class]="word.category">{{word.initialValue}} </span>
+			<div class="oneLine" *ngIf="word.initialValue == ''">
+				<br>
+			</div>
 		</div>
 	</div>
 </div>
 
 
-<!--if page refreshes it promt the user to go to the previous page-->
+<!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
 	<div class="row">
 		<div class="col-6">
@@ -56,7 +62,8 @@
 		</div>
 		<div class="col-6" (window:resize)="onResize($event)">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" (click)="backClicked()"><i class="fa fa-step-backward" aria-hidden="true" ></i>{{backLabel}}</button>
+				<button type="button" class="btn btn-warning" (click)="backClicked()">
+					<i class="fa fa-step-backward" aria-hidden="true"></i>{{backLabel}}</button>
 			</div>
 		</div>
 	</div>
