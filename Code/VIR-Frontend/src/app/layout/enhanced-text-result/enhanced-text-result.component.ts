@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { TextService, IText, IWord, IDefinition, DefinitionService } from '../../shared'
+import { TextService, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextService, IText, IWord, IStatistics } from '../../shared'
+import { TextService, IText, IWordMatch, IStatistics } from '../../shared'
 import { Router } from '@angular/router';
 
 @Component({
