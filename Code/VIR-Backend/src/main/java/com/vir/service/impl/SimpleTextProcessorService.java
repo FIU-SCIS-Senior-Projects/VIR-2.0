@@ -111,7 +111,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	}
 
 	@Override
-	public long countWords(Text text) {
+	public long countWords(List<WordMatch> words) {
 		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
 	}
 

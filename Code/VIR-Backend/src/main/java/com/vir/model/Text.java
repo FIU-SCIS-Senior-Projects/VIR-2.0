@@ -1,6 +1,5 @@
 package com.vir.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -16,7 +15,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Text {
 
 	private List<WordMatch> words;
-	private Double FleschReadingScore;
+	private Double fleschReadingScore;
 	private Statistics statistics;
 	private Long sentenceCount;
 
@@ -32,7 +31,22 @@ public class Text {
 	}
 	
 	public Text() {
-		this.words = new ArrayList<>();
+
+	}
+	
+	public Text(List<WordMatch> words, Double fleschReadingScore, Statistics statistics, Long sentenceCount) {
+		this.words = words;
+		this.fleschReadingScore = fleschReadingScore;
+		this.statistics = statistics;
+		this.sentenceCount = sentenceCount;
+	}
+
+	public Double getFleschReadingScore() {
+		return fleschReadingScore;
+	}
+
+	public void setFleschReadingScore(Double fleschReadingScore) {
+		this.fleschReadingScore = fleschReadingScore;
 	}
 
 	public List<WordMatch> getWords() {
@@ -41,14 +55,6 @@ public class Text {
 
 	public void setWords(List<WordMatch> words) {
 		this.words = words;
-	}
-
-	public Double getFleschReadingScore() {
-		return FleschReadingScore;
-	}
-
-	public void setFleschReadingScore(Double fleschReadingScore) {
-		FleschReadingScore = fleschReadingScore;
 	}
 
 	public Statistics getStatistics() {
