@@ -25,7 +25,7 @@ public class TesseractPropertiesConfig {
 		return properties;
 	}
 	
-	public class TesseractProperties {
+	public static class TesseractProperties {
 		public String tessdataPrefix;
 		public String tesseractPath;
 		public String imageMagickPath;
