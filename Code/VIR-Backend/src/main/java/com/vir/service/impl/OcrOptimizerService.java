@@ -58,7 +58,6 @@ public class OcrOptimizerService {
 	 */
 	public Mat deskew(Mat image) {
 
-		// Mat result = new Mat();
 		Core.bitwise_not(image, image);
 		Imgproc.threshold(image, image, 0, 255, THRESH_BINARY + THRESH_OTSU);
 
