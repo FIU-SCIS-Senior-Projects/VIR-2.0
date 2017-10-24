@@ -7,7 +7,7 @@ import { TextService } from './shared';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    providers:[ TextService ]
+    providers: [ TextService ]
 })
 export class AppComponent {
     constructor(private translate: TranslateService) {
