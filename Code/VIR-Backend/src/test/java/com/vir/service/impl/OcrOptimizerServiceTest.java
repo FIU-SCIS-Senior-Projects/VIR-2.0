@@ -20,13 +20,17 @@ public class OcrOptimizerServiceTest {
 	
 	@Autowired
 	private OcrOptimizerService ocrOptimizerService;
-
+	
 	@Test
 	public void deskew_withASkewedImage_returnsADeskewedImage() throws Exception {
 		
 		final String filePath= "ocr_optimizer/skewed_image.jpg";
 		InputStream stream = new ClassPathResource(filePath).getInputStream();	
 		Mat image = IOHelper.inputStreamToMat(stream);
+		
+		// We need to turn it to greyscale using Opencv.
+		image = ocrOptimizerService.convertToGreyScaleOpencv(image);
+		
 		Mat deskewedImage = ocrOptimizerService.deskew(image);
 		
 		Mat reDeskewedImage = ocrOptimizerService.deskew(deskewedImage);
