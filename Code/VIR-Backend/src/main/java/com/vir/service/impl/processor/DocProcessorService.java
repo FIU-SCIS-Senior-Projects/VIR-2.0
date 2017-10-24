@@ -1,8 +1,7 @@
 package com.vir.service.impl.processor;
 
-import java.io.InputStream;
-
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
@@ -31,17 +30,14 @@ public class DocProcessorService implements FileProcessorService {
 		
 		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
-
 		ParseContext parseContext = new ParseContext();
 
-		InputStream stream = file.getInputStream();
-		parser.parse(stream, handler, new Metadata(), parseContext);
-
-		if (StringUtils.isEmpty(handler.toString().trim())) {
-			throw new UnparseableContentException("Could not parse the file.");
+		try (TikaInputStream stream = TikaInputStream.get(file.getInputStream())) {
+			parser.parse(stream, handler, new Metadata(), parseContext);
+			if (StringUtils.isEmpty(handler.toString().trim())) {
+				throw new UnparseableContentException("Could not parse the file.");
+			}
+			return textProcessorService.process(handler.toString());
 		}
-		
-		return textProcessorService.process(handler.toString());
 	}
-
 }

@@ -3,6 +3,7 @@ package com.vir.service.impl.processor;
 import java.io.InputStream;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
@@ -40,21 +41,31 @@ public class ImgProcessorService implements FileProcessorService {
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
 
-		Parser JpegParser = new AutoDetectParser();
+		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler();
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
 	
-		// Optimize the image for OCR
-		Mat image = IOHelper.inputStreamToMat(file.getInputStream());
-		Mat optimizedImage = ocrOptimizerService.optimize(image);
-		InputStream processedImage = IOHelper.matToInputStream(optimizedImage);
-		
-		JpegParser.parse(processedImage, handler, new Metadata(), parseContext);
-
-		if (StringUtils.isEmpty(handler.toString().trim())) {
-			throw new UnparseableContentException("Could not parse the file.");
+		try (InputStream fileStream = file.getInputStream()) {
+			
+			Mat image = IOHelper.inputStreamToMat(fileStream);
+			Mat optimizedImage = ocrOptimizerService.optimize(image);
+			
+			try (InputStream processedImage = IOHelper.matToInputStream(optimizedImage);
+					TikaInputStream stream = TikaInputStream.get(processedImage);) {
+				
+				parser.parse(stream, handler, new Metadata(), parseContext);
+				
+				if (StringUtils.isEmpty(handler.toString().trim())) {
+					throw new UnparseableContentException("Could not parse the file.");
+				}
+				
+				return textProcessorService.process(handler.toString());
+			} finally {
+				// Make sure to close all matrices explicitly
+				image.release();
+				optimizedImage.release();
+			}
 		}
-		return textProcessorService.process(handler.toString());
 	}
 }

@@ -51,6 +51,15 @@
 			</div>
 		</div>
 	</div>
+
+
+	<!-- <div [innerHtml]="wordDefinition.html"></div> -->
+
+	<button type="button" (click)="getDefinition()">
+		
+	</button>
+	<div *ngIf='wordDefinition.html'>{{wordDefinition?.html}}</div>
+
 </div>
 
 
@@ -72,5 +81,4 @@
 	<div>
 		<h4> Please go back</h4>
 	</div>
-
 </ng-template>

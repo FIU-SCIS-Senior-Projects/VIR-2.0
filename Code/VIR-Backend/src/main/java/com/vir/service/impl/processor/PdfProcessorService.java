@@ -1,8 +1,7 @@
 package com.vir.service.impl.processor;
 
-import java.io.InputStream;
-
 import org.apache.commons.lang3.StringUtils;
+import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
@@ -28,10 +27,10 @@ public class PdfProcessorService implements FileProcessorService {
 	@Autowired
 	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
-	
+
 	@Autowired
 	private TesseractConfigurationService tessConfiguration;
-	
+
 	@Override
 	public Text process(MultipartFile file, FileType type) throws Exception {
 
@@ -40,19 +39,18 @@ public class PdfProcessorService implements FileProcessorService {
 
 		PDFParserConfig pdfConfig = new PDFParserConfig();
 		pdfConfig.setExtractInlineImages(true);
-				
+
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
 		parseContext.set(PDFParserConfig.class, pdfConfig);
 		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
 
-		InputStream stream = file.getInputStream();
-		parser.parse(stream, handler, new Metadata(), parseContext);
-
-		if (StringUtils.isEmpty(handler.toString().trim())) {
-			throw new UnparseableContentException("Could not parse the file.");
+		try (TikaInputStream stream = TikaInputStream.get(file.getInputStream())) {
+			parser.parse(stream, handler, new Metadata(), parseContext);
+			if (StringUtils.isEmpty(handler.toString().trim())) {
+				throw new UnparseableContentException("Could not parse the file.");
+			}
+			return textProcessorService.process(handler.toString());
 		}
-		
-		return textProcessorService.process(handler.toString());
 	}
 }
