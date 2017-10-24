@@ -1,5 +1,8 @@
 package com.vir.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Count {
 
 	private long awl;
@@ -20,6 +23,18 @@ public class Count {
 		this.noCategory = noCategory;
 		this.total = this.awl + this.hi + this.med + this.low + this.noCategory;
 	}
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Count that = (Count) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
 	public long getAwl() {
 		return awl;
 	}
