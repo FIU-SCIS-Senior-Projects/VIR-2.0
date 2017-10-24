@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -13,6 +16,17 @@ public class HeadwordEntry {
 	private List<Pronunciation> pronunciations;
 	private String type;
 	private String word;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		HeadwordEntry that = (HeadwordEntry) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public String getId() {
 		return id;

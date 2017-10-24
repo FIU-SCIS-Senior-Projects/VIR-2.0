@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -15,6 +18,17 @@ public class Example {
 	private List<String> senseIds;
 	private String text;
 	private List<Translation> translations;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Example that = (Example) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public List<String> getDefinitions() {
 		return definitions;

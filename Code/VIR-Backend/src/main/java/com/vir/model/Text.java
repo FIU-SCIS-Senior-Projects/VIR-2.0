@@ -3,6 +3,9 @@ package com.vir.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Class to hold the list of words. In a way an abstract representation of a
  * text fragment.
@@ -17,6 +20,17 @@ public class Text {
 	private Statistics statistics;
 	private Long sentenceCount;
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Text that = (Text) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
 	public Text() {
 		this.words = new ArrayList<>();
 	}
