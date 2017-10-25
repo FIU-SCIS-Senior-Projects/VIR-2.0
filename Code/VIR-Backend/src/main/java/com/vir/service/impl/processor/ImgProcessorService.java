@@ -57,6 +57,7 @@ public class ImgProcessorService implements FileProcessorService {
 			optimizedImage = ocrOptimizerService.optimize(image);
 			
 			try (InputStream processedImage = IOHelper.matToInputStream(optimizedImage)) {
+			
 				JpegParser.parse(processedImage, handler, new Metadata(), parseContext);
 				
 				if (StringUtils.isEmpty(handler.toString().trim())) {
