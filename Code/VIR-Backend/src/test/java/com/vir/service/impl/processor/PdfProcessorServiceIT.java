@@ -28,12 +28,6 @@ public class PdfProcessorServiceIT {
 	private FileProcessorService pdfProcessorService;
 
 	@Test
-	public void process_WithLargeBook_ReturnsAString() throws Exception {
-		final String filePath= BASE_PATH + "/CK-12-Algebra-I-Concepts-Honors_b_v57_htr_s1.pdf";
-		checkSomethingWasParsed(filePath);
-	}
-
-	@Test
 	public void process_WithScannedColorBook_ReturnsAString() throws Exception {
 		final String filePath= BASE_PATH + "/Economics-2013-A-Page-26.pdf";
 		checkSomethingWasParsed(filePath);
