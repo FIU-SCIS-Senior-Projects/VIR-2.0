@@ -16,7 +16,6 @@ public class TesseractConfigurationService {
 		TesseractOCRConfig config = new TesseractOCRConfig();
 		config.setTessdataPath(tesseractProperties.tessdataPrefix);
 		config.setTesseractPath(tesseractProperties.tesseractPath);
-		config.setImageMagickPath(tesseractProperties.imageMagickPath);
 		config.setEnableImageProcessing(1);
 		return config;
 	}

@@ -12,22 +12,17 @@ public class TesseractPropertiesConfig {
 
 	@Value("${TESSERACT_PATH}")
 	private String tesseractPath;
-
-	@Value("${IMAGE_MAGICK_PATH}")
-	private String imageMagickPath;
 	
 	@Bean
 	TesseractProperties ocrConfig() {
 		TesseractProperties properties = new TesseractProperties();
 		properties.tessdataPrefix = this.tessdataPrefix;
 		properties.tesseractPath = this.tesseractPath;
-		properties.imageMagickPath = this.imageMagickPath;
 		return properties;
 	}
 	
 	public static class TesseractProperties {
 		public String tessdataPrefix;
 		public String tesseractPath;
-		public String imageMagickPath;
 	}
 }

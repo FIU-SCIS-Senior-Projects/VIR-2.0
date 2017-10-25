@@ -44,14 +44,14 @@ public class ImgProcessorService implements FileProcessorService {
 		BodyContentHandler handler = new BodyContentHandler();
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
-	
+		
 		// Optimize the image for OCR
 		Mat image = IOHelper.inputStreamToMat(file.getInputStream());
 		Mat optimizedImage = ocrOptimizerService.optimize(image);
 		InputStream processedImage = IOHelper.matToInputStream(optimizedImage);
 		
 		JpegParser.parse(processedImage, handler, new Metadata(), parseContext);
-
+		
 		if (StringUtils.isEmpty(handler.toString().trim())) {
 			throw new UnparseableContentException("Could not parse the file.");
 		}

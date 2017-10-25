@@ -21,98 +21,87 @@ import com.vir.helpers.IOHelper;
 import net.sourceforge.tess4j.util.ImageHelper;
 import nu.pattern.OpenCV;
 
-/**
-
- * @author Alfredo Lopez
- * 
- * Notes:
- * Load the library once. We use the constructor and Autowiring to make
- * sure we have this in our class path.
- * This method does a conversion to Opencv grey scale Other methods work
- * on the assumption that this has been run. We do this to preserve
- * memory been converted around.
- */
 @Service
 public class OcrOptimizerService {
 
+	/**
+	 * Load the library once. We use the constructor and Autowiring to make sure we
+	 * have this in our class path.
+	 */
 	public OcrOptimizerService() {
 		OpenCV.loadShared();
 	}
 
-	/**
-	 * Tries to optimize for Tesseract
-	 * 
-	 * @param image the image to optimize
-	 * @return the optimized image
-	 */
-	public Mat optimize(Mat image) {
-		Mat grey = convertToGreyScaleOpencv(image);
-		return deskew(threshold(grey));
+	public Mat optimize(Mat image) throws Exception {
+
+		Mat result;
+		result = deskew(image);
+		result = convertToGreyScaleOpencv(image);
+		result = threshold(result);
+		
+		return result;
 	}
 
-	/**
-	 * Tries to deskew an image
-	 * 
-	 * @param image the image to deskew
-	 * @return the deskewed image
-	 */
 	public Mat deskew(Mat image) {
 
-		Core.bitwise_not(image, image);
-		Imgproc.threshold(image, image, 0, 255, THRESH_BINARY + THRESH_OTSU);
+		Mat result = new Mat();
+
+		convertToGreyScaleOpencv(image);
+		Core.bitwise_not(image, result);
+		Imgproc.threshold(result, result, 0, 255, THRESH_BINARY + THRESH_OTSU);
 
 		// Get the deskewed angle and rotate.
-		double angle = getAngle(image);
+		double angle = getAngle(result);
 
 		// Do the rotation transformation.
-		Point center = new Point(image.width() / 2, image.height() / 2);
+		Point center = new Point(result.width() / 2, result.height() / 2);
 		Mat rotImage = Imgproc.getRotationMatrix2D(center, angle, 1.0);
-		Size size = new Size(image.width(), image.height());
-		Imgproc.warpAffine(image, image, rotImage, size, INTER_LINEAR + CV_WARP_FILL_OUTLIERS);
+		Size size = new Size(result.width(), result.height());
+		Imgproc.warpAffine(result, result, rotImage, size, INTER_LINEAR + CV_WARP_FILL_OUTLIERS);
 
 		// Revert the inversion.
-		Core.bitwise_not(image, image);
-		return image;
+		Core.bitwise_not(result, result);
+
+		return result;
 	}
 
 	/**
-	 * Converts to a grey scale. Only convert to grey is the image has more than 1
-	 * channel.
+	 * Converts to a grey scale.
 	 * 
 	 * @param matrix the matrix to convert.
 	 * @return the converted matrix.
 	 */
 	public Mat convertToGreyScaleOpencv(Mat matrix) {
+
+		// Only convert to grey is the image has more than 1 channel.
 		if (matrix.channels() > 1) {
 			Imgproc.cvtColor(matrix, matrix, COLOR_BGR2GRAY);
 		}
+
 		return matrix;
 	}
 
+	
 	/**
 	 * Converts to a grey scale using Tesseract.
 	 * 
 	 * @param matrix the matrix to convert.
 	 * @return the converted matrix.
-	 * @throws Exception
+	 * @throws Exception 
 	 */
 	public Mat convertToGreyScaleTess(Mat matrix) throws Exception {
 		BufferedImage grey = ImageHelper.convertImageToGrayscale(IOHelper.matToBufferedImage(matrix));
 		return IOHelper.bufferedImageToMat(grey);
 	}
-
-	/**
-	 * Performs image threshold using Opencv
-	 * 
-	 * @param matrix the matrix
-	 * @return the matrix after threshold
-	 */
-	public Mat threshold(Mat matrix) {
+	
+	public Mat threshold( Mat matrix) {
+		matrix = convertToGreyScaleOpencv(matrix);
 		GaussianBlur(matrix, matrix, new Size(5, 5), 0);
 		Imgproc.adaptiveThreshold(matrix, matrix, 255, Imgproc.ADAPTIVE_THRESH_MEAN_C, Imgproc.THRESH_BINARY, 15, 18);
 		return matrix;
 	}
-
+	
+	
 	/**
 	 * Helper method to determine the angle of skewness in a picture.
 	 * 
@@ -120,6 +109,7 @@ public class OcrOptimizerService {
 	 * @return the angle calculated.
 	 */
 	protected double getAngle(Mat matrix) {
+
 		Size size = matrix.size();
 		Mat lines = new Mat();
 		Imgproc.HoughLinesP(matrix, lines, 1, Math.PI / 180, 100, size.width / 2.f, 20);
