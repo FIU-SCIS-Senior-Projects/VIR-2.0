@@ -45,7 +45,8 @@ public class PdfProcessorService implements FileProcessorService {
 		parseContext.set(PDFParserConfig.class, pdfConfig);
 		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
 
-		try (InputStream stream = file.getInputStream(); TikaInputStream tikaStream = TikaInputStream.get(stream)) {
+		try (InputStream stream = file.getInputStream(); 
+				TikaInputStream tikaStream = TikaInputStream.get(stream)) {
 
 			parser.parse(tikaStream, handler, new Metadata(), parseContext);
 
