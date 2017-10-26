@@ -16,7 +16,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 public class Text {
 
 	private List<WordMatch> words;
-	private Double FleschReadingScore;
+	private Double fleschReadingScore;
 	private Statistics statistics;
 	private Long sentenceCount;
 
@@ -35,6 +35,13 @@ public class Text {
 		this.words = new ArrayList<>();
 	}
 
+	public Text(List<WordMatch> words, Double fleschReadingScore, Statistics statistics, Long sentenceCount) {
+		this.words = words;
+		this.fleschReadingScore = fleschReadingScore;
+		this.statistics = statistics;
+		this.sentenceCount = sentenceCount;
+	}
+
 	public List<WordMatch> getWords() {
 		return words;
 	}
@@ -44,11 +51,11 @@ public class Text {
 	}
 
 	public Double getFleschReadingScore() {
-		return FleschReadingScore;
+		return fleschReadingScore;
 	}
 
 	public void setFleschReadingScore(Double fleschReadingScore) {
-		FleschReadingScore = fleschReadingScore;
+		this.fleschReadingScore = fleschReadingScore;
 	}
 
 	public Statistics getStatistics() {

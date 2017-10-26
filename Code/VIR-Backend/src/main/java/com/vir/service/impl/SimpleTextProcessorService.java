@@ -51,7 +51,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 				result = map.get(initialString);
 			} else {
 				String cleanValue = wordService.removePunctuation(initialString);
-				
+
 				if (StringUtils.isEmpty(cleanValue)) {
 					result = new WordMatch(initialString);
 				} else {
@@ -71,8 +71,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	/**
 	 * Gets the list of strings from a text.
 	 * 
-	 * @param textString
-	 *            the string to split
+	 * @param textString the string to split
 	 * @return A list of strings
 	 * 
 	 *         Note: We make sure there is no more than two white spaces between the
@@ -92,10 +91,8 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	/**
 	 * Gets a word from a string.
 	 * 
-	 * @param cleanValue
-	 *            The clean value of the string
-	 * @param initialValue
-	 *            The initial value of the word.
+	 * @param cleanValue The clean value of the string
+	 * @param initialValue The initial value of the word.
 	 * @return A word if found, else and empty word with the initial value
 	 * 
 	 */
@@ -111,7 +108,7 @@ public class SimpleTextProcessorService implements TextProcessorService {
 	}
 
 	@Override
-	public long countWords(Text text) {
+	public long countWords(List<WordMatch> words) {
 		throw new NotImplementedException("This is not implemented. Check OptimizedTextProcessor");
 	}
 
