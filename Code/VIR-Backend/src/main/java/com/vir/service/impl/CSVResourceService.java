@@ -3,8 +3,8 @@ package com.vir.service.impl;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -42,10 +42,8 @@ public class CSVResourceService implements ResourceService {
 	@Override
 	public Resource get() {
 
-		Iterable<Word> wordIterable = wordRepository.findAll();
-		List<Word> words = new ArrayList<>();
-		wordIterable.iterator().forEachRemaining(words::add);
-
+		List<Word> words = wordRepository.findAll().stream().collect(Collectors.toList());
+		
 		StringWriter sw = new StringWriter();
 		try (CSVWriter csvWriter = new CSVWriter(sw)) {
 
@@ -54,10 +52,8 @@ public class CSVResourceService implements ResourceService {
 			String[] columns = new String[] { HEADER_ID, HEADER_VALUE, HEADER_CATEGORY };
 			mappingStrategy.setColumnMapping(columns);
 			// We need this otherwise we get an error.
-			// No getting it from the generic yet.
 			mappingStrategy.setType(Word.class);
 			bc.write(mappingStrategy, csvWriter, words);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,35 +64,32 @@ public class CSVResourceService implements ResourceService {
 	@Override
 	public Boolean save(MultipartFile file, Boolean replace) throws Exception {
 
-		List<Word> words = new ArrayList<>();
 		List<CSVRecord> records = parseRecords(file);
-
 		if (!hasValidHeaders(records.get(0))) {
 			String error = String.format("Headers should be specified as follows and in the same order: '%s', '%s' and we found %s",
 					HEADER_VALUE, HEADER_CATEGORY, records.get(0));
 			throw new HeaderMalformattedError(error);
 		}
 
-		long size = records.size();
-		for (int i = 1; i < size; i++) {
-			words.add(WordTranslator.fromCSVRecordToWord(records.get(i)));
-		}
-
+		List<Word> words = records
+							.stream()
+							.filter(r -> r.getRecordNumber() != 1)
+							.map(r -> WordTranslator.fromCSVRecordToWord(r))
+							.collect(Collectors.toList());
 		if (replace) {
 			wordRepositoryHelper.truncateWordTable();
 		}
-
+		
 		wordRepository.save(words);
-
 		return true;
 	}
 
 	private List<CSVRecord> parseRecords(MultipartFile file) throws IOException {
 		String[] columns = new String[] { HEADER_VALUE, HEADER_CATEGORY };
-		InputStreamReader is = new InputStreamReader(file.getInputStream());
-		CSVParser parser = CSVFormat.EXCEL.withHeader(columns).parse(is);
-		List<CSVRecord> records = parser.getRecords();
-		return records;
+		try (InputStreamReader is = new InputStreamReader(file.getInputStream());
+				CSVParser parser = CSVFormat.EXCEL.withHeader(columns).parse(is)) {
+			return parser.getRecords();
+		}
 	}
 
 	private boolean hasValidHeaders(CSVRecord firstRecord) {

@@ -1,5 +1,8 @@
 package com.vir.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Percent {
 
 	private double aws;
@@ -22,6 +25,17 @@ public class Percent {
 		this.total = (double) count.getTotal() / count.getTotal();
 	}
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Percent that = (Percent) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
 	public double getAws() {
 		return aws;
 	}

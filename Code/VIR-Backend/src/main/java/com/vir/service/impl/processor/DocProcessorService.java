@@ -20,20 +20,23 @@ import com.vir.service.TextProcessorService;
 
 @Service("docProcessorService")
 public class DocProcessorService implements FileProcessorService {
-	
+
 	@Autowired
 	@Qualifier("optimizedTextProcessorService")
 	private TextProcessorService textProcessorService;
 
 	@Override
-	public Text process(MultipartFile file, FileType type) throws Exception{
-		
+	public Text process(MultipartFile file, FileType type) throws Exception {
+
 		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
 		ParseContext parseContext = new ParseContext();
 
-		try (TikaInputStream stream = TikaInputStream.get(file.getInputStream())) {
-			parser.parse(stream, handler, new Metadata(), parseContext);
+		try (InputStream stream = file.getInputStream();
+				TikaInputStream tikaStream = TikaInputStream.get(stream)) {
+			
+			parser.parse(tikaStream, handler, new Metadata(), parseContext);
+			
 			if (StringUtils.isEmpty(handler.toString().trim())) {
 				throw new UnparseableContentException("Could not parse the file.");
 			}

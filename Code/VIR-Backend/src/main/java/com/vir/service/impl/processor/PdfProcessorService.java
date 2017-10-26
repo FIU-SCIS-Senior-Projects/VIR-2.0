@@ -36,20 +36,22 @@ public class PdfProcessorService implements FileProcessorService {
 
 		Parser parser = new AutoDetectParser();
 		BodyContentHandler handler = new BodyContentHandler(Integer.MAX_VALUE);
-
 		PDFParserConfig pdfConfig = new PDFParserConfig();
 		pdfConfig.setExtractInlineImages(true);
-
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
 		parseContext.set(PDFParserConfig.class, pdfConfig);
 		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
 
-		try (TikaInputStream stream = TikaInputStream.get(file.getInputStream())) {
-			parser.parse(stream, handler, new Metadata(), parseContext);
+		try (InputStream stream = file.getInputStream(); 
+				TikaInputStream tikaStream = TikaInputStream.get(stream)) {
+
+			parser.parse(tikaStream, handler, new Metadata(), parseContext);
+
 			if (StringUtils.isEmpty(handler.toString().trim())) {
 				throw new UnparseableContentException("Could not parse the file.");
 			}
+
 			return textProcessorService.process(handler.toString());
 		}
 	}

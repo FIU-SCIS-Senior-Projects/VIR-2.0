@@ -45,27 +45,30 @@ public class ImgProcessorService implements FileProcessorService {
 		BodyContentHandler handler = new BodyContentHandler();
 		ParseContext parseContext = new ParseContext();
 		parseContext.set(TesseractOCRConfig.class, tessConfiguration.getConfig());
-	
-		try (InputStream fileStream = file.getInputStream()) {
+		
+		Mat image= new Mat();
+		Mat optimizedImage = new Mat();
+		
+		try (InputStream stream = file.getInputStream();
+				TikaInputStream tikaStream = TikaInputStream.get(stream)) {
 			
-			Mat image = IOHelper.inputStreamToMat(fileStream);
-			Mat optimizedImage = ocrOptimizerService.optimize(image);
+			// Optimize the image for OCR
+			image = IOHelper.inputStreamToMat(tikaStream);
+			optimizedImage = ocrOptimizerService.optimize(image);
 			
-			try (InputStream processedImage = IOHelper.matToInputStream(optimizedImage);
-					TikaInputStream stream = TikaInputStream.get(processedImage);) {
-				
-				parser.parse(stream, handler, new Metadata(), parseContext);
+			try (InputStream processedImage = IOHelper.matToInputStream(optimizedImage)) {
+			
+				JpegParser.parse(processedImage, handler, new Metadata(), parseContext);
 				
 				if (StringUtils.isEmpty(handler.toString().trim())) {
 					throw new UnparseableContentException("Could not parse the file.");
 				}
 				
 				return textProcessorService.process(handler.toString());
-			} finally {
-				// Make sure to close all matrices explicitly
-				image.release();
-				optimizedImage.release();
 			}
+		} finally {
+			image.release();
+			optimizedImage.release();
 		}
 	}
 }

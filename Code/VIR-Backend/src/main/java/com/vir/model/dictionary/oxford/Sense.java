@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -20,6 +23,17 @@ public class Sense {
 	private List<Sense> subsenses;
 	private List<Translation> translations;
 	private List<VariantForm> variantForms;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Sense that = (Sense) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public List<String> getCrossReferenceMarkers() {
 		return crossReferenceMarkers;

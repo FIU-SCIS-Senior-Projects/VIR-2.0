@@ -4,6 +4,10 @@
 # ec2 instane get's damaged or lost                             #
 ################################################################
 
+# ==============================================================
+# This might not be necessary. You might not need it at all. 
+# I have it here because I thought it would be usefull.
+# ==============================================================
 
 # Read the link information on how to install ImageMagick from source
 # https://www.2daygeek.com/install-imagemagick-image-editor-convertor-on-ubuntu-centos-debian-fedora-mint-rhel-opensuse

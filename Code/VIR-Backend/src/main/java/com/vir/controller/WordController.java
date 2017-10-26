@@ -34,8 +34,7 @@ public class WordController {
 			@RequestParam(value = "sortKey", defaultValue = "value") String sortField,
 			@RequestParam(value = "sortDirection", defaultValue = "ASC") Direction direction) {
 
-		Sort sort = new Sort(direction, sortField);
-		PageRequest pageRequest = new PageRequest(page, size, sort);
+		PageRequest pageRequest = new PageRequest(page, size, new Sort(direction, sortField));
 		return wordRepository.findAllByCategory(pageRequest, category);
 	}
 }

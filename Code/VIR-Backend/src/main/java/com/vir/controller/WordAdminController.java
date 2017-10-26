@@ -33,7 +33,7 @@ public class WordAdminController {
 	
 	@ApiOperation("Finds all the words")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	Page<Word> findAll(
+	public Page<Word> findAll(
 			@RequestParam(value="page", defaultValue="0") int page,
 			@RequestParam(value="size", defaultValue="20") int size,
 			@RequestParam(value="sortKey", defaultValue="value") String sortField,
@@ -47,7 +47,7 @@ public class WordAdminController {
 	
 	@ApiOperation("Adds or modifies a word")
 	@RequestMapping(method= {RequestMethod.POST, RequestMethod.PUT}, produces = MediaType.APPLICATION_JSON_VALUE)
-	Word save(@RequestBody(required=true) Word word){
+	public Word save(@RequestBody(required=true) Word word){
 		
 		Word existing = wordRepository.findFirstByValue(word.getValue());
 		if (existing != null) {
@@ -58,7 +58,7 @@ public class WordAdminController {
 	
 	@ApiOperation("Finds a word by value")
 	@GetMapping(value = "{value}", produces = MediaType.APPLICATION_JSON_VALUE)
-	Word findOneByValue(@PathVariable(name="value", required=true) String value) {
+	public Word findOneByValue(@PathVariable(name="value", required=true) String value) {
 		
 		Word word = wordRepository.findFirstByValue(value);
 		
@@ -71,7 +71,7 @@ public class WordAdminController {
 	
 	@ApiOperation("Deletes a word by value")
 	@DeleteMapping(value="{value}", produces = MediaType.APPLICATION_JSON_VALUE)
-	void delete(@PathVariable(name="value", required=true) String value){
+	public void delete(@PathVariable(name="value", required=true) String value){
 		wordRepository.removeByValue(value);
 	}
 }

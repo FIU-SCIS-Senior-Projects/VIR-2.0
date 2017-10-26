@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -14,6 +17,17 @@ public class RelatedEntry {
 	private List<String> registers;
 	private String text;
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		RelatedEntry that = (RelatedEntry) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
 	public List<String> getDomains() {
 		return domains;
 	}

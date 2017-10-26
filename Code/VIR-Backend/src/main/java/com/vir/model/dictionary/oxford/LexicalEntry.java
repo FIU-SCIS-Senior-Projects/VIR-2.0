@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -16,6 +19,17 @@ public class LexicalEntry {
 	private List<Pronunciation> pronunciations;
 	private String text;
 	private List<VariantForm> variantForms;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		LexicalEntry that = (LexicalEntry) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public List<RelatedEntry> getDerivativeOf() {
 		return derivativeOf;
