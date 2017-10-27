@@ -62,7 +62,7 @@ public class PdfProcessorService implements FileProcessorService {
 			if (StringUtils.isEmpty(handler.toString().trim())) {
 				throw new UnparseableContentException("Could not parse the file.");
 			}
-
+			
 			return textProcessorService.process(handler.toString());
 		}
 	}
