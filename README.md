@@ -1,4 +1,4 @@
-# Up and running
+﻿# Up and running
 
 We will get you up an running in no time. 
 
@@ -37,6 +37,7 @@ If you are using a Unix like system make sure you give execution permitions to t
 │   ├── VIR-Android
 │   ├── VIR-Backend
 │   ├── VIR-Frontend
+│   ├── VIR-VBA
 │   ├── VIR-Scripts
 │   │   ├── install_image_magic_ec2.sh
 │   │   └── install_tesseract_ec2.sh
@@ -58,6 +59,7 @@ Code             | Contains all the code for the application.
 VIR-Android      | Contains all the code for the Android application.
 VIR-Backend      | Contains all the code for the backend of the application.
 VIR-Frontend     | Contains all the code for the frontend of the application.
+VIR-Frontend     | Contains all the code for a VBA workbook to help gather information from the professor and convert it to sql.
 VIR-Scripts      | Contains scripts for the application. (not used frequently)
 VIR-iPhone       | Contains all the code for the iPhone application.
 build.cmd        | Script to build the application from Windows.
