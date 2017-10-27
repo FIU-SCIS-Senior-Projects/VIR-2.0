@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.vir.service.FileProcessorService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Ignore
 public class PdfProcessorServiceIT {
 	
 	private static final String BASE_PATH = "integration_tests/pdf";
