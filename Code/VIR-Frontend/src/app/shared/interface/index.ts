@@ -6,3 +6,5 @@ export * from './IDefinition';
 export * from './IWord';
 export * from './IPage';
 export * from './IOrder';
+export * from './IWordCount';
+export * from './IWordPercentage';

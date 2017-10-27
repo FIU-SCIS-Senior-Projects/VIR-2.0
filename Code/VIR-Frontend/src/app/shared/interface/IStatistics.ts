@@ -1,7 +1,7 @@
+import { IWordPercentage } from './IWordPercentage';
+import { IWordCount } from './IWordCount';
+
 export interface IStatistics {
-    awlCount: number;
-    hiCount: number;
-    medCount: number;
-    lowCount: number;
-    total: number;
+    wordCount: IWordCount;
+    wordPercentage: IWordPercentage;
 }
