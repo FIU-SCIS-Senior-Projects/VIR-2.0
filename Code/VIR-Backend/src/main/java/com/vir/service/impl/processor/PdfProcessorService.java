@@ -1,6 +1,9 @@
 package com.vir.service.impl.processor;
 
+import java.io.InputStream;
+
 import org.apache.commons.lang3.StringUtils;
+import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.exception.PageLimitExceededException;
 import com.vir.exception.UnparseableContentException;
 import com.vir.model.FileType;
 import com.vir.model.Text;
@@ -23,6 +27,8 @@ import com.vir.service.impl.TesseractConfigurationService;
 
 @Service("pdfProcessorService")
 public class PdfProcessorService implements FileProcessorService {
+	
+	private static final int MAX_PAGES = 100;
 
 	@Autowired
 	@Qualifier("optimizedTextProcessorService")
@@ -44,8 +50,13 @@ public class PdfProcessorService implements FileProcessorService {
 		parseContext.set(Parser.class, parser); // need to add this to make sure recursive parsing happens!
 
 		try (InputStream stream = file.getInputStream(); 
-				TikaInputStream tikaStream = TikaInputStream.get(stream)) {
+				TikaInputStream tikaStream = TikaInputStream.get(stream);
+				PDDocument doc = PDDocument.load(stream)) {
 
+			if (doc.getNumberOfPages() > MAX_PAGES ) {
+				throw new PageLimitExceededException("Too many pages in the document. Please choose a document with less than" + MAX_PAGES);
+			}
+			
 			parser.parse(tikaStream, handler, new Metadata(), parseContext);
 
 			if (StringUtils.isEmpty(handler.toString().trim())) {

@@ -23,6 +23,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.vir.exception.ApiError;
+import com.vir.exception.HeaderMalformattedError;
+import com.vir.exception.PageLimitExceededException;
 import com.vir.exception.UnableToGetEntryException;
 import com.vir.exception.UnparseableContentException;
 
@@ -127,8 +129,22 @@ public class ExceptionAdviceController extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler({ UnparseableContentException.class })
 	public ResponseEntity<Object> handleUnparseableContent(Exception ex, WebRequest request) {
-		ApiError apiError = new ApiError(HttpStatus.NO_CONTENT,
-				"We were unable to parse the selected file", "error occurred");
+		ApiError apiError = new ApiError(HttpStatus.NO_CONTENT, "We were unable to parse the selected file",
+				"error occurred");
+		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+	}
+
+	@ExceptionHandler({ HeaderMalformattedError.class })
+	public ResponseEntity<Object> handleHeaderMalformattedError(Exception ex, WebRequest request) {
+		ApiError apiError = new ApiError(HttpStatus.NOT_ACCEPTABLE, "Headers for the file are not correct",
+				"error occurred");
+		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
+	}
+
+	@ExceptionHandler({ PageLimitExceededException.class })
+	public ResponseEntity<Object> handlePageLimitExceededException(Exception ex, WebRequest request) {
+		ApiError apiError = new ApiError(HttpStatus.NOT_ACCEPTABLE, "Page limit exceeded.",
+				"error occurred");
 		return new ResponseEntity<Object>(apiError, new HttpHeaders(), apiError.getStatus());
 	}
 	

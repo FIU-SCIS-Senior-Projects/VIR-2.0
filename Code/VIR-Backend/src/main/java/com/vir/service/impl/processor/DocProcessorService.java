@@ -1,5 +1,7 @@
 package com.vir.service.impl.processor;
 
+import java.io.InputStream;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;

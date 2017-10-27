@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.exception.ApiError;
 import com.vir.service.ResourceService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/api/admin/resources")
@@ -39,6 +42,10 @@ public class ResourceController {
 	}
 
 	@ApiOperation("Uploads words to the database")
+	@ApiResponses(value = { 
+			@ApiResponse(code = 400, message = "Generic error", response = ApiError.class),
+			@ApiResponse(code = 402, message = "The content from the file cannot be parsed", response = ApiError.class)
+			})
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public Boolean upload(
 			@RequestParam(value = "file", required = true) MultipartFile file,
