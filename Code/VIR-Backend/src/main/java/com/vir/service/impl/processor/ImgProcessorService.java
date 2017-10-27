@@ -58,7 +58,7 @@ public class ImgProcessorService implements FileProcessorService {
 			
 			try (InputStream processedImage = IOHelper.matToInputStream(optimizedImage)) {
 			
-				JpegParser.parse(processedImage, handler, new Metadata(), parseContext);
+				parser.parse(processedImage, handler, new Metadata(), parseContext);
 				
 				if (StringUtils.isEmpty(handler.toString().trim())) {
 					throw new UnparseableContentException("Could not parse the file.");
