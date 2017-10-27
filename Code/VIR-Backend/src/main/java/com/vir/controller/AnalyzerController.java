@@ -50,8 +50,9 @@ public class AnalyzerController {
 	@ApiOperation(value = "Analyzes a file input.")
 	@ApiResponses(value = { 
 			@ApiResponse(code = 400, message = "Generic error", response = ApiError.class),
-			@ApiResponse(code = 402, message = "The content from the file cannot be parsed", response = ApiError.class),
-			@ApiResponse(code = 415, message = "The content from the file cannot be parsed", response = ApiError.class) 
+			@ApiResponse(code = 415, message = "Unsupported media type", response = ApiError.class),
+			@ApiResponse(code = 406, message = "The content from the file cannot be parsed", response = ApiError.class),
+			@ApiResponse(code = 422, message = "Page limit exeeded", response = ApiError.class)
 			})
 	@PostMapping(value = "/analyzeFile", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Text analize(@RequestParam(name = "file", required = true) MultipartFile file,
