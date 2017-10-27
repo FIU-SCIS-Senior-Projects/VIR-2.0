@@ -1,3 +1,8 @@
+<!--Alert-->
+<div class="alert alert-danger" role="alert" *ngIf='error'>
+	<strong>Oh snap!</strong> We couldn't find the definition, please try another word.
+</div>
+
 <!--if it sees the object it will show the result, else it prompt the user to go back-->
 <div *ngIf="text;  else elseBlock">
 	<div class="row">
@@ -15,53 +20,59 @@
 	</div>
 	<hr>
 
-	<!--Colors Information -->
+	<!--Category Colors Information -->
 	<div class="container center">
 		<div class="row center">
 			<div class="col-md-3 col-6">
 				<span>High Frequency</span>
-				<span class="foo blueBox"></span>
+				<span class="box blueBox"></span>
 			</div>
 			<div class="col-md-3 col-6">
 				<span>Med Frequency</span>
-				<div class="foo redBox"></div>
+				<div class="box redBox"></div>
 			</div>
 			<div class="col-md-3 col-6">
 				<span>Low Frequency</span>
-				<div class="foo greenBox"></div>
+				<div class="box greenBox"></div>
 			</div>
 			<div class="col-md-3 col-6">
 				<span>AWL</span>
-				<div class="foo goldBox"></div>
+				<div class="box goldBox"></div>
 			</div>
 			<div class="col-md-3 col-6">
-				<span>None</span>
-				<div class="foo blackBox"></div>
+				<span>No Category</span>
+				<div class="box blackBox"></div>
 			</div>
 		</div>
 	</div>
 	<hr>
 
-	<!--Print each word from the word object and color it base on the category -->
-	<div class="enhancedTextbox equalLength">
-		<div class="oneLine" *ngFor='let word of text.words'>
-			<span [class]="word.category">{{word.initialValue}} </span>
-			<div class="oneLine" *ngIf="word.initialValue == ''">
-				<br>
-			</div>
+
+	<div class="card" style="overflow-y: scroll; height:200px;" *ngIf='definitionBox'>
+		<h3 class="card-header"><img src="assets/images/Wikipedia-logo.png"  title="Wikipedia Dictionary" style="width:50px;height:50px;"> Definition &nbsp;&nbsp;
+			<i class="fa fa-spinner fa-spin" style="font-size:32px;color:black" *ngIf='processing'></i>
+			<button type="button" class="btn btn-warning float-right" (click)="hideDefinitionBox()">
+				<i class="fa fa-minus-square" aria-hidden="true"></i> Hide</button>
+		</h3>
+		<div class="card-block">
+			<p class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
 		</div>
 	</div>
 
 
-	<!-- <div [innerHtml]="wordDefinition.html"></div> -->
-
-	<button type="button" (click)="getDefinition()">
-		
-	</button>
-	<div *ngIf='wordDefinition.html'>{{wordDefinition?.html}}</div>
+	<!--Print each word from the word object and color it base on the category -->
+	<div class="enhancedTextbox equalLength" *ngIf='turnOn'>
+		<div class="oneLine" *ngFor='let word of text.words'>
+			<span [class]="word.category" (click)="getDefinition(word.initialValue)">
+				<a href="javascript:void(0)">{{word.initialValue}}</a>
+			</span>
+			<span class="oneLine" *ngIf="word.initialValue == ''">
+				<br>
+			</span>
+		</div>
+	</div>
 
 </div>
-
 
 <!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
