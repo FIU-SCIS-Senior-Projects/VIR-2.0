@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vir.model.DictionaryEntry;
 
@@ -10,6 +13,17 @@ public class RetrieveEntry implements DictionaryEntry {
 
 	private Object metadata;
 	private List<HeadwordEntry> results;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		RetrieveEntry that = (RetrieveEntry) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public Object getMetadata() {
 		return metadata;

@@ -63,27 +63,28 @@ wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/fas.traineddata # Far
 wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/spa.traineddata # Spanish
 wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/osd.traineddata # Non standard language, might be needed, do not leave out
 
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ben.traineddata # Bengali
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.traineddata # Hindi
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/tha.traineddata # Thai
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ara.traineddata # Arabic
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ell.traineddata # Greek Modern
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/equ.traineddata # Mathematical Equations
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/heb.traineddata # Hebrew
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/rus.traineddata # Russian
+# These are all optional install if you need to use them.
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ben.traineddata # Bengali
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.traineddata # Hindi
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/tha.traineddata # Thai
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ara.traineddata # Arabic
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/ell.traineddata # Greek Modern
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/equ.traineddata # Mathematical Equations
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/heb.traineddata # Hebrew
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/rus.traineddata # Russian
 
 # Move into the data location. Note this location is in OS Environment variable, if changed change that too.
 mv -f *.traineddata /usr/local/share/tessdata
 
 
-# Download Hindi Cube data
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.bigrams
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.fold
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.lm
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.nn
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.params
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.word-freq
-wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.tesseract_cube.nn
+# Download Hindi Cube data (this is optional as well)
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.bigrams
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.fold
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.lm
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.nn
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.params
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.cube.word-freq
+# wget https://github.com/tesseract-ocr/tessdata/raw/3.04.00/hin.tesseract_cube.nn
 
 # Move into the data location. Note this location is in OS Environment variable, if changed change that too.
 mv -f hin.* /usr/local/share/tessdata

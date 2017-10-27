@@ -15,7 +15,7 @@ public class SimpleWordService implements WordService {
 
 		Character[] chars = ArrayUtils.toObject(word.toCharArray());
 		StringBuilder stringBuilder = new StringBuilder();
-
+		
 		for (int i = 0; i < chars.length; i++) {
 			if (Character.isLetterOrDigit(chars[i])) {
 				stringBuilder.append(chars[i]);
@@ -49,7 +49,7 @@ public class SimpleWordService implements WordService {
 	@Override
 	public int countSyllables(String word) {
 		final String regex = "[aeiouy]+?\\w*?[^e]";
-		String[] result = word.split(regex);
+		final String[] result = word.split(regex);
 		int count = result.length;
 
 		if (count == 0) {

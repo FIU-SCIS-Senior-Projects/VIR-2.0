@@ -44,11 +44,14 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	@Override
 	public Text process(String textString) {
 
+		// @formatter:off
 		List<String> originalWords = getStrings(textString);
-		List<String> cleanValues = originalWords.stream().map(wordService::clean).filter(StringUtils::isNotBlank)
-				.collect(Collectors.toList());
+		List<String> cleanValues = originalWords.stream()
+									.map(wordService::clean)
+									.filter(StringUtils::isNotBlank)
+									.collect(Collectors.toList());
 		List<Word> resultWords = wordRepository.findAllIn(cleanValues);
-
+		
 		Map<String, Word> resultsMap = resultWords.stream().collect(Collectors.toMap(Word::getValue, w -> w));
 		List<WordMatch> matches = new ArrayList<>();
 
@@ -67,29 +70,15 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 			matches.add(match);
 		}
 
-		Text text = new Text();
-		text.setWords(matches);
-		populateStatistics(textString, text);
-
-		return text;
-	}
-
-	/**
-	 * Collects and calculates all statistics data needed.
-	 * 
-	 * @param textString The original text string.
-	 * @param text The text instances generated from the string,
-	 */
-	private void populateStatistics(String textString, Text text) {
-		Count wordCount = getWordCount(text);
+		// Collect all data
+		Count wordCount = getWordCount(matches);
 		Percent wordPercent = new Percent(wordCount);
 		Statistics statistics = new Statistics(wordCount, wordPercent);
 		Long sentenceCount = countSentences(textString);
-		Double fleschReadingScore = getFleschReadingEase(countWords(text), sentenceCount, getSyllableCount(text));
+		Double fleschReadingScore = getFleschReadingEase(countWords(matches), sentenceCount, getSyllableCount(matches));
 
-		text.setSentenceCount(sentenceCount);
-		text.setStatistics(statistics);
-		text.setFleschReadingScore(fleschReadingScore);
+		return new Text(matches, fleschReadingScore, statistics, sentenceCount);
+		// @formatter:on
 	}
 
 	/**
@@ -98,9 +87,7 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	 * @param text the test to count.
 	 * @return an instance of the count.
 	 */
-	private Count getWordCount(Text text) {
-
-		List<WordMatch> words = text.getWords();
+	private Count getWordCount(List<WordMatch> words) {
 		long awl = 0;
 		long hi = 0;
 		long low = 0;
@@ -119,7 +106,6 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 				}
 			}
 		}
-
 		return new Count(awl, hi, med, low, noCategory);
 	}
 
@@ -142,8 +128,8 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	 * Get's the counts of the words from a text.
 	 */
 	@Override
-	public long countWords(Text text) {
-		return text.getWords().stream().filter(isValidWord()).count();
+	public long countWords(List<WordMatch> words) {
+		return words.stream().filter(isValidWord()).count();
 	}
 
 	/**
@@ -206,9 +192,8 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	 * @param text the text to be inspected.
 	 * @return the count.
 	 */
-	private long getSyllableCount(Text text) {
+	private long getSyllableCount(List<WordMatch> words) {
 
-		List<WordMatch> words = text.getWords();
 		long total = 0;
 		for (WordMatch wordMatch : words) {
 			if (StringUtils.isNoneBlank(wordMatch.getInitialValue())) {
