@@ -14,10 +14,12 @@ export class EnhancedTextResultComponent implements OnInit {
   public static BACK_LABEL: string = ' Back';
   public static readonly STATISTICS_LABEL: string = ' Statistics';
 
-
+  definitionBox: boolean;
+  processing: boolean;
   turnOn: boolean;
   wordDefinition: IDefinition;
   text: IText;
+  error: boolean;
   showOnlyIcons: boolean;
   backLabel: string = EnhancedTextResultComponent.BACK_LABEL;
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
@@ -26,24 +28,32 @@ export class EnhancedTextResultComponent implements OnInit {
   constructor(private _textService: TextService, public _definitionService: DefinitionService, public router: Router, private _location: Location) { }
 
   ngOnInit() {
-    this.getDefinition('book')
+    this.turnOn = false;
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     this.text = this._textService.resultText;
+    this.getDefinition('book')
+    this.definitionBox = false;
   }
 
+  // it gets the definition of  the word using DefinitionService
   getDefinition(word: string) {
-    this.turnOn = false;
+    this.processing = true;
+    this.definitionBox = true;
+    this.error = false;
     this._definitionService.getDefinitionService(word)
       .subscribe
       (res => {
         this.wordDefinition = res;
         this.turnOn = true;
+        this.processing = false;
       },
       (err: HttpErrorResponse) => {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');
         } else {
+          this.error = true;
+          this.processing = false;
           console.log('Server-side Error occured');
         }
       }
@@ -51,6 +61,12 @@ export class EnhancedTextResultComponent implements OnInit {
 
   }
 
+  // it hides the definition box
+  hideDefinitionBox() {
+    this.definitionBox = false;
+  }
+
+  // return to the previous page
   backClicked() {
     this._location.back();
   }
