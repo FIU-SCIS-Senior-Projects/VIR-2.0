@@ -4,6 +4,7 @@
 
 `VIR-Frontend App` built using the following:
 - Developed using boostrap-v4.0.0-alpha.6
+- ng-bootstrap
 - angular-v4.3.1
 - angular/cli-v1.3.2
 - Official Angular i18n support.
@@ -43,3 +44,18 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### Documentation
+- install it with npm :
+```bash
+$ npm i -g @compodoc/compodoc
+```
+- run it inside the folder of your Angular application
+```bash
+$ compodoc -p tsconfig.json
+```
+You can then run an HTTP server in that folder, or launch the previous command with the -s flag, and the tool will serve you the documentation, by default on http://localhost:8080
+```bash
+$ compodoc -p tsconfig.json -s
+```
+
