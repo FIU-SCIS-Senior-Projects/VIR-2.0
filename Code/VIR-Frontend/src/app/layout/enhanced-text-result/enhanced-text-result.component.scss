@@ -26,7 +26,7 @@
 
 ////////////////////////
 
-.foo {
+.box {
   float: left;
   width: 20px;
   height: 20px;
@@ -64,4 +64,18 @@
   .margin-responsive {
       margin-bottom: 70px;
   }
+}
+
+a { 
+  color: inherit; 
+} 
+
+a.disabled {
+  pointer-events: none;
+  
+}
+
+.solid {
+  border-style: solid;
+  border-color: black;
 }

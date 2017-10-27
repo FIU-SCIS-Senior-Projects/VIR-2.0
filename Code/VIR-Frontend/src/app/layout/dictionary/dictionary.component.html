@@ -74,13 +74,11 @@
     </div>
 
     <!--Sorting-->
-    <div class="btn-group col-md-4 float-left" ngbRadioGroup name="radioBasic" [(ngModel)]="sorting">
+    <div class="btn-group col-md-4" ngbRadioGroup name="radioBasic" [(ngModel)]="sorting">
       <label ngbButtonLabel class="btn-secondary">
-        <i class="fa fa-sort-asc" aria-hidden="true"></i>
         <input ngbButton type="radio" [value]="ASC" (click)="getWordList(0, activeCategory, tableSize, 'ASC' );resetPagination()"> ASC
       </label>
       <label ngbButtonLabel class="btn-secondary">
-        <i class="fa fa-sort-desc" aria-hidden="true"></i>
         <input ngbButton type="radio" value="DESC" (click)="getWordList(0, activeCategory, tableSize, 'DESC');resetPagination()"> DESC
       </label>
     </div>

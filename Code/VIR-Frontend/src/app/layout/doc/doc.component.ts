@@ -32,7 +32,7 @@ export class DocComponent implements OnInit {
       this.userDocFile = fileBrowser.files[0];
 
       // check filesize
-      if (this.userDocFile.size > 5000000) {
+      if (this.userDocFile.size > 5500000) {
         this.fileSizeExceeded = true;
         this.processing = false;
         return;
