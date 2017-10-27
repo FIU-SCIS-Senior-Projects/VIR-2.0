@@ -1,5 +1,5 @@
-import { IWord } from './IWord';
+import { IWordMatch } from './IWordMatch';
 
 export interface IText {
-  words: IWord[];
+  words: IWordMatch[];
 }

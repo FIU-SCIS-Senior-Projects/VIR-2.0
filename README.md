@@ -52,6 +52,9 @@ If you are using a Unix like system make sure you give execution permitions to t
 ```
 
 ## Description
+
+This is the decription of the files from the tree.
+
 Folder/File | Description
 --- | --- 
 Code             | Contains all the code for the application.
@@ -69,3 +72,65 @@ mvnw.cmd         | File needed for the maven wrapper. (safely ignore, but not de
 pom.xml          | Configuration file to build the whole project. Read more about the build pipeline.
 start            | Script to start the application
 README.md        | This readme file (talking about recursion...)
+
+
+# Creating AWS Environment From Scratch
+
+### Elastic Beanstalk Dashboard
+- If needed create a new Application.
+- Create a new environment with all the default configurations and the sample appication.
+- Under Config got ahead and create a database with the "username" and "password" (Note the password has to be long, keep in mind that this password will be ecrypted later on)
+- Under Config/Software Configuration add a new Property name with the name used in the java EncryptorConfig.java for the name and the value.
+
+
+### RDS Dashboard
+
+- Go to the database associated with the beanstack above.
+- Select it and click Instance Details.
+- Click on the security groups: the one that starts with "rds-aws...."
+- There go to the "InBound" tab at the bottom and add a new TCP protocol with port 3306 and pic your ip address.
+	(This will allow to connect using workbench)
+	
+### Workbench
+
+- Login with the credentials and the connection string listed on the RDS dashboard.
+- Create a new database.
+- Populate any data needed.
+
+### Java IDE
+
+- Add properties for the database, encryptor place holder, and port 5000 (needed for production)
+- Compile and generate JAR.
+
+### Elastic Beanstalk Dashboard
+
+- Upoad the new version of the application.
+
+### EC2 Dashboard
+- If you  do not have a .pem file. Create a key to log in via ssh.
+- Click 'Key pairs' to go to the section of the keys. (from here is self explainatiory...)
+- Locate the EC2 intance and right click on it to get the ssh connection information.
+    (for the key to work it has to be associate with the BeanStalk instance, this should be already done,
+    but you can do this in the 'Instance settings' of the Beanstalk)
+
+
+# Application Building and Pipelines
+
+Dev pipeline
+
+clean  +---->  build   +---->  copy to  +--->  install  +----->  run unit  +-----> finish
+              Angular          backend         backend             tests
+
+
+
+Prod pipeline
+
+clean  +---->  build   +---->  copy to  +--->  install  +----->  run unit  +----->  boundle  +----> deploy
+              Angular          backend         backend             tests
+                                                                      +
+                                                                      |
+                                                                      |
+                                                                      v
+                                                                   integration
+                                                                   tests
+

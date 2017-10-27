@@ -60,39 +60,28 @@ public class OptimizedTextProcessorServiceTest {
 
 	@Test
 	public void countWords_WithTextWith2WordsWithNoSpace_Returns2() {
-		Text text = new Text();
 		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", "pet"));
-		text.setWords(words);
-		assertEquals(2, textProcessorService.countWords(text));
+		assertEquals(2, textProcessorService.countWords(words));
 	}
 
 	@Test
 	public void countWords_WithTextWith2WordsWithSpace_Returns2() {
-		Text text = new Text();
 		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", " "),
 				new WordMatch("", "", "pet"));
-
-		text.setWords(words);
-		assertEquals(2, textProcessorService.countWords(text));
+		assertEquals(2, textProcessorService.countWords(words));
 	}
 
 	@Test
 	public void countWords_WithTextWith2WordsWithTab_Returns2() {
-		Text text = new Text();
 		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "dog"), new WordMatch("", "", "\t"),
 				new WordMatch("", "", "pet"));
-
-		text.setWords(words);
-		assertEquals(2, textProcessorService.countWords(text));
+		assertEquals(2, textProcessorService.countWords(words));
 	}
 
 	@Test
 	public void countWords_WithTextWith1WordWith3Paces_Returns0() {
-		Text text = new Text();
 		List<WordMatch> words = Arrays.asList(new WordMatch("", "", "   "));
-
-		text.setWords(words);
-		assertEquals(0, textProcessorService.countWords(text));
+		assertEquals(0, textProcessorService.countWords(words));
 	}
 
 	@Test

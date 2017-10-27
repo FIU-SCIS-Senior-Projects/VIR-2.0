@@ -27,15 +27,14 @@ public class WordController {
 	
 	@ApiOperation("Retrieves a list of words by category")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	Page<Word> findAll (
+	public Page<Word> findAll (
 			@RequestParam(value = "category", required = true) String category,
 			@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "size", defaultValue = "20") int size,
 			@RequestParam(value = "sortKey", defaultValue = "value") String sortField,
 			@RequestParam(value = "sortDirection", defaultValue = "ASC") Direction direction) {
 
-		Sort sort = new Sort(direction, sortField);
-		PageRequest pageRequest = new PageRequest(page, size, sort);
+		PageRequest pageRequest = new PageRequest(page, size, new Sort(direction, sortField));
 		return wordRepository.findAllByCategory(pageRequest, category);
 	}
 }

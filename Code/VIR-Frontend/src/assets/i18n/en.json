@@ -25,5 +25,7 @@
     "instruction": "Instruction",
     "tests": "Tests",
     "reading": "Reading",
-    "vocabulary": "Vocabulary"
+    "vocabulary": "Vocabulary",
+    "word lists" : "Word Lists",
+    "hi": "High"
 }

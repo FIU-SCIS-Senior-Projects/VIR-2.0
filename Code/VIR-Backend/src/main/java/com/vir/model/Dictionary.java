@@ -1,5 +1,8 @@
 package com.vir.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vir.model.dictionary.oxford.RetrieveEntry;
 import com.vir.model.dictionary.wiki.WikiEntry;
@@ -15,6 +18,17 @@ public class Dictionary {
 
 	private RetrieveEntry oxford;
 	private WikiEntry wiki;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Dictionary that = (Dictionary) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 	
 	public RetrieveEntry getOxford() {
 		return oxford;

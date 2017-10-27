@@ -24,6 +24,9 @@ import org.opencv.imgcodecs.Imgcodecs;
  */
 public class IOHelper {
 
+	private static final String IMAGE_ENCODE = ".jpg";
+	private static final String IMAGE_ENCODE_WRITE = "jpg";
+
 	/**
 	 * Small method to write an input stream to a file.
 	 * 
@@ -50,9 +53,8 @@ public class IOHelper {
 	 */
 	public static InputStream matToInputStream(Mat matrix) throws Exception {
 		MatOfByte matOfBytes = new MatOfByte();
-		Imgcodecs.imencode(".jpg", matrix, matOfBytes);
-		ByteArrayInputStream io = new ByteArrayInputStream(matOfBytes.toArray());
-		return io;
+		Imgcodecs.imencode(IMAGE_ENCODE, matrix, matOfBytes);
+		return new ByteArrayInputStream(matOfBytes.toArray());
 	}
 
 	/**
@@ -63,8 +65,7 @@ public class IOHelper {
 	 * @throws Exception
 	 */
 	public static BufferedImage matToBufferedImage(Mat matrix) throws Exception {
-		BufferedImage image = ImageIO.read(IOHelper.matToInputStream(matrix));
-		return image;
+		return ImageIO.read(IOHelper.matToInputStream(matrix));
 	}
 
 	/**
@@ -75,11 +76,10 @@ public class IOHelper {
 	 * @throws Exception
 	 */
 	public static Mat bufferedImageToMat(BufferedImage image) throws Exception {
-		ByteArrayOutputStream os = new ByteArrayOutputStream();
-		ImageIO.write(image, "jpg", os);
-		InputStream stream = new ByteArrayInputStream(os.toByteArray());
-		Mat matrix = IOHelper.inputStreamToMat(stream);
-		return matrix;
+		try (ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
+			ImageIO.write(image, IMAGE_ENCODE_WRITE, buffer);
+			return Imgcodecs.imdecode(new MatOfByte(buffer.toByteArray()), CV_LOAD_IMAGE_UNCHANGED);
+		}
 	}
 
 	/**
@@ -90,16 +90,13 @@ public class IOHelper {
 	 * @throws Exception
 	 */
 	public static Mat inputStreamToMat(InputStream stream) throws Exception {
-
-		int nRead;
-		byte[] data = new byte[16 * 1024];
-		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-		while ((nRead = stream.read(data, 0, data.length)) != -1) {
-			buffer.write(data, 0, nRead);
+		try (ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
+			int nRead;
+			byte[] data = new byte[16 * 1024];
+			while ((nRead = stream.read(data, 0, data.length)) != -1) {
+				buffer.write(data, 0, nRead);
+			}
+			return Imgcodecs.imdecode(new MatOfByte(buffer.toByteArray()), CV_LOAD_IMAGE_UNCHANGED);
 		}
-		byte[] bytes = buffer.toByteArray();
-
-		Mat mat = Imgcodecs.imdecode(new MatOfByte(bytes), CV_LOAD_IMAGE_UNCHANGED);
-		return mat;
 	}
 }

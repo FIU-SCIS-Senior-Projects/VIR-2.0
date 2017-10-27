@@ -2,6 +2,9 @@ package com.vir.model.dictionary.oxford;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -12,6 +15,17 @@ public class Pronunciation {
 	private String phoneticNotation;
 	private String phoneticSpelling;
 	private List<String> regions;
+	
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Pronunciation that = (Pronunciation) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
 
 	public String getAudioFile() {
 		return audioFile;

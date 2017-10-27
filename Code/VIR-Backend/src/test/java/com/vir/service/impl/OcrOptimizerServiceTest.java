@@ -20,18 +20,6 @@ public class OcrOptimizerServiceTest {
 	
 	@Autowired
 	private OcrOptimizerService ocrOptimizerService;
-
-	@Test
-	public void deskew_withASkewedImage_returnsADeskewedImage() throws Exception {
-		
-		final String filePath= "ocr_optimizer/skewed_image.jpg";
-		InputStream stream = new ClassPathResource(filePath).getInputStream();	
-		Mat image = IOHelper.inputStreamToMat(stream);
-		Mat deskewedImage = ocrOptimizerService.deskew(image);
-		
-		Mat reDeskewedImage = ocrOptimizerService.deskew(deskewedImage);
-		assertEquals(0.0d, ocrOptimizerService.getAngle(reDeskewedImage), 0.2d);
-	}
 	
 	@Test
 	public void convertToGreyScale_withAColorImage_returnsImageInGreyScale() throws Exception {

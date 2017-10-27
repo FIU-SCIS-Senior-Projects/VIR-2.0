@@ -3,6 +3,9 @@ package com.vir.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 /**
  * Class to hold the list of words. In a way an abstract representation of a
  * text fragment.
@@ -13,12 +16,30 @@ import java.util.List;
 public class Text {
 
 	private List<WordMatch> words;
-	private Double FleschReadingScore;
+	private Double fleschReadingScore;
 	private Statistics statistics;
 	private Long sentenceCount;
 
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Text that = (Text) obj;
+		return EqualsBuilder.reflectionEquals(this, that);
+	}
+	
 	public Text() {
 		this.words = new ArrayList<>();
+	}
+
+	public Text(List<WordMatch> words, Double fleschReadingScore, Statistics statistics, Long sentenceCount) {
+		this.words = words;
+		this.fleschReadingScore = fleschReadingScore;
+		this.statistics = statistics;
+		this.sentenceCount = sentenceCount;
 	}
 
 	public List<WordMatch> getWords() {
@@ -30,11 +51,11 @@ public class Text {
 	}
 
 	public Double getFleschReadingScore() {
-		return FleschReadingScore;
+		return fleschReadingScore;
 	}
 
 	public void setFleschReadingScore(Double fleschReadingScore) {
-		FleschReadingScore = fleschReadingScore;
+		this.fleschReadingScore = fleschReadingScore;
 	}
 
 	public Statistics getStatistics() {
