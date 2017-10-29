@@ -27,7 +27,7 @@ export class PdfComponent implements OnInit {
 
   // Cast the input file to FormData - Upload PDF(FormData) to server
   // receive the analyzed PDF - navigate to the enhanced text page to show the result
-  public uploadPDF(): void {
+  public uploadPDF(url: string): void {
     this.processing = true;
     this.error = false;
     const fileBrowser = this.fileInput.nativeElement;
@@ -55,7 +55,7 @@ export class PdfComponent implements OnInit {
         this.text = res;
         this._textService.resultText = this.text;
         this.processing = false;
-        this.router.navigateByUrl('/enhanced-text-result');
+        this.router.navigateByUrl(url);
       },
 
       // Error Handling
