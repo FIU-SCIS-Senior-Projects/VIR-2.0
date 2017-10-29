@@ -36,7 +36,7 @@ export class PdfComponent implements OnInit {
       console.log(this.userPDFFile);
 
       // check the file size - more than 25mb will throw an alert to user
-      if (this.userPDFFile.size > 26000000) {
+      if (this.userPDFFile.size > 26214400) {
         this.fileSizeExceeded = true;
         this.processing = false;
         return;

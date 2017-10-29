@@ -13,7 +13,6 @@ export class TextService {
 
   // TextService store the result from text component into resultText so later on can be passed to enhancedTextResultPage
   public resultText: IText;
-  public resultStatistic: IStatistics;
 
   constructor(private http: HttpClient) {
   }
