@@ -7,33 +7,48 @@
 
 		<div class="col-6">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" (click)="backClicked()"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
-				<button type="button" class="btn btn-success"  [routerLink]="['/enhanced-text-result']"><i class="fa fa-pie-chart" aria-hidden="true"></i> Enhanced Text</button>
-				
+				<button type="button" class="btn btn-warning" (click)="backClicked()">
+					<i class="fa fa-step-backward" aria-hidden="true"></i>{{backLabel}}</button>
+				<button type="button" class="btn btn-success" [routerLink]="['/enhanced-text-result']">
+					<i class="fa fa-file-text" aria-hidden="true"></i> {{enhanceTextLabel}} </button>
+
 			</div>
 		</div>
 	</div>
 	<hr>
- <div *ngIf = "showDiv">
-	<p><Strong>Total Readibility Level: </Strong> {{text.fleschReadingScore}}</p>
-	<p><Strong>The text is appropriate for: </Strong> {{textLVL}}</p>
+	<div *ngIf="showDiv">
+		<p>
+			<Strong>Total Readibility Level: </Strong> {{text.fleschReadingScore}}</p>
+		<p>
+			<Strong>The text is appropriate for: </Strong> {{textLVL}}</p>
 
-	<p><Strong>HF #Words: </Strong> {{text.statistics.wordCount.hi}}</p>
-	<p><Strong>MF #Words: </Strong> {{text.statistics.wordCount.med}}</p>
-	<p><Strong>LF #Words: </Strong> {{text.statistics.wordCount.low}}</p>
-	<p><Strong>AWL #Words: </Strong> {{text.statistics.wordCount.awl}}</p>
-	<p><Strong>No Cat. #Words: </Strong> {{text.statistics.wordCount.noCategory}}</p>
+		<p>
+			<Strong>HF #Words: </Strong> {{text.statistics.wordCount.hi}}</p>
+		<p>
+			<Strong>MF #Words: </Strong> {{text.statistics.wordCount.med}}</p>
+		<p>
+			<Strong>LF #Words: </Strong> {{text.statistics.wordCount.low}}</p>
+		<p>
+			<Strong>AWL #Words: </Strong> {{text.statistics.wordCount.awl}}</p>
+		<p>
+			<Strong>No Cat. #Words: </Strong> {{text.statistics.wordCount.noCategory}}</p>
 
-	<p><Strong>Total #Words: </Strong> {{text.statistics.wordCount.total}}</p>
-	<p><Strong>Total #sentences: </Strong> {{text.sentenceCount}}</p>
+		<p>
+			<Strong>Total #Words: </Strong> {{text.statistics.wordCount.total}}</p>
+		<p>
+			<Strong>Total #sentences: </Strong> {{text.sentenceCount}}</p>
 
-	<p><Strong>HF #Percentage: </Strong> {{(text.statistics.wordPercentage.hi * 100) | number:'1.0-2'}}%</p>
-	<p><Strong>MF #Percentage: </Strong> {{(text.statistics.wordPercentage.med * 100) | number:'1.0-2'}}%</p>
-	<p><Strong>LF #Percentage: </Strong> {{(text.statistics.wordPercentage.low * 100) | number:'1.0-2'}}%</p>
-	<p><Strong>AWL #Percentage: </Strong> {{(text.statistics.wordPercentage.aws * 100) | number:'1.0-2'}}%</p>
+		<p>
+			<Strong>HF #Percentage: </Strong> {{(text.statistics.wordPercentage.hi * 100) | number:'1.0-2'}}%</p>
+		<p>
+			<Strong>MF #Percentage: </Strong> {{(text.statistics.wordPercentage.med * 100) | number:'1.0-2'}}%</p>
+		<p>
+			<Strong>LF #Percentage: </Strong> {{(text.statistics.wordPercentage.low * 100) | number:'1.0-2'}}%</p>
+		<p>
+			<Strong>AWL #Percentage: </Strong> {{(text.statistics.wordPercentage.aws * 100) | number:'1.0-2'}}%</p>
 
- </div>
-	
+	</div>
+
 </div>
 
 
@@ -45,7 +60,8 @@
 		</div>
 		<div class="col-6">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']"><i class="fa fa-step-backward" aria-hidden="true" ></i> Back</button>
+				<button type="button" class="btn btn-warning" [routerLink]="['/text']">
+					<i class="fa fa-step-backward" aria-hidden="true"></i> Back</button>
 			</div>
 		</div>
 	</div>
@@ -56,5 +72,3 @@
 	</div>
 
 </ng-template>
-
-

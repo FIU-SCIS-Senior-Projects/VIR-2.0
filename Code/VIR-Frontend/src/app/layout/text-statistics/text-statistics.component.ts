@@ -11,11 +11,16 @@ import { DecimalPipe } from '@angular/common';
 })
 export class TextStatisticsComponent implements OnInit {
 
+  public static BACK_LABEL: string = ' Back';
+  public static readonly ENHANCETEXT_LABEL: string = ' Statistics';
+
   text: IText;
   statistics: IStatistics;
   showDiv: boolean;
   textLVL: string;
-  e = 2.718281828459045;
+  showOnlyIcons: boolean;
+  backLabel: string = TextStatisticsComponent.BACK_LABEL;
+  enhanceTextLabel: string = TextStatisticsComponent.ENHANCETEXT_LABEL;
 
   constructor(private _textService: TextService, public router: Router, private _location: Location) { }
 
@@ -27,6 +32,8 @@ export class TextStatisticsComponent implements OnInit {
       this.textLevel(this.text.fleschReadingScore);
     }
     this.showDiv = true;
+    this.showOnlyIcons = window.innerWidth <= 680;
+    this.updaTeLabels();
   }
 
   textLevel(score: number) {
@@ -43,6 +50,17 @@ export class TextStatisticsComponent implements OnInit {
 
   backClicked() {
     this._location.back();
+  }
+
+  onResize(event) {
+    this.showOnlyIcons = window.innerWidth <= 680;
+    this.updaTeLabels();
+    event.target.innerWidth;
+  }
+
+  private updaTeLabels(): void {
+    this.backLabel = this.showOnlyIcons ? '' : TextStatisticsComponent.BACK_LABEL;
+    this.enhanceTextLabel = this.showOnlyIcons ? '' : TextStatisticsComponent.ENHANCETEXT_LABEL;
   }
 
 }
