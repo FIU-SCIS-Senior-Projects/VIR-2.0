@@ -4,23 +4,21 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.vir.GeneralDevTest;
 import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@Ignore
+@GeneralDevTest
 public class ImgProcessorServiceIT {
 	
 	private static final String BASE_PATH = "integration_tests/img";

@@ -15,19 +15,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.vir.GeneralDevTest;
 import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
+@GeneralDevTest
 public class AceptanceOCRCriteriaBigFilesIntegrationTest {
 
 	private static Logger logger = LoggerFactory.getLogger(AceptanceOCRCriteriaBigFilesIntegrationTest.class);

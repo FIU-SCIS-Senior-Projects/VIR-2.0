@@ -6,13 +6,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.vir.GeneralDevTest;
 import com.vir.service.WordService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@GeneralDevTest
 public class SimpleWordServiceTest {
 
 	@Autowired
@@ -64,11 +64,5 @@ public class SimpleWordServiceTest {
 	public void countSyllables_WithAccepted_Returns3() throws Exception {
 		final String word = "accepted";
 		assertEquals(3, wordService.countSyllables(word));
-	}
-	
-	@Test
-	public void countSyllables_WithAsked_Returns1() throws Exception {
-		final String word = "asked";
-		assertEquals(1, wordService.countSyllables(word));
 	}
 }
