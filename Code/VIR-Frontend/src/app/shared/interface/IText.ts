@@ -4,6 +4,6 @@ import { IWordMatch } from './IWordMatch';
 export interface IText {
   fleschReadingScore: number;
   sentenceCount: number;
-  IStatistics: IStatistics;
+  statistics: IStatistics;
   words: IWordMatch[];
 }
