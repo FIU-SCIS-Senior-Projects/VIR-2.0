@@ -161,13 +161,10 @@
 					<excludes>
 						<exclude>**/*IT.java</exclude>
 					</excludes>
-					<forkCount>3</forkCount>
-					<reuseForks>true</reuseForks>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -203,8 +200,6 @@
 										<exclude>**/*Tests.java</exclude>
 										<exclude>**/*Test.java</exclude>
 									</excludes>
-									<forkCount>3</forkCount>
-									<reuseForks>true</reuseForks>
 								</configuration>
 							</execution>
 						</executions>

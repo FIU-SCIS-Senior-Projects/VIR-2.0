@@ -8,14 +8,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.opencv.core.Mat;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.vir.GeneralDevTest;
 import com.vir.helpers.IOHelper;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@GeneralDevTest
 public class OcrOptimizerServiceTest {
 	
 	@Autowired

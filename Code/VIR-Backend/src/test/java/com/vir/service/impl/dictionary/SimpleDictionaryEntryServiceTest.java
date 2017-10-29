@@ -12,10 +12,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.vir.GeneralDevTest;
 import com.vir.model.Dictionary;
 import com.vir.model.SourceType;
 import com.vir.model.dictionary.oxford.RetrieveEntry;
@@ -23,7 +23,7 @@ import com.vir.model.dictionary.wiki.WikiEntry;
 import com.vir.service.DictionaryEntryService;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@GeneralDevTest
 public class SimpleDictionaryEntryServiceTest {
 
 	final static String WORD = "apple";

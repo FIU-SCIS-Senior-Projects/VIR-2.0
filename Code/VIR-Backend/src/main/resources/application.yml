@@ -14,6 +14,7 @@ spring:
   # Used from here: https://github.com/GluuFederation/message-consumer/issues/4
   # This would be enough: https://github.com/netgloo/spring-boot-samples/blob/master/spring-boot-mysql-springdatajpa-hibernate/src/main/resources/application.properties
   datasource:
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
@@ -39,7 +40,6 @@ spring:
     url: jdbc:mysql://localhost:3306/vir?useSSL=false
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
     initialize: false
     
   jpa:

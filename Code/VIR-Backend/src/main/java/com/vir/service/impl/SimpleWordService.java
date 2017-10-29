@@ -1,5 +1,8 @@
 package com.vir.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.commons.lang.ArrayUtils;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +18,7 @@ public class SimpleWordService implements WordService {
 
 		Character[] chars = ArrayUtils.toObject(word.toCharArray());
 		StringBuilder stringBuilder = new StringBuilder();
-		
+
 		for (int i = 0; i < chars.length; i++) {
 			if (Character.isLetterOrDigit(chars[i])) {
 				stringBuilder.append(chars[i]);
@@ -48,20 +51,39 @@ public class SimpleWordService implements WordService {
 	 */
 	@Override
 	public int countSyllables(String word) {
-		final String regex = "[aeiouy]+?\\w*?[^e]";
-		final String[] result = word.split(regex);
-		int count = result.length;
 
-		if (count == 0) {
-			return 0;
+		final List<String> exceptions = Arrays.asList("he", "she", "me", "pe", "fe", "be", "the", "we");
+		final String finalWord = removePunctuation(word);
+		String input = word.toLowerCase();
+		
+		// Words ending in e
+		if (exceptions.contains(input)) {
+			return 1;
+		}	
+		
+		int i = input.length() - 1;
+		while (i >= 0 && input.charAt(i) == 'e') {
+			i--;
 		}
-
-		final String verbTest = result[count - 1];
-		if ((!verbTest.endsWith("t") && !verbTest.endsWith("d")) && count > 1) {
-			count--;
+		
+		int syllables = 0;
+		boolean preVowel = false;
+		while (i >= 0) {
+			if (isVowel(input.charAt(i))) {
+				if (!preVowel) {
+					syllables++;
+					preVowel = true;
+				}
+			} else {
+				preVowel = false;
+			}
+			i--;
 		}
-
-		return count;
+	
+		return syllables;
 	}
 
+	public boolean isVowel(char ch) {
+		return  (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'y');
+	}
 }
