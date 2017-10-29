@@ -23,6 +23,8 @@ export class EnhancedTextResultComponent implements OnInit {
   showOnlyIcons: boolean;
   backLabel: string = EnhancedTextResultComponent.BACK_LABEL;
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
+  cleanWord: string;
+  definitionDiv: any;
 
   // tslint:disable-next-line:max-line-length
   constructor(private _textService: TextService, public _definitionService: DefinitionService, public router: Router, private _location: Location) { }
@@ -41,7 +43,8 @@ export class EnhancedTextResultComponent implements OnInit {
     this.processing = true;
     this.definitionBox = true;
     this.error = false;
-    this._definitionService.getDefinitionService(word)
+    this.cleanWord = word.replace(/[^a-zA-Z ]/g, '');
+    this._definitionService.getDefinitionService(this.cleanWord)
       .subscribe
       (res => {
         this.wordDefinition = res;
@@ -54,12 +57,14 @@ export class EnhancedTextResultComponent implements OnInit {
         } else {
           this.error = true;
           this.processing = false;
+          this.definitionBox = false;
           console.log('Server-side Error occured');
         }
       }
       );
 
   }
+
 
   // it hides the definition box
   hideDefinitionBox() {
@@ -75,6 +80,13 @@ export class EnhancedTextResultComponent implements OnInit {
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     event.target.innerWidth;
+  }
+
+  // scrolling to the top on both the window and definition Div
+  scrollToTop() {
+    window.scrollTo(0, 0);
+    this.definitionDiv = document.getElementById('definition');
+    this.definitionDiv.scrollTop = 0;
   }
 
   private updaTeLabels(): void {
