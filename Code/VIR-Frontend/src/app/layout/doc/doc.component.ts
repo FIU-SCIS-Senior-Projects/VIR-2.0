@@ -25,7 +25,7 @@ export class DocComponent implements OnInit {
   constructor(private _textService: TextService, public router: Router, private elem: ElementRef, private http: HttpClient) { }
 
 
-  public uploadDoc(): void {
+  public uploadDoc(url: string): void {
     this.processing = true;
     const fileBrowser = this.fileInput.nativeElement;
     if (fileBrowser.files && fileBrowser.files[0]) {
@@ -52,7 +52,7 @@ export class DocComponent implements OnInit {
         this.text = res;
         this._textService.resultText = this.text;
         this.processing = false;
-        this.router.navigateByUrl('/enhanced-text-result');
+        this.router.navigateByUrl(url);
       },
 
       (err: HttpErrorResponse) => {
