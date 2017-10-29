@@ -18,7 +18,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
-      maximum-pool-size: 10
+      maximum-pool-size: 20
       idle-timeout: 30000
       connection-test-query: SELECT 1
   
@@ -69,7 +69,7 @@ spring:
     url: ENC(xJGlMDD9Yjxl4Sf3j0XnfWgWws2K5dwFJqCawd5OUWW/MdI0Un4065hc688jIVQ/iP6Vs6wVe+qj2sKIFqcwINOWjDQgCki0yFgyCwndbP8HrbJYxrfVIw==)
     username: ENC(UTkNIxV6ppTay6dw1Y2Ko7wslhPUEBlt)
     password: ENC(e727rLvbmnoUNdmsXj7CpZPWtklCNXW0)
-    driver-class-name: com.mysql.jdbc.Driver
+    initialize: false
     
   jpa:
     generate-ddl: false
@@ -81,7 +81,7 @@ security:
   user:
     name: ENC(FDR1l4UOnbo2E7qq1ByDzg==)
     password: ENC(E4nbtM4lNXAYJ1Z2HwwpAxwVlIrVgroS)
-        
+    
 server:
   port: 5000
   
