@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.44-SNAPSHOT</version>
+	<version>0.0.45-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
@@ -171,6 +171,7 @@
 			</plugin>
 		</plugins>
 	</build>
+
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -254,6 +255,9 @@
 						<executions>
 							<execution>
 								<phase>install</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
 								<configuration>
 									<target>
 										<echo message="Prepearing the bundle..." />
@@ -268,9 +272,6 @@
 											basedir="${bundle.dir}" />
 									</target>
 								</configuration>
-								<goals>
-									<goal>run</goal>
-								</goals>
 							</execution>
 						</executions>
 					</plugin>
