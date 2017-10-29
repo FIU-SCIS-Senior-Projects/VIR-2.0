@@ -25,7 +25,7 @@ $topnav-background-color: #222;
             background: $topnav-background-color;
             border: 0;
             border-radius: 0;
-            color: #999;
+            color: #eceeef;
             text-decoration: none;
             .fa {
                 margin-right: 10px;
@@ -50,7 +50,7 @@ $topnav-background-color: #222;
             height : 50px;
             margin-bottom:0;
             a {
-                color : #999;
+                color : #eceeef;
                 text-decoration : none;
                 font-weight:400;
                 background:$topnav-background-color;
@@ -79,7 +79,7 @@ $topnav-background-color: #222;
                     background-color: $topnav-background-color;
                     border: 0 solid transparent;
                     a {
-                        color:#999;
+                        color:#eceeef;
                     }
                     a:hover {
                         color:#FFF;
@@ -110,7 +110,7 @@ $topnav-background-color: #222;
             height: auto;
             li {
                 a {
-                    color: #999;
+                    color: #eceeef;
                     padding: 10px;
                     display: block;
                 }
