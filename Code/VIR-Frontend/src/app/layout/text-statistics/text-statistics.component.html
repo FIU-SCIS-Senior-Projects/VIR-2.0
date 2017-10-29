@@ -17,35 +17,118 @@
 	</div>
 	<hr>
 	<div *ngIf="showDiv">
-		<p>
-			<Strong>Total Readibility Level: </Strong> {{text.fleschReadingScore}}</p>
-		<p>
-			<Strong>The text is appropriate for: </Strong> {{textLVL}}</p>
 
-		<p>
-			<Strong>HF #Words: </Strong> {{text.statistics.wordCount.hi}}</p>
-		<p>
-			<Strong>MF #Words: </Strong> {{text.statistics.wordCount.med}}</p>
-		<p>
-			<Strong>LF #Words: </Strong> {{text.statistics.wordCount.low}}</p>
-		<p>
-			<Strong>AWL #Words: </Strong> {{text.statistics.wordCount.awl}}</p>
-		<p>
-			<Strong>No Cat. #Words: </Strong> {{text.statistics.wordCount.noCategory}}</p>
+		<!--Readibility Score-->
+		<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;">
+			<h3 class="card-header">Readability Scores</h3>
+			<div class="card-block">
+				<div [ngSwitch]="true"  style=" margin-bottom: 2%">
+					<div *ngSwitchCase="text.fleschReadingScore < 30">
+						<ngb-progressbar type="danger" [value]="text.fleschReadingScore" [striped]="true" [animated]="true">
+							<i>
+								<strong>{{text.fleschReadingScore | number:'1.0-2'}} / 100</strong>
+							</i>
+						</ngb-progressbar>
 
-		<p>
-			<Strong>Total #Words: </Strong> {{text.statistics.wordCount.total}}</p>
-		<p>
-			<Strong>Total #sentences: </Strong> {{text.sentenceCount}}</p>
+					</div>
+					<div *ngSwitchCase="text.fleschReadingScore > 60">
+						<ngb-progressbar type="success" [value]="text.fleschReadingScore" [striped]="true" [animated]="true">
+							<i>
+								<strong>{{text.fleschReadingScore | number:'1.0-2'}} / 100</strong>
+							</i>
+						</ngb-progressbar>
+					</div>
+					<div *ngSwitchDefault>
+						<ngb-progressbar type="warning" [value]="text.fleschReadingScore" [striped]="true" [animated]="true">
+							<i>
+								<strong>{{text.fleschReadingScore | number:'1.0-2'}} / 100</strong>
+							</i>
+						</ngb-progressbar>
+					</div>
+				</div>
 
-		<p>
-			<Strong>HF #Percentage: </Strong> {{(text.statistics.wordPercentage.hi * 100) | number:'1.0-2'}}%</p>
-		<p>
-			<Strong>MF #Percentage: </Strong> {{(text.statistics.wordPercentage.med * 100) | number:'1.0-2'}}%</p>
-		<p>
-			<Strong>LF #Percentage: </Strong> {{(text.statistics.wordPercentage.low * 100) | number:'1.0-2'}}%</p>
-		<p>
-			<Strong>AWL #Percentage: </Strong> {{(text.statistics.wordPercentage.aws * 100) | number:'1.0-2'}}%</p>
+
+				<p>
+					<Strong>Total Readibility Level: </Strong>
+					<strong style="font-size: 20px; font-weight: bold;">{{text.fleschReadingScore | number:'1.0-2'}}</strong>
+				</p>
+				<p>
+					<Strong>The text is appropriate for: </Strong> {{textLVL}}</p>
+
+			</div>
+		</div>
+
+		<!--Text Statistic-->
+		<div class="card">
+			<h3 class="card-header">Statistics</h3>
+			<div class="card-block">
+				<table class="table table-bordered" style="margin-bottom: 3%;" >
+					<thead class="thead-default">
+						<tr>
+							<th>#</th>
+							<th>Word Count</th>
+							<th>Percentage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">AWL</th>
+							<td>{{text.statistics.wordCount.awl}}</td>
+							<td>{{(text.statistics.wordPercentage.aws * 100) | number:'1.0-2'}}%</td>
+						</tr>
+						<tr>
+							<th scope="row">High Freq.</th>
+							<td>{{text.statistics.wordCount.hi}}</td>
+							<td>{{(text.statistics.wordPercentage.hi * 100) | number:'1.0-2'}}%</td>
+						</tr>
+						<tr>
+							<th scope="row">Medium Freq.</th>
+							<td>{{text.statistics.wordCount.med}}</td>
+							<td>{{(text.statistics.wordPercentage.med * 100) | number:'1.0-2'}}%</td>
+						</tr>
+						<tr>
+							<th scope="row">Low Freq.</th>
+							<td>{{text.statistics.wordCount.low}}</td>
+							<td>{{(text.statistics.wordPercentage.low * 100) | number:'1.0-2'}}%</td>
+						</tr>
+						<tr>
+							<th scope="row">No Category</th>
+							<td>{{text.statistics.wordCount.noCategory}}</td>
+							<td>{{(text.statistics.wordPercentage.noCategory * 100) | number:'1.0-2'}}%</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<table class="table table-bordered">
+					<thead class="thead-default">
+						<tr>
+							<th>#</th>
+							<th>Words</th>
+							<th>Sentences</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Total</th>
+							<td>{{text.statistics.wordCount.total}}</td>
+							<td>{{text.sentenceCount}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--Pie Chart-->
+		<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
+			<h3 class="card-header bg-success">Pie Chart</h3>
+			<div class="card-block">
+				<div style="display: block">
+					<canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+					 (chartClick)="chartClicked($event)"></canvas>
+				</div>
+
+			</div>
+		</div>
 
 	</div>
 
@@ -60,7 +143,7 @@
 		</div>
 		<div class="col-6">
 			<div class="float-right">
-				<button type="button" class="btn btn-warning" [routerLink]="['/text']">
+				<button type="button" class="btn btn-warning" (click)="backClicked()">
 					<i class="fa fa-step-backward" aria-hidden="true"></i> Back</button>
 			</div>
 		</div>
@@ -68,7 +151,7 @@
 	<hr>
 
 	<div>
-		<h4> Please go back and enter your text...</h4>
+		<h4> Please go back</h4>
 	</div>
 
 </ng-template>

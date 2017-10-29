@@ -5,6 +5,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
 describe('TextStatisticsComponent', () => {
   let component: TextStatisticsComponent;
@@ -16,7 +18,9 @@ describe('TextStatisticsComponent', () => {
         BrowserAnimationsModule,
         HttpClientTestingModule,
         RouterTestingModule,
-        FormsModule
+        FormsModule,
+        Ng2Charts,
+        NgbModule.forRoot()
       ],
       declarations: [ TextStatisticsComponent ],
       providers: [
