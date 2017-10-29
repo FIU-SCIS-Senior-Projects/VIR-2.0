@@ -12,7 +12,7 @@ $topnav-background-color: #222;
     .top-right-nav{
         .buy-now{
             a{
-                color:#999;
+                color:#eceeef;
             }
         }
         .dropdown-menu{
@@ -71,3 +71,12 @@ $topnav-background-color: #222;
     background: $topnav-background-color !important;
 }
 
+
+
+@media only screen and (max-width: 320px) {
+    
+    .font-responsive { 
+          font-size: 1em;
+       }
+    
+    }

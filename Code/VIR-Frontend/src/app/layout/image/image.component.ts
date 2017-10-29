@@ -32,7 +32,7 @@ export class ImageComponent implements OnInit {
         this.userImageFile = fileBrowser.files[0];
 
         // check filesize
-      if (this.userImageFile.size > 26000000) {
+      if (this.userImageFile.size > 26214400) {
         this.fileSizeExceeded = true;
         this.processing = false;
         return;
