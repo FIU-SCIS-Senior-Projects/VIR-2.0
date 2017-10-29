@@ -81,6 +81,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.github.ulisesbocchio</groupId>
@@ -161,13 +167,10 @@
 					<excludes>
 						<exclude>**/*IT.java</exclude>
 					</excludes>
-					<forkCount>3</forkCount>
-					<reuseForks>true</reuseForks>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 	<profiles>
 		<profile>
 			<id>dev</id>
@@ -203,8 +206,6 @@
 										<exclude>**/*Tests.java</exclude>
 										<exclude>**/*Test.java</exclude>
 									</excludes>
-									<forkCount>3</forkCount>
-									<reuseForks>true</reuseForks>
 								</configuration>
 							</execution>
 						</executions>
@@ -219,9 +220,34 @@
 				<activatedProperties>prod</activatedProperties>
 			</properties>
 
-			<!-- Create the production bundle -->
 			<build>
+				<!-- This resources build will allow us to exclude the database files 
+					from prod. We need to specify all these even though it looks verbose. Look 
+					at the effective POM on how Spring Boot does it. -->
+				<resources>
+					<resource>
+						<filtering>true</filtering>
+						<directory>${basedir}/src/main/resources</directory>
+						<includes>
+							<include>**/application*.yml</include>
+							<include>**/application*.yaml</include>
+							<include>**/application*.properties</include>
+						</includes>
+					</resource>
+					<resource>
+						<directory>${basedir}/src/main/resources</directory>
+						<excludes>
+							<exclude>**/application*.yml</exclude>
+							<exclude>**/application*.yaml</exclude>
+							<exclude>**/application*.properties</exclude>
+							<exclude>data.sql</exclude>
+							<exclude>schema.sql</exclude>
+						</excludes>
+					</resource>
+				</resources>
 				<plugins>
+
+					<!-- Create the production bundle -->
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>

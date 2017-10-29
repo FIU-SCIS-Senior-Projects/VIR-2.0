@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Percent {
 
-	private double aws;
+	private double awl;
 	private double hi;
 	private double med;
 	private double low;
@@ -17,7 +17,7 @@ public class Percent {
 	}
 
 	public Percent(Count count) {
-		this.aws = (double) count.getAwl() / count.getTotal();
+		this.awl = (double) count.getAwl() / count.getTotal();
 		this.hi = (double) count.getHi() / count.getTotal();
 		this.med = (double) count.getMed() / count.getTotal();
 		this.low = (double) count.getLow() / count.getTotal();
@@ -36,11 +36,11 @@ public class Percent {
 		return EqualsBuilder.reflectionEquals(this, that);
 	}
 	
-	public double getAws() {
-		return aws;
+	public double getAwl() {
+		return awl;
 	}
-	public void setAws(double aws) {
-		this.aws = aws;
+	public void setAwl(double awl) {
+		this.awl = awl;
 	}
 	public double getHi() {
 		return hi;

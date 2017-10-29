@@ -11,13 +11,13 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.vir.GeneralDevTest;
 import com.vir.model.Word;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@GeneralDevTest
 public class WordTranslatorTest {
 
 	private static final String HEADER_VALUE = "value";
