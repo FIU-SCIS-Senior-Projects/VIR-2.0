@@ -42,3 +42,6 @@ Thumbs.db
 
 # test results
 /reports
+
+# Dist
+/dist
