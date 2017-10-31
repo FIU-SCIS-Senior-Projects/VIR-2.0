@@ -31,7 +31,7 @@
 						</ngb-progressbar>
 
 					</div>
-					<div *ngSwitchCase="text.fleschReadingScore > 60">
+					<div *ngSwitchCase="text.fleschReadingScore > 79">
 						<ngb-progressbar type="success" [value]="text.fleschReadingScore" [striped]="true" [animated]="true">
 							<i>
 								<strong>{{text.fleschReadingScore | number:'1.0-2'}} / 100</strong>
@@ -49,7 +49,7 @@
 
 
 				<p>
-					<Strong>Total Readibility Level: </Strong>
+					<Strong>Total Readability Level: </Strong>
 					<strong style="font-size: 20px; font-weight: bold;">{{text.fleschReadingScore | number:'1.0-2'}}</strong>
 				</p>
 				<p>
@@ -74,7 +74,7 @@
 						<tr>
 							<th scope="row">AWL</th>
 							<td>{{text.statistics.wordCount.awl}}</td>
-							<td>{{(text.statistics.wordPercentage.aws * 100) | number:'1.0-2'}}%</td>
+							<td>{{(text.statistics.wordPercentage.awl * 100) | number:'1.0-2'}}%</td>
 						</tr>
 						<tr>
 							<th scope="row">High Freq.</th>
