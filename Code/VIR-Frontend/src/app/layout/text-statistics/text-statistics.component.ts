@@ -80,6 +80,7 @@ export class TextStatisticsComponent implements OnInit {
   onResize(event) {
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
+    // tslint:disable-next-line:no-unused-expression
     event.target.innerWidth;
   }
 
