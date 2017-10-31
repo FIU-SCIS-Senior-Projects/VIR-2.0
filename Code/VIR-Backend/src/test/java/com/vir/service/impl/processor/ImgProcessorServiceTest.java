@@ -1,5 +1,5 @@
 package com.vir.service.impl.processor;
-
+import org.junit.Ignore;
 import static org.junit.Assert.assertEquals;
 
 import java.io.InputStream;
@@ -18,8 +18,10 @@ import com.vir.model.FileType;
 import com.vir.model.Text;
 import com.vir.service.FileProcessorService;
 
+
 @RunWith(SpringRunner.class)
 @GeneralDevTest
+@Ignore
 public class ImgProcessorServiceTest {
 	
 	@Autowired
