@@ -2,7 +2,7 @@ import { Component, Input, NgModule, OnInit, ElementRef, ViewChild } from '@angu
 import { routerTransition } from '../../router.animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { TextService, IText, IWordMatch, IStatistics } from '../../shared'
+import { TextService, IText } from '../../shared'
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,6 @@ export class DocComponent implements OnInit {
   @ViewChild('fileInput') fileInput;
 
   text: IText;
-  statistics: IStatistics;
   processing: boolean;
   userDocFile: File;
   error: boolean;

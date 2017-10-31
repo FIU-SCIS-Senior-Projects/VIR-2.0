@@ -2,11 +2,10 @@ import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IText, IWordMatch, IStatistics} from '../interface'
-import 'rxjs/add/operator/catch';
+import { IText } from '../interface'
+
 import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class TextService {

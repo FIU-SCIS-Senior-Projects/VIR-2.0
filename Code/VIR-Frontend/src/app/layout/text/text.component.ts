@@ -2,7 +2,7 @@ import { Component, Input, NgModule, OnInit} from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { TextService, IText, IWordMatch, IStatistics } from '../../shared'
+import { TextService, IText } from '../../shared'
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,13 +15,12 @@ export class TextComponent implements OnInit {
 
   @Input() textArea: string;
   text: IText;
-  statistics: IStatistics;
   processing: boolean;
   error: boolean;
   constructor(private _textService: TextService, public router: Router) { }
 
   // Function for enhanced text
-  enhancedText2(url: string): void {
+  analyzeText(url: string): void {
     this.processing = true;
     this.error = false;
     this._textService.enhancedText(this.textArea)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TextService, IText, IWordMatch, IStatistics, IWordCount } from '../../shared'
+import { TextService, IText } from '../../shared'
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
@@ -18,14 +18,17 @@ export class TextStatisticsComponent implements OnInit {
   public pieChartType = 'pie';
 
   text: IText;
-  statistics: IStatistics;
-  wordCount: IWordCount;
   showDiv: boolean;
   textLVL: string;
   showOnlyIcons: boolean;
   backLabel: string = TextStatisticsComponent.BACK_LABEL;
   enhanceTextLabel: string = TextStatisticsComponent.ENHANCETEXT_LABEL;
-  height = 30;
+
+  awlPercentage: number;
+  hiPercentage: number;
+  medPercentage: number;
+  lowPercentage: number;
+  noCategoryPercentage: number;
 
   constructor(private _textService: TextService, public router: Router, private _location: Location) { }
 
@@ -47,15 +50,26 @@ export class TextStatisticsComponent implements OnInit {
     }
   }
 
+  /*
+    80-100: Beginner Lever
+    70-79: Intermediate Level
+    60-69: Upper intermediate Level
+    30-59: Advanced Level
+    0--29: College Level
+  */
   textLevel(score: number) {
-    if (score <= 30 && score >= 1) {
-      this.textLVL = 'Hard';
-    } else if (score <= 60 && score > 30) {
-      this.textLVL = 'Medium';
+    if (score <= 29 && score >= 1) {
+      this.textLVL = 'College Level';
+    } else if (score <= 59 && score > 29) {
+      this.textLVL = 'Advanced Level';
+    } else if (score <= 69 && score > 59) {
+      this.textLVL = 'Upper intermediate Level';
+    } else if (score <= 79 && score > 69) {
+      this.textLVL = 'Intermediate Level';
     } else if (score === 0) {
-      this.textLVL = 'it not applicable for texts under 100 words '
+      this.textLVL = 'it is not applicable for texts under 100 words.'
     } else {
-      this.textLVL = 'Easy';
+      this.textLVL = 'Beginner Lever';
     }
   }
 
@@ -74,8 +88,8 @@ export class TextStatisticsComponent implements OnInit {
     this.enhanceTextLabel = this.showOnlyIcons ? '' : TextStatisticsComponent.ENHANCETEXT_LABEL;
   }
 
-   // events
-   public chartClicked(e: any): void {
+  // events
+  public chartClicked(e: any): void {
     console.log(e);
   }
 
