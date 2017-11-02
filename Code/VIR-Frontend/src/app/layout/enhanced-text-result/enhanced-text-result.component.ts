@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TextService, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-enhanced-text-result',
@@ -25,9 +26,11 @@ export class EnhancedTextResultComponent implements OnInit {
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
   cleanWord: string;
   definitionDiv: any;
+  closeResult: string;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private _textService: TextService, public _definitionService: DefinitionService, public router: Router, private _location: Location) { }
+  constructor(private _textService: TextService, public _definitionService: DefinitionService, public router: Router, private _location: Location,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.turnOn = false;
@@ -66,11 +69,6 @@ export class EnhancedTextResultComponent implements OnInit {
   }
 
 
-  // it hides the definition box
-  hideDefinitionBox() {
-    this.definitionBox = false;
-  }
-
   // return to the previous page
   backClicked() {
     this._location.back();
@@ -82,16 +80,29 @@ export class EnhancedTextResultComponent implements OnInit {
     event.target.innerWidth;
   }
 
-  // scrolling to the top on both the window and definition Div
-  scrollToTop() {
-    window.scrollTo(0, 0);
-    this.definitionDiv = document.getElementById('definition');
-    this.definitionDiv.scrollTop = 0;
-  }
 
   private updaTeLabels(): void {
     this.backLabel = this.showOnlyIcons ? '' : EnhancedTextResultComponent.BACK_LABEL;
     this.statisticsLabel = this.showOnlyIcons ? '' : EnhancedTextResultComponent.STATISTICS_LABEL;
+  }
+
+  // definiton Model open
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 }
