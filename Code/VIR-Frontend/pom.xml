@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Frontend</artifactId>
-	<version>0.0.53-SNAPSHOT</version>
+	<version>0.0.54-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>VIR-Frontend</name>
