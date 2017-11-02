@@ -23,6 +23,11 @@
   </div>
 </div>
 
+<!--Top page note-->
+<div style="background-color: #e6e6e6; border-radius: 15px; min-height: 25px;">
+  <p style="text-align: center;font-size: 0.9rem; "><strong>Words are given alongside their inflectional & derivational forms</strong></p>
+</div>
+
 <!--Table-->
 <div class='table-responsive table-hover table-striped' *ngIf='turnOn'>
   <table class='table table-hover'>
@@ -42,6 +47,7 @@
     </tbody>
   </table>
 
+  <!--Pagination-->
   <div [ngSwitch]="activeCategory">
     <div *ngSwitchCase="'awl'">
       <ngb-pagination [collectionSize]="page.totalElements" [pageSize]="tableSize" [(page)]="awlpage" [maxSize]="4" [rotate]="true"
@@ -60,6 +66,7 @@
         [ellipses]="false" (pageChange)="getLowWordList(lowpage)" [boundaryLinks]="true"></ngb-pagination>
     </div>
     <hr class="bottomMarging">
+
     <!--Page Size-->
     <div class="btn-group col-md-4 float-right" ngbRadioGroup name="radioBasic" [(ngModel)]="tableSize">
       <label ngbButtonLabel class="btn-secondary">
@@ -84,7 +91,9 @@
     </div>
 
     <div class="col-md-4" style="margin:0 auto;">
-      <p><strong>page: {{page.number + 1}} / {{page.totalPages}}</strong> </p>
+      <p>
+        <strong>page: {{page.number + 1}} / {{page.totalPages}}</strong>
+      </p>
     </div>
     <hr class="topMarging">
   </div>
