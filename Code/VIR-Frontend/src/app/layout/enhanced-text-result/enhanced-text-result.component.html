@@ -1,8 +1,3 @@
-<!--Alert-->
-<div class="alert alert-warning" role="alert" *ngIf='error'>
-	<strong>Oh snap!</strong> We couldn't find the definition, please try another word.
-</div>
-
 <!--if it sees the object it will show the result, else it prompt the user to go back-->
 <div *ngIf="text;  else elseBlock">
 	<div class="row">
@@ -47,23 +42,36 @@
 	</div>
 	<hr>
 
-
-	<div class="card" id="definition" style="overflow-y: scroll; height:200px;" *ngIf='definitionBox'>
-		<h3 class="card-header"><img src="assets/images/Wikipedia-logo.png"  title="Wikipedia Dictionary" style="width:50px;height:50px;"> Definition &nbsp;&nbsp;
-			<i class="fa fa-spinner fa-spin" style="font-size:32px;color:black" *ngIf='processing'></i>
-			<button type="button" class="btn btn-warning float-right" (click)="hideDefinitionBox()">
-				<i class="fa fa-minus-square" aria-hidden="true"></i> Hide</button>
-		</h3>
-		<div class="card-block">
-			<p class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
+	<!--Definition model (Popup)-->
+	<ng-template #content let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">
+				<img src="assets/images/Wikipedia-logo.png" title="Wikipedia Dictionary" style="width:50px;height:50px;"> Definition &nbsp;&nbsp;
+				<i class="fa fa-spinner fa-spin" style="font-size:32px;color:black" *ngIf='processing'></i>
+			</h4>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
-	</div>
+		<div class="modal-body">
+			<!--Alert-->
+			<div class="alert alert-warning" role="alert" *ngIf='error'>
+				<strong>Oh snap!</strong> We couldn't find the definition, please try another word.
+			</div>
+			<!--Definition-->
+			<p *ngIf='!error' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+		</div>
+	</ng-template>
+
 
 
 	<!--Print each word from the word object and color it base on the category -->
 	<div class="enhancedTextbox equalLength" *ngIf='turnOn'>
 		<div class="oneLine" *ngFor='let word of text.words'>
-			<span [class]="word.category" (click)="getDefinition(word.initialValue); scrollToTop();">
+			<span [class]="word.category" (click)="getDefinition(word.initialValue); open(content);">
 				<a href="javascript:void(0)">{{word.initialValue}}</a>
 			</span>
 			<span class="oneLine" *ngIf="word.initialValue == ''">
@@ -76,8 +84,8 @@
 
 <!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
-	<div class="row"> 
-		<div class="col-6" >
+	<div class="row">
+		<div class="col-6">
 			<h1>Oops!</h1>
 		</div>
 		<div class="col-6" (window:resize)="onResize($event)">
