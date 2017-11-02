@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { TextService } from '../../shared'
 import { Router } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DefinitionService } from './../../shared/services/definition.service';
 
 describe('DictionaryComponent', () => {
   let component: DictionaryComponent;
@@ -23,6 +24,7 @@ describe('DictionaryComponent', () => {
       declarations: [ DictionaryComponent ],
       providers: [
         TextService,
+        DefinitionService,
         WordsListService,
         {provide: Router}
       ],

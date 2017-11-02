@@ -6,6 +6,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { WordsListService, IPage } from '../../shared'
 import { Router } from '@angular/router';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { TextService, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
 
 @Component({
   selector: 'app-dictionary',
@@ -33,7 +35,14 @@ export class DictionaryComponent implements OnInit {
   activeCategory: string;
   wordCategory: string;
 
-  constructor(private _wordsList: WordsListService) {
+  processing: boolean;
+  wordDefinition: IDefinition;
+  text: IText;
+  error: boolean;
+  cleanWord: string;
+  closeResult: string;
+
+  constructor(private _wordsList: WordsListService, public _definitionService: DefinitionService, private modalService: NgbModal) {
     this.defaultPagination = 1;
     this.advancedPagination = 1;
     this.paginationSize = 1;
@@ -108,6 +117,52 @@ export class DictionaryComponent implements OnInit {
   ngOnInit() {
     this.getWordList(0, this.activeCategory, this.tableSize, this.sort);
     this.convertText(this.activeCategory)
+  }
+
+
+  // it gets the definition of  the word using DefinitionService
+  getDefinition(word: string) {
+    this.processing = true;
+    this.error = false;
+    this.cleanWord = word.replace(/[^a-zA-Z ]/g, '');
+    this._definitionService.getDefinitionService(this.cleanWord)
+      .subscribe
+      (res => {
+        this.wordDefinition = res;
+        this.turnOn = true;
+        this.processing = false;
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('Client-side Error occured');
+        } else {
+          this.error = true;
+          this.processing = false;
+          console.log('Server-side Error occured');
+        }
+      }
+      );
+
+  }
+
+
+  // definiton Model open
+  open(content) {
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 

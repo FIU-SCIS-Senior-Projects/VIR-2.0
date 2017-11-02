@@ -1,3 +1,4 @@
+import { DefinitionService } from './../../shared/services/definition.service';
 import { WordsListService } from './../../shared/services/wordsList.service';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,6 +18,6 @@ import { TextService } from '../../shared'
 
   ],
   declarations: [ DictionaryComponent ],
-  providers: [WordsListService],
+  providers: [WordsListService, DefinitionService],
 })
 export class DictionaryModule { }

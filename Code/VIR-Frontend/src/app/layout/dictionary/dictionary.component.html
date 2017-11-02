@@ -28,6 +28,30 @@
   <p style="text-align: center;font-size: 0.9rem; "><strong>Words are given alongside their inflectional & derivational forms</strong></p>
 </div>
 
+<!--Definition model (Popup)-->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">
+      <img src="assets/images/Wikipedia-logo.png" title="Wikipedia Dictionary" style="width:50px;height:50px;"> Definition &nbsp;&nbsp;
+      <i class="fa fa-spinner fa-spin" style="font-size:32px;color:black" *ngIf='processing'></i>
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!--Alert-->
+    <div class="alert alert-warning" role="alert" *ngIf='error'>
+      <strong>Oh snap!</strong> We couldn't find the definition, please try another word.
+    </div>
+    <!--Definition-->
+    <p *ngIf='!error && !processing' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
 <!--Table-->
 <div class='table-responsive table-hover table-striped' *ngIf='turnOn'>
   <table class='table table-hover'>
@@ -39,8 +63,8 @@
     </thead>
     <tbody>
       <tr *ngFor='let word of page.content'>
-        <td>
-          {{ word.value}}
+        <td (click)="getDefinition(word.value); open(content);">
+          <a href="javascript:void(0)">{{ word.value}}</a>
         </td>
         <td>{{wordCategory}}</td>
       </tr>
