@@ -25,7 +25,7 @@ import { HeaderComponent, SidebarComponent, FooterComponent } from '../shared';
         HeaderComponent,
         SidebarComponent,
         FooterComponent,
-    
+
     ]
 })
 export class LayoutModule { }
