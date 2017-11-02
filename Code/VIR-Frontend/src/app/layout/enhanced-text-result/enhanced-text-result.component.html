@@ -59,7 +59,7 @@
 				<strong>Oh snap!</strong> We couldn't find the definition, please try another word.
 			</div>
 			<!--Definition-->
-			<p *ngIf='!error' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
+			<p *ngIf='!error && !processing' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>

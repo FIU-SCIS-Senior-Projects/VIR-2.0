@@ -15,7 +15,7 @@ export class EnhancedTextResultComponent implements OnInit {
   public static BACK_LABEL: string = ' Back';
   public static readonly STATISTICS_LABEL: string = ' Statistics';
 
-  definitionBox: boolean;
+
   processing: boolean;
   turnOn: boolean;
   wordDefinition: IDefinition;
@@ -25,7 +25,6 @@ export class EnhancedTextResultComponent implements OnInit {
   backLabel: string = EnhancedTextResultComponent.BACK_LABEL;
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
   cleanWord: string;
-  definitionDiv: any;
   closeResult: string;
 
   // tslint:disable-next-line:max-line-length
@@ -38,13 +37,11 @@ export class EnhancedTextResultComponent implements OnInit {
     this.updaTeLabels();
     this.text = this._textService.resultText;
     this.getDefinition('book')
-    this.definitionBox = false;
   }
 
   // it gets the definition of  the word using DefinitionService
   getDefinition(word: string) {
     this.processing = true;
-    this.definitionBox = true;
     this.error = false;
     this.cleanWord = word.replace(/[^a-zA-Z ]/g, '');
     this._definitionService.getDefinitionService(this.cleanWord)
@@ -60,7 +57,6 @@ export class EnhancedTextResultComponent implements OnInit {
         } else {
           this.error = true;
           this.processing = false;
-          this.definitionBox = false;
           console.log('Server-side Error occured');
         }
       }
