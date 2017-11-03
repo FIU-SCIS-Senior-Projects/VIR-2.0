@@ -3,6 +3,7 @@ import { TextService, IText } from '../../shared'
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DecimalPipe } from '@angular/common';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-text-statistics',
@@ -20,6 +21,7 @@ export class TextStatisticsComponent implements OnInit {
   text: IText;
   showDiv: boolean;
   textLVL: string;
+  textColor: string;
   showOnlyIcons: boolean;
   backLabel: string = TextStatisticsComponent.BACK_LABEL;
   enhanceTextLabel: string = TextStatisticsComponent.ENHANCETEXT_LABEL;
@@ -30,9 +32,12 @@ export class TextStatisticsComponent implements OnInit {
   lowPercentage: number;
   noCategoryPercentage: number;
 
-  constructor(private _textService: TextService, public router: Router, private _location: Location) { }
+  closeResult: string;
+
+  constructor(private _textService: TextService, public router: Router, private _location: Location, private modalService: NgbModal) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.text = this._textService.resultText;
     if (!this.text) {
       return;
@@ -60,16 +65,21 @@ export class TextStatisticsComponent implements OnInit {
   textLevel(score: number) {
     if (score <= 29 && score >= 1) {
       this.textLVL = 'College Level';
-    } else if (score <= 59 && score > 29) {
+      this.textColor = 'red';
+    } else if (score <= 59 && score >= 30) {
       this.textLVL = 'Advanced Level';
-    } else if (score <= 69 && score > 59) {
+      this.textColor = 'orange';
+    } else if (score <= 69 && score >= 60) {
       this.textLVL = 'Upper intermediate Level';
-    } else if (score <= 79 && score > 69) {
+      this.textColor = 'yellow';
+    } else if (score <= 79 && score >= 70) {
       this.textLVL = 'Intermediate Level';
+      this.textColor = 'green';
     } else if (score === 0) {
       this.textLVL = 'it is not applicable for texts under 100 words.'
     } else {
       this.textLVL = 'Beginner Lever';
+      this.textColor = 'blue';
     }
   }
 
@@ -101,5 +111,24 @@ export class TextStatisticsComponent implements OnInit {
   updatePieChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
     this.pieChartData = [awl, hi, med, low, noCategory]
   }
+
+    // definiton Model open
+    open(content) {
+      this.modalService.open(content).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      });
+    }
+  
+    private getDismissReason(reason: any): string {
+      if (reason === ModalDismissReasons.ESC) {
+        return 'by pressing ESC';
+      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+        return 'by clicking on a backdrop';
+      } else {
+        return `with: ${reason}`;
+      }
+    }
 
 }
