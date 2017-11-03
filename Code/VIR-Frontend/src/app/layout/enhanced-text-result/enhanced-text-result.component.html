@@ -59,7 +59,7 @@
 				<strong>Oh snap!</strong> We couldn't find the definition, please try another word.
 			</div>
 			<!--Definition-->
-			<p *ngIf='!error' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
+			<p *ngIf='!error && !processing' class="card-text" [innerHTML]="wordDefinition.wiki.html"></p>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
@@ -68,8 +68,8 @@
 
 
 
-	<!--Print each word from the word object and color it base on the category -->
-	<div class="enhancedTextbox equalLength" *ngIf='turnOn'>
+	<!--Print each word from the word object and color it base on the category *ngIf='turnOn'-->
+	<div class="enhancedTextbox equalLength" >
 		<div class="oneLine" *ngFor='let word of text.words'>
 			<span [class]="word.category" (click)="getDefinition(word.initialValue); open(content);">
 				<a href="javascript:void(0)">{{word.initialValue}}</a>
@@ -84,6 +84,7 @@
 
 <!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
+	<meta http-equiv="refresh" content="3;url=http://www.myvirs.com/dashboard" />
 	<div class="row">
 		<div class="col-6">
 			<h1>Oops!</h1>
@@ -98,6 +99,6 @@
 	<hr>
 
 	<div>
-		<h4> Please go back</h4>
+		<h4> Redirecting to homepage in 3 seconds...</h4>
 	</div>
 </ng-template>

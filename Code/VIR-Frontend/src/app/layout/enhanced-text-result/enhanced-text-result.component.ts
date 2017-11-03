@@ -17,7 +17,6 @@ export class EnhancedTextResultComponent implements OnInit {
 
   definitionBox: boolean;
   processing: boolean;
-  turnOn: boolean;
   wordDefinition: IDefinition;
   text: IText;
   error: boolean;
@@ -33,7 +32,6 @@ export class EnhancedTextResultComponent implements OnInit {
     private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.turnOn = false;
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     this.text = this._textService.resultText;
@@ -51,7 +49,6 @@ export class EnhancedTextResultComponent implements OnInit {
       .subscribe
       (res => {
         this.wordDefinition = res;
-        this.turnOn = true;
         this.processing = false;
       },
       (err: HttpErrorResponse) => {
