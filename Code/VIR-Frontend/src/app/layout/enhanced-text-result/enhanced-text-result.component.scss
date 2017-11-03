@@ -79,3 +79,8 @@ a.disabled {
   border-style: solid;
   border-color: black;
 }
+
+.modal-body {
+  max-height: calc(100vh - 210px);
+  overflow-y: auto;
+}
