@@ -3,6 +3,7 @@ package com.vir.service.impl.dictionary;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -38,7 +39,7 @@ public class OxfordDictionaryEntryService implements DictionaryEntryService {
 	public RetrieveEntry getEntry(String wordId) throws UnableToGetEntryException {
 
 		try {
-			URL url = new URL(API_URL_ENGLISH + wordId);
+			URL url = new URL(API_URL_ENGLISH + URLEncoder.encode(wordId, "UTF-8"));
 			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
 			urlConnection.setRequestProperty(OxfordDictionaryEntryService.HEADERS_ACCEPT,
 					MediaType.APPLICATION_JSON_VALUE);
