@@ -24,12 +24,12 @@
         "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xxxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
-        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
-    },
-    {
         "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
         "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
         "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_check_to_on_mtrl_000.png",
