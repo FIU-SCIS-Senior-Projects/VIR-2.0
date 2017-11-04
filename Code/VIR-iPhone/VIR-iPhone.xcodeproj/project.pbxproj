@@ -193,6 +193,7 @@
 				TargetAttributes = {
 					38D044091F8153D60030785C = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = K2KAF5N3PU;
 						ProvisioningStyle = Automatic;
 					};
 					38D0441D1F8153D70030785C = {
@@ -412,9 +413,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K2KAF5N3PU;
 				INFOPLIST_FILE = "VIR-iPhone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vir.VIR-iPhone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -424,9 +427,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = K2KAF5N3PU;
 				INFOPLIST_FILE = "VIR-iPhone/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vir.VIR-iPhone";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vir;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -505,6 +510,7 @@
 				38D044341F8153D70030785C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38D044351F8153D70030785C /* Build configuration list for PBXNativeTarget "VIR-iPhoneTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +519,7 @@
 				38D044371F8153D70030785C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38D044381F8153D70030785C /* Build configuration list for PBXNativeTarget "VIR-iPhoneUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +528,7 @@
 				38D0443A1F8153D70030785C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
