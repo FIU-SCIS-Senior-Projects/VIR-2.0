@@ -12,6 +12,7 @@ import com.vir.model.SourceType;
 import com.vir.model.dictionary.oxford.RetrieveEntry;
 import com.vir.model.dictionary.wiki.WikiEntry;
 import com.vir.service.DictionaryEntryService;
+import com.vir.service.WordService;
  
 /**
  * Service that collects all the resources definitions and puts them
@@ -31,11 +32,16 @@ public class SimpleDictionaryEntryService {
 	@Autowired
 	@Qualifier("wikiDictionaryEntryService")
 	private DictionaryEntryService wikiService;
+	
+	@Autowired
+	@Qualifier("simpleWordService")
+	private WordService wordService;
 
 	public Dictionary getEntry(String wordId, List<SourceType> types) throws UnableToGetEntryException {
 		
 		Dictionary data = new Dictionary();
-		 
+		wordId = wordService.clean(wordId); 
+		
 		for (SourceType sourceType : types) {
 			switch (sourceType) {
 			case OXFORD:

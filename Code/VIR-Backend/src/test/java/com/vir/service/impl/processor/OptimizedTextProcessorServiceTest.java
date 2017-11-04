@@ -1,4 +1,4 @@
-package com.vir.service.impl;
+package com.vir.service.impl.processor;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -102,5 +102,21 @@ public class OptimizedTextProcessorServiceTest {
 		long sentenceCount = 12;
 		long syllableCount = 430;
 		assertEquals(60.20d, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
+	}
+	
+	@Test
+	public void getFleschReadingEase_WithValueAbove100_Returns100() {
+		long wordCount = 1;
+		long sentenceCount = 1;
+		long syllableCount = 1;
+		assertEquals(100.00, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
+	}
+	
+	@Test
+	public void getFleschReadingEase_WithValueBellow0_Returns0() {
+		long wordCount = 1000;
+		long sentenceCount = 1;
+		long syllableCount = 1;
+		assertEquals(0.00, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
 	}
 }
