@@ -1,7 +1,7 @@
 
-# Created by https://www.gitignore.io/api/swift,xcode
+# Created by https://www.gitignore.io/api/swift,xcode,cocoapods,objective-c
 
-### Swift ###
+### Objective-C ###
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
@@ -22,8 +22,9 @@ DerivedData/
 xcuserdata/
 
 ## Other
-*.moved-aside
 *.xccheckout
+*.moved-aside
+*.xcuserstate
 *.xcscmblueprint
 
 ## Obj-C/Swift specific
@@ -31,21 +32,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
-
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-# Package.pins
-.build/
-
-# CocoaPods - Refactored to standalone file
-
-# Carthage - Refactored to standalone file
 
 # fastlane
 #
@@ -59,16 +45,31 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 
-### Xcode ###
-# Xcode
+# Carthage
 #
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+# Add this line if you want to avoid checking in source code from Carthage dependencies.
+# Carthage/Checkouts
 
-## Build generated
+Carthage/Build
 
-## Various settings
+# Code Injection
+#
+# After new code Injection tools there's a generated folder /iOSInjectionProject
+# https://github.com/johnno1962/injectionforxcode
 
-## Other
+iOSInjectionProject/
+
+## Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Swift Package Manager
+#
+# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
+# Packages/
+# Package.pins
+.build/
+
 
 ### Xcode Patch ###
 *.xcodeproj/*
@@ -76,5 +77,3 @@ fastlane/test_output
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
-
-# End of https://www.gitignore.io/api/swift,xcode
