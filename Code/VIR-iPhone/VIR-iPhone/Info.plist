@@ -66,5 +66,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Used to upload documents for OCR</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to scan images for OCR</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Used to scan images for OCR</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to scan images for OCR</string>
 </dict>
 </plist>
