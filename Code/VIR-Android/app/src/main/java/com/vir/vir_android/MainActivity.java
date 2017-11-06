@@ -108,12 +108,19 @@ public class MainActivity extends AppCompatActivity {
         webView.loadUrl(Constants.DOMAIN_FULL);
 
         webView.setWebChromeClient(new WebChromeClient(){
+            String[] mimeTypes =  {
+                        "application/msword",
+                        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        "application/pdf",
+                        "image/*"};
+
             //For Android 3.0+
             public void openFileChooser(ValueCallback<Uri> uploadMsg){
                 mUM = uploadMsg;
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("*/*");
+                i.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
                 MainActivity.this.startActivityForResult(Intent.createChooser(i,"File Chooser"), FCR);
             }
             // For Android 3.0+, above method not supported in some android 3+ versions, in such case we use this
@@ -132,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_GET_CONTENT);
                 i.addCategory(Intent.CATEGORY_OPENABLE);
                 i.setType("*/*");
+                i.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
                 MainActivity.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), MainActivity.FCR);
             }
             //For Android 5.0+
@@ -161,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent contentSelectionIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 contentSelectionIntent.setType("*/*");
+                contentSelectionIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+                
                 Intent[] intentArray;
                 if(takePictureIntent != null){
                     intentArray = new Intent[]{takePictureIntent};
