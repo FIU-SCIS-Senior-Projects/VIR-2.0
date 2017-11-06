@@ -36,7 +36,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-
     WebView webView;
     private static final String TAG = MainActivity.class.getSimpleName();
     private String mCM;
