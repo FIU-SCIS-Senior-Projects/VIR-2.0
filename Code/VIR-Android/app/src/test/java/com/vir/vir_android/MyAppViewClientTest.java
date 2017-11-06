@@ -1,8 +1,5 @@
 package com.vir.vir_android;
 
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +16,7 @@ public class MyAppViewClientTest {
     public void shouldOverrideUrlLoading_ReturnsFalse() throws Exception {
 
         // Force links and redirects to open in the WebView instead of in a browse.
-        MyAppWebViewClient client = new MyAppWebViewClient();
+        MyWebViewClient client = new MyWebViewClient();
         assertNotNull(client);
     }
 }
