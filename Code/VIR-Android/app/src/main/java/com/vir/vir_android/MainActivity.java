@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 contentSelectionIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 contentSelectionIntent.setType("*/*");
                 contentSelectionIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-                
+
                 Intent[] intentArray;
                 if(takePictureIntent != null){
                     intentArray = new Intent[]{takePictureIntent};
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent chooserIntent = new Intent(Intent.ACTION_CHOOSER);
                 chooserIntent.putExtra(Intent.EXTRA_INTENT, contentSelectionIntent);
-                chooserIntent.putExtra(Intent.EXTRA_TITLE, "Image Chooser");
+                chooserIntent.putExtra(Intent.EXTRA_TITLE, "File Chooser");
                 chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, intentArray);
                 startActivityForResult(chooserIntent, FCR);
                 return true;
