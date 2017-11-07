@@ -15,16 +15,16 @@
 	</div>
 	<hr>
 
-    <!--Cards on main page - for more information please look at shared/modules/stat component-->
+    <!--Cards on main page - for more information look at shared/modules/stat component-->
 	<div class="row">
 		<div class="col-xl-3 col-lg-6 margin-div">
 			<a [routerLink]="['/text']">
-				<app-stat [bgClass]="'card-primary'" [icon]="'fa-keyboard-o'"  [label]="'Upload Text'" [data]="' Type Your Text'" [url]="'/text'"> </app-stat>
+				<app-stat [bgClass]="'card-primary'" [icon]="'fa-keyboard-o'"  [label]="'Upload Text'" [data]="'Type Your Text'" [url]="'/text'"> </app-stat>
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-6 margin-div">
 			<a [routerLink]="['/doc']">
-				<app-stat [bgClass]="'card-info'" [icon]="'fa-file-text'"  [label]="'Upload Doc'" [data]="'Microsoft Word '" [url]="'/doc'"></app-stat>
+				<app-stat [bgClass]="'card-info'" [icon]="'fa-file-text'"  [label]="'Upload Doc'" [data]="'Microsoft Word'" [url]="'/doc'"></app-stat>
 			</a>
 		</div>
 		<div class="col-xl-3 col-lg-6 margin-div">
@@ -34,7 +34,7 @@
 		</div>
 		<div class="col-xl-3 col-lg-6 margin-div">
 			<a [routerLink]="['/image']">
-				<app-stat [bgClass]="'card-danger'" [icon]="'fa-picture-o'" [label]="'Upload Image'" [data]="' JPEG, PNG'" [url]="'/image'"></app-stat>
+				<app-stat [bgClass]="'card-danger'" [icon]="'fa-picture-o'" [label]="'Upload Image'" [data]="'JPEG, PNG'" [url]="'/image'"></app-stat>
 			</a>
 		</div>
 	</div>
