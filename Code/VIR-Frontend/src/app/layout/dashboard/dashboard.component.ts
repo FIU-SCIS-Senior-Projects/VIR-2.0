@@ -15,20 +15,21 @@ export class DashboardComponent implements OnInit {
     constructor() {
         this.sliders.push({
             imagePath: 'assets/images/VIRS-1.jpg',
-            label: 'Vocabulary in Reading',
+            label: 'Vocabulary in Reading Study',
             text: 'Analyzing one word at a time.'
         }, {
-            imagePath: 'assets/images/VIRS-2.jpg',
-            label: 'Statistics and Words',
-            text: 'Detailed information and data representation of the word lists.'
-        }, {
-            imagePath: 'assets/images/VIRS-3.jpg',
-            label: 'Explore more',
-            text: 'Information about the word is only a click away. '
-        });
+                imagePath: 'assets/images/VIRS-2.jpg',
+                label: 'Statistics and Words',
+                text: 'Detailed information and data representation of the word lists.'
+            }, {
+                imagePath: 'assets/images/VIRS-3.jpg',
+                label: 'Word Lists',
+                text: 'Information about the word is only a click away. '
+            });
     }
 
     ngOnInit() {
+        window.scrollTo(0, 0);
     }
 
     public closeAlert(alert: any) {
