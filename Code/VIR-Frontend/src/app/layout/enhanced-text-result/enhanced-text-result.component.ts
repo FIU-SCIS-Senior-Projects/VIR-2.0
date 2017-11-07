@@ -25,12 +25,16 @@ export class EnhancedTextResultComponent implements OnInit {
   statisticsLabel: string = EnhancedTextResultComponent.STATISTICS_LABEL;
   cleanWord: string;
   closeResult: string;
+  category: string;
+  wordCategory: string;
+
 
   // tslint:disable-next-line:max-line-length
   constructor(private _textService: TextService, public _definitionService: DefinitionService, public router: Router, private _location: Location,
     private modalService: NgbModal) { }
 
   ngOnInit() {
+    window.scrollTo(0, 0);
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
     this.text = this._textService.resultText;
@@ -98,4 +102,10 @@ export class EnhancedTextResultComponent implements OnInit {
     }
   }
 
+  // Convert the active category name "hi,med,low,..." to "High Frequency,.." used for popup title.
+  activeCategory(cat: string) {
+      this.category = cat;
+      // tslint:disable-next-line:max-line-length
+      this.wordCategory = ( cat === 'awl') ? 'AWL' : ( cat === 'hi') ? 'High Frequency' : ( cat === 'med') ? 'Medium Frequency' : ( cat === 'low') ? 'Low Frequency' : 'Names & Off-Lists';
+  }
 }
