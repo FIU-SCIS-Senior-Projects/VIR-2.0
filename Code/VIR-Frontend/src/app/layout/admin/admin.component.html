@@ -1,3 +1,112 @@
-<p>
-  admin works!
-</p>
+<div>
+
+  <!--Card Header-->
+  <div class="card">
+    <div class="card-header  bg-primary card-inverse">
+      Admin Panel
+      <i class="fa fa-spinner fa-spin" style="font-size:32px;color:#ff0072" *ngIf='processing'></i>
+    </div>
+
+    <!--Card contents-->
+    <div class="card-block">
+      <h4 class="card-title"></h4>
+      <p class="card-text">
+
+        <!--Alert-->
+        <div class="alert alert-danger" role="alert" *ngIf='error'>
+          <strong>{{alertWord}} </strong> doesn't exist in data base.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf='errorAdd'>
+          Please Choose the category!
+        </div>
+        <!--Table - shows the search result-->
+        <div class='table-responsive table-hover table-striped'>
+          <table class='table table-hover'>
+            <thead>
+              <tr>
+                <th>Word</th>
+                <th>Categorys</th>
+                <th>ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf='showTable'>
+                <td>{{word.value}}</td>
+                <td>{{word.category}}</td>
+                <td>{{word.id}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!--Search-->
+
+        <div class="form-group row">
+          <label for="example-search-input" class="col-1 col-form-label">
+            <strong>Search</strong>
+          </label>
+          <div class="col-2">
+            <input class="form-control" type="search" name="searchArea" [(ngModel)]="searchArea" id="example-search-input" placeholder="Word..">
+          </div>
+          <button class="btn btn-primary" (click)="searchWord()" [disabled]="!searchArea" required>Search</button>
+        </div>
+
+
+        <hr>
+
+        <!--Add Edit Delete-->
+        <div class=" row">
+
+
+
+          <div class="col-2 form-group">
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Word*" name="wordArea" [(ngModel)]="wordArea">
+            <div [hidden]="wordArea" class="alert alert-default" style="color: #ff0072">
+              Word is required
+            </div>
+          </div>
+
+
+          <select class="custom-select mb-2 mr-sm-2 mb-sm-0 col-2" id="inlineFormCustomSelect" [(ngModel)]="category">
+            <option *ngFor="let i of categoryItems" [value]="i">{{i}}</option>
+          </select>
+
+          <div class="col-3 form-group">
+            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="ID" value="1212" name="idArea"
+              [(ngModel)]="idArea">
+            <div [hidden]="idArea" class="alert alert-default" style="color: #ff0072">
+              ID is required only to
+              <strong> EDIT</strong>
+            </div>
+          </div>
+
+          <div class="col-3 float-right">
+            <button class="btn btn-success" (click)="addWord()" [disabled]="!wordArea" required>Add</button>
+            <button class="btn btn-warning" (click)="editWord()" [disabled]="!wordArea || !idArea" required>Edit</button>
+            <button class="btn btn-danger" (click)="deleteWord()" [disabled]="!wordArea" required>Delete</button>
+          </div>
+        </div>
+
+        <!--Session history-->
+        <div>
+          <h3>
+            Session history:
+          </h3>
+          <ul>
+            <div *ngFor="let history of sessionHistory">
+              <li>
+                <strong>{{history}}</strong>
+              </li>
+              <br>
+            </div>
+          </ul>
+
+
+        </div>
+
+
+    </div>
+  </div>
+
+
+</div>
