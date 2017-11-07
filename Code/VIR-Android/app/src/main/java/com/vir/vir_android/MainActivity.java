@@ -3,17 +3,13 @@ package com.vir.vir_android;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +17,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -36,7 +31,9 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    WebView webView;
+    private final String DOMAIN_FULL = "http://www.myvirs.com";
+
+    private WebView webView;
     private static final String TAG = MainActivity.class.getSimpleName();
     private String mCM;
     private ValueCallback<Uri> mUM;
@@ -100,14 +97,12 @@ public class MainActivity extends AppCompatActivity {
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         }else if(Build.VERSION.SDK_INT >= 19){
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        }else if(Build.VERSION.SDK_INT < 19){
-            webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
         webView.setWebViewClient(new Callback());
-        webView.loadUrl(Constants.DOMAIN_FULL);
+        webView.loadUrl(DOMAIN_FULL);
 
         webView.setWebChromeClient(new WebChromeClient(){
-            String[] mimeTypes =  {
+            final String[] mimeTypes =  {
                         "application/msword",
                         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
                         "application/pdf",
@@ -212,10 +207,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig){
-        super.onConfigurationChanged(newConfig);
     }
 }
