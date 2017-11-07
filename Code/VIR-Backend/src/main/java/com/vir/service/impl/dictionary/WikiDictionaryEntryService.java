@@ -3,6 +3,7 @@ package com.vir.service.impl.dictionary;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -40,10 +41,9 @@ public class WikiDictionaryEntryService implements DictionaryEntryService {
 	public DictionaryEntry getEntry(String wordId) throws UnableToGetEntryException {
 
 		try {
-			URL url = new URL(API_URL + wordId);
+			URL url = new URL(API_URL + URLEncoder.encode(wordId, "UTF-8"));			
 			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-			;
-
+			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			StringBuilder stringBuilder = new StringBuilder();
 

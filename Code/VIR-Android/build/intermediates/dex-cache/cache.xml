@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/de9632673e8d5cc9256e10edf946810172cce59c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_524a003e8976f9e777f0c3b7493723307cdab312/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -21,111 +12,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/alfredo/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_2571736e2e294369a22f640e8ca976fa0a67ffcb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/4c9e2eb1088a5112ba454c2be9388243e4148fc0/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_d1274127730a93c0bed87b78d53fa779b86ed26d/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/26.0.0-alpha1/support-annotations-26.0.0-alpha1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="023ee503b631f69511e335a061ea008f8da60f40">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.0.0-alpha1_27588c87f1a81024aa9ef2443fdf5e8544793b61/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_986e601de65f92e008ed68c81f3c965bf63ecb41/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="f9d0eb77d9bd602f4d1fa0dd3d33903b19e721ef">
+        sha1="8e4feeae5eafcbd01868269a20e3a4cd132976b0">
         <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_d155b0864eaaaa3a5c2fe2b5c8d1d4694d669726/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/710b370a840ca4f80bdae7587f72214aebb989f1/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1069c3a8ff47681adc497c45725c0acda16ea6a5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/f2f4bfb5ed98cf6a11ad1f44b874d2908f10986f/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="952944218ecedea1554a513dec0c14d570642843">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1a4b5288beaa4be80382658e4c0040816a2c9897/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/dd2209772bfda4495a1ad1c1edf5b99133c83ccd/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0e5d6df39597abf1e68e6f0248e283e20f0e2be0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/387f531dbd1efb1fedb2127ab6d6c49ceee7e5be/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4fbea2902bfed59a8d1e3347a9d5a2ea08db4e11/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/3783e2effcf7933fd07b5f95f3117572cea0a7e5/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_adcb85a2993e17c99dc618a63f7784f26e560115/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/1795f5ed44bcb64e40174042ffdb6c718203f921/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a2b68eaf535b079078f37c844af53b1797fbc68f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/alfredo/.android/build-cache/eb2d6399a096a8f07de42a7767065f5f55b8f150/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="9935891f23923f39d002087085d9696568a9f657">
-        <dex dex="/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f3ffeef730315054411490f18b0cf317d13b024c/classes.dex" />
     </item>
 
 </items>

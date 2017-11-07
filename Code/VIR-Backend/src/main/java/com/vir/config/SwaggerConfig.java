@@ -35,7 +35,7 @@ public class SwaggerConfig {
             .paths(and(PathSelectors.regex("/api/.*"), not(PathSelectors.regex("/error.*"))))
             .build();
 	}
-
+	
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
             .title("Vocubulary in Reading API")

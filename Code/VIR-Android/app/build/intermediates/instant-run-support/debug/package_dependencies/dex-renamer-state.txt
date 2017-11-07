@@ -1,4 +1,4 @@
-#Mon Oct 02 19:09:46 EDT 2017
+#Sat Nov 04 15:06:10 EDT 2017
 file.2=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4fbea2902bfed59a8d1e3347a9d5a2ea08db4e11/classes.dex
 base.2=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4fbea2902bfed59a8d1e3347a9d5a2ea08db4e11
 file.1=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_2571736e2e294369a22f640e8ca976fa0a67ffcb/classes.dex

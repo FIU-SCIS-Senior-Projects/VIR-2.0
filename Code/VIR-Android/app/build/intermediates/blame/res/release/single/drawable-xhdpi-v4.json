@@ -156,12 +156,12 @@
         "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png",
-        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
-    },
-    {
         "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png",
         "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xhdpi-v4/abc_list_pressed_holo_light.9.png"
+    },
+    {
+        "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png",
+        "source": "/Users/alfredo/.android/build-cache/d3360c3511d62f674e16d2b7090e6373fdb50b8b/output/res/drawable-xhdpi-v4/abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/res/merged/release/drawable-xhdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
