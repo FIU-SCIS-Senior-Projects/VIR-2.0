@@ -15,32 +15,72 @@
 	</div>
 	<hr>
 
+
+
 	<!--Category Colors Information -->
 	<div class="container center">
-		<div class="row center">
-			<div class="col-md-3 col-6">
-				<span>High Frequency</span>
-				<span class="box blueBox"></span>
-			</div>
-			<div class="col-md-3 col-6">
-				<span>Med Frequency</span>
-				<div class="box redBox"></div>
-			</div>
-			<div class="col-md-3 col-6">
-				<span>Low Frequency</span>
-				<div class="box greenBox"></div>
-			</div>
-			<div class="col-md-3 col-6">
-				<span>AWL</span>
+		<div class="row center font-responsive">
+			<div class="col-xl-2 col-md-4 col-6">
+				<span (click)="activeCategory('awl'); open(wordList);">
+					<a href="javascript:void(0)">AWL</a>
+				</span>
 				<div class="box goldBox"></div>
 			</div>
-			<div class="col-md-3 col-6">
-				<span>No Category</span>
+			<div class="col-xl-2 col-md-4 col-6">
+				<span (click)="activeCategory('hi'); open(wordList);">
+					<a href="javascript:void(0)">High Frequency</a>
+				</span>
+				<span class="box blueBox"></span>
+			</div>
+			<div class="col-xl-2 col-md-4 col-6">
+				<span (click)="activeCategory('med'); open(wordList);">
+					<a href="javascript:void(0)">Med Frequency</a>
+				</span>
+				<div class="box redBox"></div>
+			</div>
+			<div class="col-xl-2 col-md-4 col-6">
+				<span (click)="activeCategory('low'); open(wordList);">
+					<a href="javascript:void(0)">Low Frequency</a>
+				</span>
+				<div class="box greenBox"></div>
+			</div>
+			<div class="col-xl-2 col-md-4 col-6">
+				<span (click)="activeCategory(''); open(wordList);">
+					<a href="javascript:void(0)">Names & Off-List</a>
+				</span>
 				<div class="box blackBox"></div>
 			</div>
 		</div>
 	</div>
 	<hr>
+
+	<!--Word Lists popups-->
+	<ng-template #wordList let-c="close" let-d="dismiss">
+		<div class="modal-header">
+			<h4 class="modal-title">
+				{{wordCategory}} Words in this text &nbsp;&nbsp;
+			</h4>
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+
+			<!--word List-->
+			<div *ngFor='let word of text.words'>
+				<span *ngIf="word.category == category" [class]="word.category" (click)="getDefinition(word.initialValue); open(content); ">
+					<a href="javascript:void(0)">{{word.initialValue}}<hr></a>
+				</span>
+				<span class="oneLine" *ngIf="word.initialValue == ''">
+					<br>
+				</span>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+		</div>
+	</ng-template>
+
 
 	<!--Definition model (Popup)-->
 	<ng-template #content let-c="close" let-d="dismiss">
@@ -68,8 +108,8 @@
 
 
 
-	<!--Print each word from the word object and color it base on the category *ngIf='turnOn'-->
-	<div class="enhancedTextbox equalLength" >
+	<!--Print each word from the words object and color it base on the category-->
+	<div class="enhancedTextbox equalLength">
 		<div class="oneLine" *ngFor='let word of text.words'>
 			<span [class]="word.category" (click)="getDefinition(word.initialValue); open(content);">
 				<a href="javascript:void(0)">{{word.initialValue}}</a>
@@ -84,7 +124,7 @@
 
 <!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
-	<meta http-equiv="refresh" content="3;url=http://www.myvirs.com/dashboard" />
+	<!--<meta http-equiv="refresh" content="0;url=http://www.myvirs.com/dashboard" />-->
 	<div class="row">
 		<div class="col-6">
 			<h1>Oops!</h1>

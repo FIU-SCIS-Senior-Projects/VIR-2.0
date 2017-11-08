@@ -8,7 +8,7 @@
 }
 
 .hi {
-    color: blue;
+    color: #0026ff;
 }
 
 .med {
@@ -20,7 +20,7 @@
 }
 
 .awl {
-    color: gold;
+    color: rgb(255, 166, 0);
 }
 
 
@@ -60,11 +60,7 @@
   margin-top: 30px;
 }
 
-@media screen and (max-width: 992px) {
-  .margin-responsive {
-      margin-bottom: 70px;
-  }
-}
+
 
 a { 
   color: inherit; 
@@ -83,4 +79,22 @@ a.disabled {
 .modal-body {
   max-height: calc(100vh - 210px);
   overflow-y: auto;
+}
+
+@media screen and (max-width: 992px) {
+  .margin-responsive {
+      margin-bottom: 70px;
+  }
+}
+
+@media screen and (max-width: 1234px) {
+  .font-responsive {
+       font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .font-responsive {
+       font-size: 1rem;
+  }
 }

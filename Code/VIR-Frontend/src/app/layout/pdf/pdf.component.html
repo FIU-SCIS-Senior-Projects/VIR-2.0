@@ -13,6 +13,7 @@
 		<div class="card-header card-info">
 			<i class="fa fa-fw fa-file-pdf-o fa-2x float-right" title="Upload your PDF"></i>Upload your PDF.&nbsp;&nbsp;
 			<i class="fa fa-spinner fa-spin" style="font-size:32px;color:white" *ngIf='processing && userPDFFile'></i>
+			<span class="badge badge-default">MAX 25 MB</span>
 		</div>
 
 		<div class="card-block bg-white">
@@ -53,6 +54,8 @@
 			</div>
 			<div class="col-md-12">
 				<h5>Choose your PDF file</h5>
+				<hr>
+				<p>Maximum 25 MB.</p>
 			</div>
 		</div>
 		<div class="col-md box2">

@@ -90,7 +90,6 @@ export class TextStatisticsComponent implements OnInit {
   onResize(event) {
     this.showOnlyIcons = window.innerWidth <= 680;
     this.updaTeLabels();
-    // tslint:disable-next-line:no-unused-expression
     event.target.innerWidth;
   }
 
@@ -99,7 +98,7 @@ export class TextStatisticsComponent implements OnInit {
     this.enhanceTextLabel = this.showOnlyIcons ? '' : TextStatisticsComponent.ENHANCETEXT_LABEL;
   }
 
-  // events
+  // events for Pie Chart
   public chartClicked(e: any): void {
     console.log(e);
   }
@@ -108,27 +107,9 @@ export class TextStatisticsComponent implements OnInit {
     console.log(e);
   }
 
+  // Update Pie chart
   updatePieChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
     this.pieChartData = [awl, hi, med, low, noCategory]
   }
-
-    // definiton Model open
-    open(content) {
-      this.modalService.open(content).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      });
-    }
-  
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return `with: ${reason}`;
-      }
-    }
 
 }
