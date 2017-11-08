@@ -1,4 +1,0 @@
-#Sat Nov 04 15:06:11 EDT 2017
-base.0=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9
-renamed.0=classes.dex
-file.0=/Users/alfredo/github/vir-2.0/Code/VIR-Android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_9/classes.dex
