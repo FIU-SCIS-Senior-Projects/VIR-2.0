@@ -106,15 +106,23 @@ public class OptimizedTextProcessorServiceTest {
 	
 	@Test
 	public void getFleschReadingEase_WithValueAbove100_Returns100() {
-		long wordCount = 1;
-		long sentenceCount = 1;
-		long syllableCount = 1;
+		long wordCount = 1000;
+		long sentenceCount = 1000;
+		long syllableCount = 1000;
 		assertEquals(100.00, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
 	}
 	
 	@Test
 	public void getFleschReadingEase_WithValueBellow0_Returns0() {
 		long wordCount = 1000;
+		long sentenceCount = 10000;
+		long syllableCount = 10000;
+		assertEquals(0.00, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);
+	}
+	
+	@Test
+	public void getFleschReadingEase_WithWordCountLessThan100_Returns0() {
+		long wordCount = 1;
 		long sentenceCount = 1;
 		long syllableCount = 1;
 		assertEquals(0.00, textProcessorService.getFleschReadingEase(wordCount, sentenceCount, syllableCount), 0.001d);

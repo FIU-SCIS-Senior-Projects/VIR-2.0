@@ -153,20 +153,27 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 	@Override
 	public double getFleschReadingEase(long wordCount, long sentenceCount, long syllableCount) {
 
+		final double maxThreshold = 100.0d;
+		final double minThreshold = 0.0d;
+		final int minWordCount = 100;
 		final double baseConstant = 206.835;
 		final double sentenceLengthRatio = 1.015;
 		final double syllableRatio = 84.6;
 		final double ASL = ((double) wordCount / sentenceCount);
 		final double ASW = ((double) syllableCount / wordCount);
 		
+		if (wordCount < minWordCount) {
+			return minThreshold;
+		}
+		
 		double result = (baseConstant - (sentenceLengthRatio * ASL) - (syllableRatio * ASW));
 		
-		// Small convetion we agreed on. 
-		if (result > 100.0d) {
-			return 100.0d;
+		if (result > maxThreshold) {
+			return maxThreshold;
 		}
-		if (result < 0.0d) {
-			return 0.0;
+		
+		if (result < minThreshold) {
+			return minThreshold;
 		}
 		
 		return result;
