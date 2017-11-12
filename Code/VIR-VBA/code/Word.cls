@@ -20,12 +20,12 @@ Public Property Let Category(ByVal Category As Variant)
     MyCategory = Category
 End Property
 
-Public Property Get Value() As Variant
-    Value = MyValue
+Public Property Get value() As Variant
+    value = MyValue
 End Property
 
-Public Property Let Value(ByVal Value As Variant)
-    MyValue = Value
+Public Property Let value(ByVal value As Variant)
+    MyValue = value
 End Property
 
 
@@ -33,8 +33,9 @@ Public Function PrintForSql() As String
     Dim validValue As String
     Dim validCategory As String
     
-    validValue = Replace(Me.Value, "'", "''")
-    validCategory = Replace(Me.Category, "'", "''")
+    validValue = Replace(MyValue, "'", "''")
+    validCategory = Replace(MyCategory, "'", "''")
     
     PrintForSql = "('" & validValue & "', '" & validCategory & "')"
 End Function
+
