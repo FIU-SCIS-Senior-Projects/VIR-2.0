@@ -49,7 +49,7 @@ public class SimpleTextProcessorServiceTest {
 
 	@Test
 	public void process_UnknownWord_ReturnsWordWithoutData() {
-		final String word = "zzzz";
+		final String word = "zzzzzz";
 		final WordMatch expected = new WordMatch(StringUtils.EMPTY, StringUtils.EMPTY, word);
 		final Text result = textProcessorService.process(word);
 		assertEquals(expected, result.getWords().get(0));

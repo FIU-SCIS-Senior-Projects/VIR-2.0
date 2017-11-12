@@ -16,7 +16,7 @@ const routes: Routes = [
             { path: 'enhanced-text-result', loadChildren: './enhanced-text-result/enhanced-text-result.module#EnhancedTextResultModule' },
             { path: 'text-statistics', loadChildren: './text-statistics/text-statistics.module#TextStatisticsModule' },
             { path: 'dictionary', loadChildren: './dictionary/dictionary.module#DictionaryModule' },
-            { path: 'adminXYZ298ABC', loadChildren: './admin/admin.module#AdminModule', canActivate: [AuthGuard] },
+            { path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
         ]
     }
 

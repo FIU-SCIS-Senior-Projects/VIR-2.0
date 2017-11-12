@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
   searchWord(): void {
     this.processing = true;
     this.error = false;
+    this.errorAdd = false;
     this.alertWord = this.searchArea;
     this._admin.getWord(this.searchArea)
       .subscribe
@@ -60,6 +61,7 @@ export class AdminComponent implements OnInit {
   // Add new word to data base
   addWord(): void {
     this.processing = true;
+    this.error = false;
     this.errorAdd = false;
     this._admin.postWord(this.wordArea, this.category)
       .subscribe
@@ -85,6 +87,7 @@ export class AdminComponent implements OnInit {
   editWord(): void {
     this.processing = true;
     this.error = false;
+    this.errorAdd = false;
     this._admin.putWord(this.wordArea, this.category, this.idArea)
       .subscribe
       (res => {
@@ -108,6 +111,7 @@ export class AdminComponent implements OnInit {
   deleteWord(): void {
     this.processing = true;
     this.error = false;
+    this.errorAdd = false;
     this._admin.deleteWord(this.wordArea)
       .subscribe
       (res => {
