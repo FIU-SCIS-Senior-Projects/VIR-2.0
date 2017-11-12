@@ -14,4 +14,5 @@ Public Sub ScreenOn()
         .ScreenUpdating = True
         .EnableEvents = True
     End With
+PerfMonProcEnd "VBAProject.Helpers.ScreenOn"
 End Sub
