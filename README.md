@@ -5,8 +5,6 @@ We will get you up an running in no time.
 * Install Tesseract for your system. https://github.com/tesseract-ocr/tesseract/wiki
 * Create an environment variable TESSERACT_PATH pointing to your installation directory. Where the executable is.
 * Create an environment variable TESSDATA_PREFIX poiting to the directory above the 'tessdata' one; should be in your installation directory but it can be downloaded from the web.
-* Install ImageMagick on your system. https://www.imagemagick.org/script/download.php
-* Create an environment variable IMAGE_MAGICK_PATH pointing to where 'image magic' is installed.
 
 * Clone the repo (you probably already did this part ??)
 * Create a local MySQL account with credentials
@@ -62,7 +60,7 @@ Code             | Contains all the code for the application.
 VIR-Android      | Contains all the code for the Android application.
 VIR-Backend      | Contains all the code for the backend of the application.
 VIR-Frontend     | Contains all the code for the frontend of the application.
-VIR-Frontend     | Contains all the code for a VBA workbook to help gather information from the professor and convert it to sql.
+VIR-VBA	         | Contains all the code for a VBA workbook to help gather information from the professor and convert it to sql.
 VIR-Scripts      | Contains scripts for the application. (not used frequently)
 VIR-iPhone       | Contains all the code for the iPhone application.
 build.cmd        | Script to build the application from Windows.
