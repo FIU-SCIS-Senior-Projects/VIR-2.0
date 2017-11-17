@@ -129,7 +129,7 @@
 		</div>
 
 		<!--Pie Chart-->
-		<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
+		<div class="card hidden-xs-down" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
 			<h3 class="card-header bg-success">Pie Chart</h3>
 			<div class="card-block">
 				<div style="display: block">
@@ -140,6 +140,19 @@
 			</div>
 		</div>
 
+		<!--Bar Chart - Only visible on mobile view-->
+		<div class=" hidden-sm-up">
+			<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
+				<h3 class="card-header bg-success">Bar Chart</h3>
+			</div>
+
+			<div style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
+				<div style="display: block">
+					<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+					 [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </div>

@@ -14,9 +14,20 @@ export class TextStatisticsComponent implements OnInit {
 
   public static BACK_LABEL = ' Back';
   public static readonly ENHANCETEXT_LABEL: string = ' Enhanced Text';
+
   public pieChartLabels: string[] = ['AWL', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'No Category'];
   public pieChartData: number[];
   public pieChartType = 'pie';
+
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels: string[] = ['AWL', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'No Category'];
+  public barChartData: any[];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+
 
   text: IText;
   showDiv: boolean;
@@ -110,6 +121,9 @@ export class TextStatisticsComponent implements OnInit {
   // Update Pie chart
   updatePieChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
     this.pieChartData = [awl, hi, med, low, noCategory]
+    this.barChartData = [
+      { data: [awl, hi, med, low, noCategory], label: '# of Words in different Category' },
+    ];
   }
 
 }
