@@ -17,6 +17,7 @@ const routes: Routes = [
             { path: 'text-statistics', loadChildren: './text-statistics/text-statistics.module#TextStatisticsModule' },
             { path: 'dictionary', loadChildren: './dictionary/dictionary.module#DictionaryModule' },
             { path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
+            { path: 'credits', loadChildren: './credits/credits.module#CreditsModule'}
         ]
     }
 
