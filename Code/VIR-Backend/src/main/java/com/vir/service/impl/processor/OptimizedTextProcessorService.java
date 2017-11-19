@@ -165,7 +165,7 @@ public class OptimizedTextProcessorService implements TextProcessorService {
 		if (wordCount < minWordCount) {
 			return minThreshold;
 		}
-		
+
 		double result = (baseConstant - (sentenceLengthRatio * ASL) - (syllableRatio * ASW));
 		
 		if (result > maxThreshold) {
