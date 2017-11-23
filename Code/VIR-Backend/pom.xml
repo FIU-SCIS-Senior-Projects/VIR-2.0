@@ -5,7 +5,7 @@
 
 	<groupId>com.vir</groupId>
 	<artifactId>VIR-Backend</artifactId>
-	<version>0.0.66-SNAPSHOT</version>
+	<version>0.0.68-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>VIR-Backend</name>
