@@ -6,7 +6,7 @@ const routes: Routes = [
     {
         path: '',
         loadChildren: './layout/layout.module#LayoutModule',
-        //canActivate: [AuthGuard]
+        // canActivate: [AuthGuard]
     },
     { path: 'login1', loadChildren: './login/login.module#LoginModule' },
     { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
