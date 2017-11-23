@@ -38,29 +38,6 @@
 			</li>
 		</div>
 
-
-
-		<div class="nested-menu">
-			<a class="list-group-item" (click)="addExpandClass('test')">
-				<span>
-					<i class="fa fa-plus"></i>&nbsp; {{ 'tests' | translate }}</span>
-			</a>
-			<li class="nested" [class.expand]="showMenu === 'test'">
-				<ul class="submenu">
-					<li>
-						<a [routerLink]="['/readingTest']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'reading' | translate }}
-						</a>
-					</li>
-					<li>
-						<a [routerLink]="['/vocabularyTest']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-							&nbsp;{{ 'vocabulary' | translate }}
-						</a>
-					</li>
-				</ul>
-			</li>
-		</div>
-
 		<a routerLink="/dictionary" [routerLinkActive]="['router-link-active']" class="list-group-item">
 			<i class="fa fa-fw fa-list"></i>&nbsp;{{ 'school dictionary' | translate }}
 		</a>
