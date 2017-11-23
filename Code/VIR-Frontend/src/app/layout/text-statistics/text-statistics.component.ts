@@ -15,7 +15,7 @@ export class TextStatisticsComponent implements OnInit {
   public static BACK_LABEL = ' Back';
   public static readonly ENHANCETEXT_LABEL: string = ' Enhanced Text';
 
-  public pieChartLabels: string[] = ['AWL', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'No Category'];
+  public pieChartLabels: string[] = ['Academic Word', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'Names & Off-List'];
   public pieChartData: number[];
   public pieChartType = 'pie';
 
@@ -23,7 +23,7 @@ export class TextStatisticsComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['AWL', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'No Category'];
+  public barChartLabels: string[] = ['Academic Word', 'High Freq.', 'Medium Freq.', 'Low Freq.', 'Off-List'];
   public barChartData: any[];
   public barChartType = 'bar';
   public barChartLegend = true;
@@ -53,7 +53,7 @@ export class TextStatisticsComponent implements OnInit {
     if (!this.text) {
       return;
     } else {
-      this.textLevel(this.text.fleschReadingScore);
+      this.textLevel(this.text.fleschReadingScore, this.text.words.length);
     }
     this.showDiv = true;
     this.showOnlyIcons = window.innerWidth <= 680;
@@ -61,8 +61,10 @@ export class TextStatisticsComponent implements OnInit {
     if (!this.text) {
       return;
     } else {
-      this.updatePieChart(this.text.statistics.wordCount.awl, this.text.statistics.wordCount.hi,
+      this.updateBarChart(this.text.statistics.wordCount.awl, this.text.statistics.wordCount.hi,
         this.text.statistics.wordCount.med, this.text.statistics.wordCount.low, this.text.statistics.wordCount.noCategory);
+      this.updatePieChart(this.text.statistics.wordPercentage.awl, this.text.statistics.wordPercentage.hi,
+        this.text.statistics.wordPercentage.med, this.text.statistics.wordPercentage.low, this.text.statistics.wordPercentage.noCategory);
     }
   }
 
@@ -73,7 +75,7 @@ export class TextStatisticsComponent implements OnInit {
     30-59: Advanced Level
     0--29: College Level
   */
-  textLevel(score: number) {
+  textLevel(score: number, words: number) {
     if (score <= 29 && score >= 1) {
       this.textLVL = 'College Level';
       this.textColor = 'red';
@@ -87,7 +89,11 @@ export class TextStatisticsComponent implements OnInit {
       this.textLVL = 'Intermediate Level';
       this.textColor = 'green';
     } else if (score === 0) {
-      this.textLVL = 'it is not applicable for texts under 100 words.'
+      if (words < 100) {
+        this.textLVL = 'it is not applicable for texts under 100 words.'
+      } else if (words > 100) {
+        this.textLVL = 'impossible to comprehend. (more sentences needed)'
+      }
     } else {
       this.textLVL = 'Beginner Lever';
       this.textColor = 'blue';
@@ -119,11 +125,15 @@ export class TextStatisticsComponent implements OnInit {
   }
 
   // Update Pie chart
-  updatePieChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
-    this.pieChartData = [awl, hi, med, low, noCategory]
+  updateBarChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
+
     this.barChartData = [
       { data: [awl, hi, med, low, noCategory], label: '# of Words in different Category' },
     ];
   }
+  updatePieChart(awl: number, hi: number, med: number, low: number, noCategory: number) {
+    this.pieChartData = [awl * 100, hi * 100, med * 100, low * 100, noCategory * 100]
+  }
+
 
 }

@@ -18,7 +18,7 @@
 
 	<div *ngIf="showDiv">
 
-		<!--Readibility Score-->
+		<!--Readability Score-->
 		<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;">
 			<h3 class="card-header">Readability Scores
 			</h3>
@@ -128,40 +128,44 @@
 			</div>
 		</div>
 
-		<!--Pie Chart-->
-		<div class="card hidden-xs-down" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
-			<h3 class="card-header bg-success">Pie Chart</h3>
-			<div class="card-block">
-				<div style="display: block">
-					<canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
-					 (chartClick)="chartClicked($event)"></canvas>
-				</div>
 
+
+
+		<div class="row" style="margin-top: 3%;">
+			<div class="col col-md-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-fw fa-bar-chart fa-2x float-right"></i>
+						Bar Chart (#)
+					</div>
+					<div class="card-body">
+						<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+						 [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+						</canvas>
+					</div>
+				</div>
+			</div>
+			<div class="col col-md-6">
+				<div class="card mb-3">
+					<div class="card-header">
+						<i class="fa fa-fw fa-pie-chart fa-2x float-right"></i>
+						Pie Chart (%)
+					</div>
+					<div class="card-body">
+						<canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+						 (chartClick)="chartClicked($event)"></canvas>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<!--Bar Chart - Only visible on mobile view-->
-		<div class=" hidden-sm-up">
-			<div class="card" style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
-				<h3 class="card-header bg-success">Bar Chart</h3>
-			</div>
-
-			<div style="margin: auto; margin-bottom: 3%; margin-top: 3%;" data-ng-init="updatePieChart(text.statistics.wordCount.awl, text.statistics.wordCount.hi, text.statistics.wordCount.med, text.statistics.wordCount.low, text.statistics.wordCount.noCategory)">
-				<div style="display: block">
-					<canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
-					 [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-				</div>
-			</div>
-		</div>
 	</div>
-
 </div>
-
 
 <!--if page refreshes it prompt the user to go to the previous page-->
 <ng-template #elseBlock>
 	<div class="row">
-		<meta http-equiv="refresh" content="3;url=http://www.myvirs.com/dashboard" />
+		<!-- <meta http-equiv="refresh" content="0;url=http://www.myvirs.com/dashboard" /> -->
 		<div class="col-6">
 			<h1>Oops!</h1>
 		</div>
