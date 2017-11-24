@@ -1,1 +1,1 @@
-web: java -jar VIR-Backend-0.0.69-SNAPSHOT.jar
+web: java -jar VIR-Backend-0.0.70-SNAPSHOT.jar
