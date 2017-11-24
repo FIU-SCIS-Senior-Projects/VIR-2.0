@@ -1,6 +1,5 @@
 export * from './IWordMatch';
 export * from './IText';
-export * from './IColor';
 export * from './IStatistics';
 export * from './IDefinition';
 export * from './IWord';
