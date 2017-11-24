@@ -37,27 +37,26 @@
 
 <!--Search-->
 <div class="form-group row">
-  <label for="example-search-input" class="col-1 col-form-label">
-    <strong>Search</strong>
-  </label>
-  <div class="col-2">
+  <div class="col col-md-8 col-xl-4">
     <input class="form-control" type="search" name="searchArea" [(ngModel)]="searchArea" id="example-search-input" placeholder="Word..">
   </div>
-  <button class="btn btn-primary" (click)="searchWord()" [disabled]="!searchArea" required>Search</button>
+  <button class="btn btn-primary" (click)="searchWord();" [disabled]="!searchArea" required>Search</button>
 </div>
 
 <!--Table - shows the search result-->
 <div class='table-responsive table-hover table-striped'>
   <table class='table table-hover'>
     <thead>
-      <tr>
+      <tr class="table-active">
         <th>Word</th>
-        <th>Categorys</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngIf='showTable && !error'>
-        <td>{{word.value}}</td>
+      <tr *ngIf='showTable && !error' class="table-success">
+        <td (click)="getDefinition(word.value); open(content);">
+          <a href="javascript:void(0)">{{ word.value}}</a>
+        </td>
         <td>{{word.category}}</td>
       </tr>
     </tbody>
@@ -95,7 +94,7 @@
     <thead>
       <tr>
         <th>Word</th>
-        <th>Categorys</th>
+        <th>Category</th>
       </tr>
     </thead>
     <tbody>
