@@ -95,7 +95,7 @@ export class TextStatisticsComponent implements OnInit {
         this.textLVL = 'impossible to comprehend. (more sentences needed)'
       }
     } else {
-      this.textLVL = 'Beginner Lever';
+      this.textLVL = 'Beginner Level';
       this.textColor = 'blue';
     }
   }
