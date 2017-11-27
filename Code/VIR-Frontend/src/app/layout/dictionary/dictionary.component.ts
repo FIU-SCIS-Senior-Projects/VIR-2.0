@@ -7,7 +7,7 @@ import { WordsListService, IPage } from '../../shared'
 import { Router } from '@angular/router';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { TextService, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
+import { TextService, IWord, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
 
 @Component({
   selector: 'app-dictionary',
@@ -41,6 +41,12 @@ export class DictionaryComponent implements OnInit {
   error: boolean;
   cleanWord: string;
   closeResult: string;
+
+  errorSearch: boolean;
+  word: IWord;
+  showTable = false;
+  alertWord: string;
+  @Input() searchArea: string;
 
   constructor(private _wordsList: WordsListService, public _definitionService: DefinitionService, private modalService: NgbModal) {
     this.defaultPagination = 1;
@@ -163,6 +169,28 @@ export class DictionaryComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+
+  searchWord(): void {
+    this.errorSearch = false;
+    this.alertWord = this.searchArea;
+    this._wordsList.getWord(this.searchArea)
+      .subscribe
+      (res => {
+        this.word = res;
+        this.processing = false;
+        this.showTable = true;
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log('Client-side Error occured');
+        } else {
+          this.errorSearch = true;
+          console.log('Server-side Error occured');
+        }
+      }
+      );
   }
 
 

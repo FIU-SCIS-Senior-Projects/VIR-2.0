@@ -123,7 +123,7 @@ export class AdminComponent implements OnInit {
         if (err.error instanceof Error) {
           console.log('Client-side Error occured');
         } else {
-          this.error = true;
+          // this.error = true;
           this.processing = false;
           console.log('Server-side Error occured');
         }
