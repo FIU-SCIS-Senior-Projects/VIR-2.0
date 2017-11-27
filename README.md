@@ -114,21 +114,4 @@ README.md        | This readme file (talking about recursion...)
 
 # Application Building and Pipelines
 
-Dev pipeline
-
-clean  +---->  build   +---->  copy to  +--->  install  +----->  run unit  +-----> finish
-              Angular          backend         backend             tests
-
-
-
-Prod pipeline
-
-clean  +---->  build   +---->  copy to  +--->  install  +----->  run unit  +----->  boundle  +----> deploy
-              Angular          backend         backend             tests
-                                                                      +
-                                                                      |
-                                                                      |
-                                                                      v
-                                                                   integration
-                                                                   tests
-
+![pipe line](https://github.com/FIU-SCIS-Senior-Projects/VIR-2.0/blob/master/Media/DeploymentFlow.png)
