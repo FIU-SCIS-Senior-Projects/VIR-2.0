@@ -114,4 +114,4 @@ README.md        | This readme file (talking about recursion...)
 
 # Application Building and Pipelines
 
-[[https://github.com/FIU-SCIS-Senior-Projects/VIR-2.0/blob/develop/Media/DeploymentFlow.png|alt=pipeline]]
+![Alt text](https://github.com/FIU-SCIS-Senior-Projects/VIR-2.0/blob/develop/Media/DeploymentFlow.png?raw=true "Pipe lines")
