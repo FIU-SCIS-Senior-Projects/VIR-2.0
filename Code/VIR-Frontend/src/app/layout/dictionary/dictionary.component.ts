@@ -3,11 +3,11 @@ import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { WordsListService, IPage } from '../../shared'
+import { WordsListService, DefinitionService } from '../../shared'
 import { Router } from '@angular/router';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { TextService, IWord, IText, IWordMatch, IDefinition, DefinitionService } from '../../shared'
+import { IWord, IText, IDefinition, IPage } from '../../shared'
 
 @Component({
   selector: 'app-dictionary',

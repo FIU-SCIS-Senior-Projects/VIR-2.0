@@ -39,3 +39,8 @@ a {
     max-height: calc(100vh - 210px);
     overflow-y: auto;
   }
+
+  table{
+    table-layout: fixed;
+    width: 100%;
+}
