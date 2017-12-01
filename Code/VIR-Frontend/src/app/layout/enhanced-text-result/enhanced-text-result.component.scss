@@ -87,7 +87,7 @@ a.disabled {
   }
 }
 
-@media screen and (max-width: 1234px) {
+@media screen and (max-width: 1300px) {
   .font-responsive {
        font-size: 0.8rem;
   }
@@ -96,5 +96,11 @@ a.disabled {
 @media screen and (max-width: 1199px) {
   .font-responsive {
        font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .font-responsive {
+       font-size: 0.8rem;
   }
 }
