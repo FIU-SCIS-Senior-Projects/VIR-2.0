@@ -13,6 +13,9 @@ username: root
 password: root
 ```
 * Create a schema named: _**vir**_
+* Go to File/Run SQL Script... and pick the script located at: /vir-2.0/Code/VIR-Backend/src/main/resources/schema.sql 
+* Go to File/Run SQL Script... and pick the script located at: /vir-2.0/Code/VIR-Backend/src/main/resources/data.sql 
+
 * Run: 
 ```
 ./build.sh
