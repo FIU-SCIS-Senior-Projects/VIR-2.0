@@ -1,0 +1,46 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+	<ul class="list-group">
+		<a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+			<i class="fa fa-fw fa-home"></i>&nbsp;{{ 'home' | translate }}
+		</a>
+
+
+
+
+		<div class="nested-menu">
+			<a class="list-group-item" (click)="addExpandClass('upload')">
+				<span>
+					<i class="fa fa-plus"></i>&nbsp; {{ 'analyze your text' | translate }}</span>
+			</a>
+			<li class="nested" [class.expand]="showMenu === 'upload'">
+				<ul class="submenu">
+					<li>
+						<a [routerLink]="['/text']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-keyboard-o"></i>&nbsp;{{ 'text' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/doc']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-file-text"></i>&nbsp;{{ 'doc' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/pdf']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;{{ 'pdf' | translate }}
+						</a>
+					</li>
+					<li>
+						<a [routerLink]="['/image']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+							<i class="fa fa-fw fa-picture-o"></i>&nbsp;{{ 'image' | translate }}
+						</a>
+					</li>
+				</ul>
+			</li>
+		</div>
+
+		<a routerLink="/dictionary" [routerLinkActive]="['router-link-active']" class="list-group-item">
+			<i class="fa fa-fw fa-list"></i>&nbsp;{{ 'school dictionary' | translate }}
+		</a>
+
+	</ul>
+</nav>

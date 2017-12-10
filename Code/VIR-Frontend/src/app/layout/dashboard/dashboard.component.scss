@@ -1,0 +1,21 @@
+.margin-div{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.padding-div{
+    padding: 5px;
+}
+
+a {text-decoration: none; }
+
+@media screen and (max-width: 992px) {
+    .margin-responsive {
+        margin-bottom: 70px;
+    }
+}
+
+.carousel-caption {
+    bottom:15%;
+    top:auto;
+}
